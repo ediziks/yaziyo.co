@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+{% load readtime %}
+{% block content %}
+<div class="top-images">
+<img class="cover-img" src="{{user.profile.cover.url}}" name="aboutme">
+<img class="account-img" id="account-img" src="{{user.profile.avatar.url}}" name="aboutme">
+</div>
+<div class="container-fluid">
+<div class="span3 well jumbotron">
+    <div class="username">
+      <p>{{ user.profile }}</p>
+    </div>
+    <div class="bio">
+      <p>{{ user.profile.bio }}</p>
+    </div>
+    <div class="takip">
+      <span>Takipçi <strong>{{user.profile.followers.all.count}}</strong> &nbsp;</span><span> Takip Edilen <strong>{{user.is_following.all.count}}</strong></span>
+    </div>
+    {% if user.is_authenticated %}
+    <form class="follow-form" action="{% url 'accounts:follow' user.username %}" method="POST">
+      {% csrf_token %}
+      {% if user != request.user %}
+      {% if request.user in user.profile.followers.all %}
+      <input type="hidden" name="username" value="{{user.username}}">
+      <button class="btn btn-outline-danger btn-sm">Takibi Bırak</button>
+      {% else %}
+      <input type="hidden" name="username" value="{{user.username}}">
+      <button class="btn btn-primary btn-sm">Takip Et</button>
+      {% endif %}
+      {% endif %}
+    </form>
+    {% endif %}
+    {% if user == request.user %}
+    <a href="{% url 'accounts:bookmarks' username=request.user.username %}">bookmarks</a>
+    {% endif %}
+    {% if user in request.user.profile.followers.all %}
+    <p>Seni takip ediyor</p>
+    {% endif %}
+</div>
+</div>
+<div class="container articles-profile">
+  {% for article in articles %}
+  <div class="col-12 flex-lg-row jumbotron">
+    <div class="profile-article-image">
+      <a href="{{article.get_absolute_url}}"><img src="{{article.image.url}}" alt=""></a>
+    </div>
+    <div class="media-body">
+      <div class="media-heading">
+        <div class="row col-md-12 profile-article-title">
+          <a href="{{article.get_absolute_url}}"><pre><h1>{{ article.title }}</h1></pre></a>
+        </div>
+        <div class="row col-md-12 mt-3 profile-article-message">
+          <a href="{{article.get_absolute_url}}"><pre>{{ article.message|truncatewords:50|safe}}</pre></a>
+        </div>
+        <div class="row col-md-12 mt-3 profile-article-tags">
+          {% for tag in article.tags.all %}
+            <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.slug }}</a>
+          {% endfor %}
+        </div>
+        <div class="row col-md-12 mt-3 profile-article-info">
+          {% if request.user in article.likes.all %}
+          <button type="button" class="btn btn-outline-danger" disabled="disabled"><i class="fa fa-heart"></i> <strong>{{article.likes.count}}</strong></button>
+          {% else %}
+          <button type="button" class="btn btn-outline-danger" disabled="disabled"><i class="fa fa-heart-o"></i> <strong>{{article.likes.count}}</strong></button>
+          {% endif %}
+          <button type="button" class="btn btn-outline-success ml-2" disabled="disabled"><i class="far fa-comment-dots"></i></i> <strong>{{article.comments.count}}</strong></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<style>
+@media only screen and (max-width: 768px) {
+  #account-img {
+    width: 105px !important;
+    height: 120px !important;
+    top: 14.8rem !important;
+    left: calc(50% - 52px) !important;
+  }
+
+  .span3 {
+    margin-top: 18rem !important;
+  }
+
+  .profile-article-title * {
+    font-size: 1em !important;
+  }
+
+  .profile-article-message * {
+    font-size: 0.95em !important;
+  }
+
+  .profile-article-tags a {
+    font-size: 0.8em !important;
+    margin-bottom: 0.3em !important;
+    margin-top: 0 !important;
+  }
+
+  .articles-profile {
+    margin-top: 3em !important;
+  }
+}
+
+.cover-img {
+  width:100%;
+  height: 200px;
+  display: block;
+  position: absolute;
+  object-fit: cover;
+  -webkit-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -o-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -moz-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -ms-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+}
+
+#account-img {
+  width: 140px;
+  height: 160px;
+  top: 15.9rem;
+  object-fit: cover;
+  left: calc(50% - 70px);
+  display: inline-block;
+  position: absolute;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  o-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -moz-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -ms-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.profile-article-title * {
+  font-family: 'Roboto-Slab-500';
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+  margin-top: 0.5em;
+}
+
+.articles-profile {
+  margin-top: 4em;
+}
+
+.profile-article-image {
+  text-align: center;
+}
+
+.profile-article-image a img {
+  max-width: 100%;
+  object-fit:cover;
+  border-radius: 10px;
+}
+
+.span3 {
+  margin-top: 20.5rem;
+  margin-bottom: 0;
+}
+
+.span3.jumbotron {
+  padding: 1em;
+  text-align: center;
+  width: 60%;
+  margin-inline: auto;
+  background-color: #dddddd;
+}
+
+.username p {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 0.7em;
+}
+
+.bio {
+  margin-bottom: 0.7em;
+}
+
+.bio p {
+  color: #333333;
+}
+
+.takip {
+  margin-bottom: 0.7em;
+}
+
+.takip span:first-child {
+  border-right: 2px solid #999999;
+}
+
+.btn.btn-primary.btn-sm {
+  background-color: #2cc4bb;
+  border-color: #2cc4bb;
+}
+
+.btn.btn-primary.btn-sm:hover {
+  background-color: #3b9991;
+}
+
+.col-12.jumbotron {
+  padding: 2em !important;
+}
+
+pre {
+  white-space: pre-wrap;
+  overflow: visible;
+}
+
+.profile-article-tags a {
+  font-size: 0.9em;
+  margin-top: 1em;
+}
+
+.profile-article-message img, .profile-article-message figcaption {
+  display: none;
+}
+
+.btn.disabled, .btn:disabled {
+  opacity: 1;
+}
+</style>
+{% endblock content %}

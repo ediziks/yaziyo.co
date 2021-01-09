@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+<div class="jumbotron">
+  <br><br><br><br><br><br>
+  {{user.followers.all}}
+  {{followers_list}}
+  {% for follower in followers_list %}
+    <ul>
+      <li>{{follower}}</li>
+    </ul>
+  {% endfor %}
+</div>

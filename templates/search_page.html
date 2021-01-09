@@ -1,0 +1,9 @@
+{% load el_pagination_tags %}
+
+{% lazy_paginate object_list %}
+{% for object in object_list %}
+<ul>
+  <li><a href="{% url 'articles:single' username=object.user.username slug=object.slug  %}">{{object.title}}</a></li>
+</ul>
+{% endfor %}
+{% show_more 'daha fazla...' %}

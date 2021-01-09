@@ -1,0 +1,40 @@
+{% if request.user.is_authenticated %}
+<li class="nav-item mt-3 mr-1 wide">
+  <div class="notifications-dropdown" title="Bildirimler">
+    {% if request.user.notifications.unread and not user.notifications.unread == 0 %}
+    <span class="badge badge-pill badge-danger">{{request.user.notifications.unread.count}}</span>
+    {% endif %}
+    <a class="notifications-button" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a0a0a0;"><i class="far fa-bell"></i></a>
+    <div class="dropdown-menu" id="noti-drop-menu" aria-labelledby="dropdownMenuLink">
+      {% for noti in notifications %}
+      {% if noti.verb == 'like' %}
+      <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>,
+        <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> başlıklı yazını beğendi <i class="fas fa-heart"></i> {{noti.timesince}}</p>
+      {% elif noti.verb == 'takip' %}
+      <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a> seni takip etmeye başladı ✨ {{noti.timesince}}</p>
+      {% elif noti.verb == 'yorum' %}
+      <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>, başlığı <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> olan yazına bir yorum bıraktı 💬 {{noti.timesince}}</p>
+      {% endif %}
+      {% endfor %}
+      {% if not notifications.count %}
+      <p class="dropdown-item">Henüz bir bildiriminiz yok. Eminiz ki yazdıkça bilgiler ve bildirimler çoğalacaktır.</p>
+      {% else %}
+      <a class="nav-link" id="show_all" style="text-align: center;" href="{% url 'accounts:notifications' request.user.username %}">- <strong>Tümünü Gör</strong> -</a>
+      {% endif %}
+    </div>
+  </div>
+</li>
+<li class="nav-item small align-self-center my-2">
+  <a href="{% url 'accounts:notifications' request.user.username %}">🔔 Bildirimler</a>
+</li>
+{% endif %}
+
+<style type="text/css">
+.badge-pill {
+  position: relative;
+  float:right;
+  margin-left:-1.1em;
+  margin-top:-0.7em;
+  opacity: 0.8;
+}
+</style>

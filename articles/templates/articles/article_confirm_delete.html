@@ -1,0 +1,49 @@
+{% extends "articles/article_base.html" %}
+{% load social_share %}
+{% block content %}
+<div class="jumbotron">
+  <h3>You sure you wanna delete?</h3>
+  <div class="articles">
+    <div class="container">
+      <div class="article media">
+        <div class="media-body p-3">
+          <h5 class="media-heading">
+            <span class="username">
+              <img src="{{article.user.profile.avatar.url}}" class="rounded-circle" width="50" height="50" alt="">
+              <a href="{% url 'accounts:profile' username=article.user.username %}">@{{article.user.username}}</a>
+            </span>
+            <time class="time">
+              <a href="{% url 'articles:single' username=article.user.username slug=article.slug  %}">{{article.title}} {{article.created_at}}</a>
+            </time>
+            <div class="row col-md-12 mt-5">
+              {{article.message|safe}}
+            </div>
+            <div class="mb-auto" style="display:flex">
+              {% for tag in article.tags.all %}
+              <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.slug }}</a>
+              {% endfor %}
+            </div>
+          </h5>
+          <div class="modal-footer">
+            <p><a href="{{article.get_like_url}}">Like: {{article.likes.count}}</a></p>
+            <div class="tw-share">
+              <span class="btn btn-outline-info fa fa-twitter">{% post_to_twitter "My New Article: {{article.title}}. Check it out!" object_or_url "tweet" %}</span>
+            </div>
+          </div>
+          <form method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Confirm Delete" class="btn btn-danger btn-lg">
+            <a class="btn btn-info btn-lg" href="{% url 'articles:single' username=user.username slug=object.slug %}">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.delete-btn {
+  display: none;
+}
+</style>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "articles/article_base.html" %}
+{% load humanize %}
+{% load readtime %}
+{% block prearticle %}
+{% endblock prearticle %}
+{% block article_content %}
+<div class="container">
+  <div class="col-md-auto flex-lg-row">
+    {% for article in article_list %}
+    {% if user.is_authenticated and article.user == user %}
+    <div class="jumbotron article row p-3">
+      <h3>{{article.message|safe}}</h3>
+      <br>
+      <h4>Readtime:{{article.message|readtime}}</h4>
+      <br>
+      <div class="media-body">
+        <h5 class="media-heading">
+          <span class="username">
+            <a href="http://127.0.0.1:8000/accounts/profile/">@{{article.user.username}}</a>
+          </span>
+          <time class="time">
+            <a href="{% url 'articles:single' username=article.user.username slug=article.slug  %}">{{article.slug}} {{article.created_at}}</a>
+          </time>
+          <div class="row col-md-12 mt-5">
+            {{article.message|truncatechars:180|safe}}
+          </div>
+        </h5>
+        <div class="modal-footer">
+          <a href="{% url 'articles:delete' slug=article.slug %}" title="delete" class="btn btn-danger">
+            <span class="glyphicon glyphicon-remove" aria-hidden='true'></span>
+            <span class="text-danger icon-label">Delete</span>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock article_content %}

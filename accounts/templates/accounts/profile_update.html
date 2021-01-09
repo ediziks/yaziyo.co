@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container">
+{% if messages %}
+  {% for msg in messages %}
+      {% if forloop.last %}
+    <div class="alert alert-success alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{msg.message}}
+    </div>
+      {% endif %}
+  {% endfor %}
+{% endif %}
+<div class="form-div">
+<form method="POST" enctype="multipart/form-data" class="p-2">
+  {% csrf_token %}
+  <fieldset class="form-group">
+    {% bootstrap_form u_form layout='inline' %}
+    <div class="col-6">
+    <p>Kapak Gorseli: <img id="cover" src="{{user.profile.cover.url}}" width="600px" alt=""></p>
+    <p>Avatar: <img id="avatar" src="{{user.profile.avatar.url}}" width="300px" alt=""></p>
+    </div>
+    {% bootstrap_form p_form layout='inline' %}
+  </fieldset>
+  <div class="form-group">
+    <div class="form-group">
+      <button class="btn btn-outline-info float-right mb-5" type="submit">Güncelle</button>
+    </div>
+  </div>
+</form>
+</div>
+</div>
+
+<style>
+.form-div {
+  width: 80%;
+  margin: 0 auto;
+}
+</style>
+{% endblock content %}
+
+{% block bottom %}
+<script>
+(function () {
+  var avatar = document.getElementById("id_avatar");
+  var cover = document.getElementById("id_cover");
+  avatar.onchange = function () {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          // get loaded data and render thumbnail.
+          document.getElementById("avatar").src = e.target.result;
+      };
+
+      // read the image file as a data URL.
+      reader.readAsDataURL(this.files[0]);
+  };
+  cover.onchange = function () {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          // get loaded data and render thumbnail.
+          document.getElementById("cover").src = e.target.result;
+      };
+
+      // read the image file as a data URL.
+      reader.readAsDataURL(this.files[0]);
+  };
+})();
+</script>
+{% endblock bottom %}

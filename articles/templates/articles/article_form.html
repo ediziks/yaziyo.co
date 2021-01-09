@@ -1,0 +1,176 @@
+{% extends "articles/article_base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+{% load widget_tweaks %}
+{% block head %}
+{{ form.media }}
+{% endblock head %}
+{% block content %}
+<div class="all-form">
+  <div class="article-form">
+    <form class="article-form-form" method="POST" action="{% url 'articles:create' %}" id="ArticleForm" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+      {% endfor %}
+      <div class="title-body-all container">
+        <div class="form-group">
+          {% render_field form.title class="form-control title" placeholder="Başlık Böyle Olur..." autocomplete="false" data-lpignore="true" maxlength="140" type="text" %}
+          {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {% render_field form.message class="tinymce" %}
+          {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="form-group">
+          {% render_field form.tags data-role="tagsinput" type="text" data-lpignore="true" class="form-control tags" name="tags" placeholder="#Tag + Enter, Maks = 5" size="10" %}
+          {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+          {% endfor %}
+        </div>
+        <div class="container-fluid">
+          <div class="form-group">
+            {% if post.featured_image %}
+            <img id="featured" src="{{article.image.url}}" />
+            {% else %}
+            <img id="featured" src="{% static 'angryimg.png' %}" alt="your image" />
+            {% endif %}
+            {% render_field form.image %}
+          </div>
+          <input type="submit" value="Yayınla" class="btn btn-primary btn-lg float-right"></input>
+        </div>
+    </form>
+  </div>
+</div>
+<style>
+.form-group {
+  text-align: center;
+}
+
+.form-group button {
+  background-color: blue;
+}
+
+.form-group img {
+  max-width: 68%;
+  border: 14px solid lightgray;
+}
+
+.form-control.title {
+  font-family: 'Roboto-Slab-500';
+  font-size: 2rem;
+  margin-top: 10%;
+}
+
+.article-form {
+  width: 100%;
+  margin-bottom: 7em;
+}
+
+.slug {
+  height: 50px;
+  color: white;
+  font-size: 24px;
+  overflow: auto;
+}
+
+.tox.tox-tinymce {
+  border-radius: 5px !important;
+}
+
+.bootstrap-tagsinput {
+  border: solid 1px #e9ecee;
+  border-radius: 5px;
+  background-color: #dddddd;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  height: 48px;
+  padding: 8px 20px;
+  font-size: 16px;
+}
+
+.bootstrap-tagsinput input {
+  height: 2em;
+  width: 12em;
+  float: left;
+  border: none;
+  border-radius: 0;
+  color: #8e9091;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.badge-tag {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.bootstrap-tagsinput.form-control input::-moz-placeholder {
+  color: #777;
+  opacity: 1;
+}
+
+.bootstrap-tagsinput.form-control input:-ms-input-placeholder {
+  color: #777;
+}
+
+.bootstrap-tagsinput.form-control input::-webkit-input-placeholder {
+  color: #777;
+}
+
+.bootstrap-tagsinput input:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.bootstrap-tagsinput .badge {
+  margin-left: 4px;
+  padding: 8px;
+}
+
+.bootstrap-tagsinput .badge [data-role="remove"] {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.bootstrap-tagsinput .badge [data-role="remove"]:after {
+  content: "×";
+  padding: 0px 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  font-size: 13px
+}
+
+.bootstrap-tagsinput .badge [data-role="remove"]:hover:after {
+  background-color: rgba(0, 0, 0, 0.62);
+}
+
+.bootstrap-tagsinput .badge [data-role="remove"]:hover:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+</style>
+{% endblock content %}
+{% block bottom %}
+<script>
+(function() {
+  var featured = document.getElementById("id_image");
+  featured.onchange = function() {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      // get loaded data and render thumbnail.
+      document.getElementById("featured").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+  };
+})();
+</script>
+{% endblock bottom %}

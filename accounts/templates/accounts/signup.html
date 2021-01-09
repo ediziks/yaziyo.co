@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load socialaccount %}
+{% block content %}
+<div class="container">
+  <div class="jumbotron" style="text-align: center;">
+    <form method="POST">
+      {% csrf_token %}
+      {% bootstrap_form form layout='inline' %}
+      <br />
+      <input class="btn btn-success mb-2" type="submit" value="Kaydol">
+      <br>
+      <a class="btn btn-outline-info" href="{% provider_login_url 'github' %}">
+        <span class="fa fa-github"></span>
+        Github ile Kaydol
+      </a>
+      <a class="btn btn-outline-primary" href="{% provider_login_url 'twitter' %}">
+        <span class="fa fa-twitter"></span>
+        Twitter ile Kaydol
+      </a>
+    </form>
+  </div>
+</div>
+
+<style>
+.jumbotron form {
+  margin: 0 auto;
+  max-width: 60%;
+}
+</style>
+{% endblock content %}

@@ -1,0 +1,443 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="banner">
+  <img src="{% static 'banner.png' %}" width="100%">
+</div>
+<div class="container top-articles mt-3">
+  <div class="row">
+    {% for article in editorpicks %}
+    <div class="outer-card col-lg-4 col-md-6 col-sm-12">
+      <div class="article card">
+        <div class="wrapper">
+          <div class="date">
+            <span class="day">{{article.created_date|date:"d"}}</span>
+            <span class="month">{{article.created_date|date:"M"}}</span>
+            <span class="year">{% if article.created_date.year < now|date:"Y" %} %} {{article.created_date|date:"Y"}} {% endif %}</span>
+          </div>
+          <div class="article-image">
+                <a href="{{article.get_absolute_url}}"><img src="{{article.image.url}}" alt=""></a>
+          </div>
+          <div class="data">
+            <div class="content">
+              <span class="author"><a href="accounts/{{article.user.username}}"><img class="rounded-circle z-depth-0" src="{{article.user.profile.avatar.url}}" alt="" height=25px width=25px>{{article.user.username}}</a></span>
+              <div class="float-right">
+                <span class="fa fa-heart-o"> {{article.likes.count}}</span>
+                <span class="far fa-comment-dots"> {{article.comments.count}}</span>
+              </div>
+              <div class="title">
+              <h1 class="title"><a href="{{article.get_absolute_url}}">{{article.title|truncatechars:53}}</a></h1></div>
+              <a href="{{article.get_absolute_url}}" id="art-message-a">
+                <div class="article-message" style="overflow: hidden;">
+                  {{article.message|safe|truncatechars:100}}
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="container-fluid users-div">
+    <div class="users col-3 mt-5 pt-2">
+      
+    </div>  
+  </div>
+</div>
+<div class="beta-msg" style="text-align: center;">
+  <a class="beta-large" href="mailto:info@yaziyo.co"><img src="{% static 'beta_asama2.png' %}" alt=""></a>
+  <a class="beta-small" href="mailto:info@yaziyo.co"><img src="{% static 'beta_asama_small.png' %}" alt=""></a>
+</div>
+<div class="container mt-5">
+  <div class="top-explore">
+    <h2>keşfet</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-12 tags">
+      <div class="tags-box">
+        <h3>ilginizi çekebilecek konular</h3>
+        {% for tag in top_tags %}
+        <a href="{% url 'articles:tags' tag=tag.slug %}"><button type="button" class="btn btn-info btn-sm"><i>#</i>{{tag}}</button></a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-8 col-sm-12 order-first articles-bottom-col">
+      {% include page_template %}
+    </div>
+  </div>
+</div>
+{% block js %}
+{{ block.super }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{% static 'el-pagination/js/el-pagination.js' %}"></script>
+<script>
+$.endlessPaginate({
+  paginateOnScroll: true,
+  paginateOnScrollMargin: 200
+});
+</script>
+{% endblock js %}
+<style>
+@media only screen and (max-width: 767px) {
+  /* For mobile phones: */
+  .articles-bottom-col.order-first {
+    order: 0;
+    -ms-flex-order: 0;
+    bottom: -2rem;
+  }
+
+  .article-info .title a h1 {
+    font-size: 1rem;
+    max-height: 2.8rem;
+    display: block;
+  }
+
+  .article-info {
+    padding: 0 0 0 0.3em;
+  }
+
+  .article-info .user-and-date {
+    left: 0.8em;
+    padding: 0;
+  }
+
+  .article-info .user-and-date .date p {
+    font-size: 0.3em;
+  }
+
+  .article-info .message {
+    display: none;
+  }
+
+  .article-info .message * {
+    max-height: 2rem;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+  }
+
+  .article-info .user-and-date img {
+    height: 13px;
+    width: 13px;
+  }
+
+  .article-info .user-and-date .date p {
+    margin: 0;
+  }
+
+  .article-info .user-and-date a {
+    color: #1f1f1f;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 300;
+  }
+
+  .article-info .date {
+    margin: 0.2em 0 0 0.2em;
+  }
+
+  .article-info .user-and-date {
+    display: block;
+  }
+
+  hr {
+    display: none;
+    visibility: hidden;
+  }
+
+  .top-explore {
+    margin-bottom: 1.3em !important;
+  }
+
+  .beta-large {
+    display: none;
+  }
+
+  .beta-small {
+    display: block !important;
+    object-fit: cover;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .beta-msg a img{
+    object-fit: scale-down;
+    max-height: 15rem;
+  }
+}
+
+.beta-small {
+  display: none;
+}
+
+.beta-msg {
+  background: #e9eae5;
+}
+
+.beta-msg a img{
+  object-fit: scale-down;
+  width: 100%;
+  max-height: 12rem;
+  min-height: 6rem;
+  vertical-align: middle;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px, rgba(0, 0, 0, 0.19) 0px -2px 20px, rgba(0, 0, 0, 0.23) 0px -3px 6px;
+}
+
+.tags-box h3 {
+  text-align: center;
+  margin-bottom: 0.7em;
+  font-family: 'Raleway-Ital';
+  font-size: 125%;
+}
+
+.tags-box a button {
+  margin: 0.2em 0.2em;
+  background: #2cc4bb;
+  font-size: 15px;
+}
+
+.tags-box {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 47px;
+  background: #DDDDDD;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  padding: 1em;
+} 
+
+.top-explore {
+  border-bottom: 2px solid lightgray;
+}
+
+.top-explore h2 {
+  width: 100%; 
+  color: #444444;
+  line-height: 0.1em;
+  font-family: 'Raleway-Ital';
+  margin: 10px 0 20px; 
+  font-weight: 600;
+  font-size: 2rem;
+} 
+
+/*
+.top-explore h2 {
+  width: 100%; 
+  text-align: center; 
+  border-bottom: 1px solid #000 !important; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+  font-weight: 600;
+} 
+
+.top-explore h2 span { 
+  background: #F2F2F2; 
+  padding:0 5%; 
+  font-family: 'Raleway-Ital';
+  font-weight: 600;
+  font-size: 2rem;
+  position: relative;
+  top: 5px;
+}
+*/
+
+.banner img {
+  /* border-bottom: 2px solid #2cc4bb; */
+  object-fit: cover;
+  max-height: 165px;
+  min-height: 80px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.top-explore {
+  padding-bottom: 0.5em;
+  margin-bottom: 2.2em;
+  margin-left: 0.7em;
+  margin-top: 4em;
+}
+
+.title a {
+  font-weight: 500;
+}
+
+.row {
+  max-width: 100%;
+  margin: 0;
+}
+
+.author img {
+  margin: 0 3px 3px 0;
+}
+
+.author a {
+  color: #1f1f1f;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  top: 50%;
+}
+
+.author a:hover {
+  color: #2cc4bb;
+  text-decoration: none;
+}
+
+.card {
+  float: left;
+  border: none;
+  margin-top: 1.8rem;
+  margin-left: 0.1rem;
+}
+
+.card .wrapper {
+  background-color: #fff;
+  min-height: 350px;
+  /* min-width: 100px; */
+  position: relative;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 1.5%;
+}
+
+.card .wrapper:hover .data {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.card .data {
+  position: absolute;
+  min-height: 194px;
+  bottom: 0;
+  width: 100%;
+  /* -webkit-transform: translateY(calc(85px + 1em));
+  transform: translateY(calc(85px + 1em)); */
+  -webkit-transform: translateY(85px);
+  transform: translateY(85px);
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+.card .data .content {
+  padding: 1em;
+  position: relative;
+  z-index: 1;
+  min-height: inherit;
+}
+
+.card .author {
+  font-size: 12px;
+}
+
+.card .title {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  min-height: 2.3em;
+}
+
+.card .text {
+  height: 70px;
+}
+
+.outer-card {
+  margin: 0;
+  padding: 0 0.7em;
+  height: 100%;
+  width: 100%;
+  display: inline-grid;
+  
+}
+
+.article-message p {
+  color: #1f1f1f;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.article .date {
+  position: absolute;
+  top: 5;
+  left: 0;
+  background-color: #2cc4bb;
+  color: #fff;
+  padding: 0.5em;
+  border-radius: .5%;
+}
+
+.article .date span {
+  display: block;
+  text-align: center;
+}
+
+.article .date .day {
+  font-weight: 700;
+  font-size: 24px;
+  text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.18);
+}
+
+.article .date .month {
+  text-transform: uppercase;
+}
+
+.article .date .month,
+.article .date .year {
+  font-size: 12px;
+}
+
+.article-image {
+  display: flex;
+  width: auto;
+  height: 100%;
+}
+
+.article-image a {
+  min-width: 100%;
+}
+
+.article-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 15rem;
+}
+
+.article .content {
+  background-color: #fff;
+  box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.2);
+}
+
+.article .title a {
+  text-transform: capitalize;
+  color: #1f1f1f;
+  font-size: 1.2rem;
+  line-height: 1.1;
+  font-family: 'Roboto-Slab-500';
+}
+
+.article .title a:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+.article a:hover {
+  /* color: #2cc4bb; */
+  text-decoration: none;
+}
+
+.fa-heart-o:hover {
+  color:red;
+}
+
+.fa-comment-dots {
+  margin-left: 0.1em;
+}
+
+.fa-comment-dots:hover {
+  color: #28a745;
+}
+</style>
+{% endblock content %}

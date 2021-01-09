@@ -1,0 +1,42 @@
+{% load social_share %}
+{% load readtime %}
+{% if article.image %}
+  <div class="container-fluid">
+    <img src="{{article.image.url}}" width="100%">
+{% endif %}
+<div class="container">
+  <div class="article media">
+    <div class="media-body p-3">
+      <h5 class="media-heading">
+        <span class="username">
+          <img src="{{article.user.profile.avatar.url}}" class="rounded-circle" width="50" height="50" alt="">
+          <a href="{% url 'accounts:profile' username=article.user.username %}">@{{article.user.username}}</a>
+        </span>
+        <time class="time">
+          <a href="{% url 'articles:single' username=article.user.username slug=article.slug  %}">{{article.title}} {{article.created_date}}</a>
+        </time>
+        <p>{{article.message|readtime}}</p>
+        <div class="row col-md-12 mt-5 artmessage">
+          {% autoescape off %}
+            
+          {{article.message}}
+          {% endautoescape %}
+        </div>
+        <div class="mb-auto" style="display:flex">
+          {% for tag in article.tags.all %}
+            <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.slug }}</a>
+          {% endfor %}
+        </div>
+      </h5>
+      <div class="modal-footer">
+        <p><a href="{{article.get_like_url}}">Like: {{article.likes.count}}</a></p>
+        <div class="tw-share">
+          <span class="btn btn-outline-info fa fa-twitter">{% post_to_twitter "My New Article: {{article.title}}. Check it out!" object_or_url "tweet" %}</span>
+        </div>
+
+      </div>
+    </div>
+</div>
+<style>
+
+</style>

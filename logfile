@@ -618,3 +618,15 @@
 2021-01-10 13:32:10.843 +03 [35800] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2021-01-10 13:32:10.880 +03 [35801] LOG:  database system was shut down at 2021-01-10 13:32:10 +03
 2021-01-10 13:32:10.888 +03 [35800] LOG:  database system is ready to accept connections
+2021-01-10 21:53:51.008 +03 [285021] FATAL:  lock file "postmaster.pid" already exists
+2021-01-10 21:53:51.008 +03 [285021] HINT:  Is another postmaster (PID 35800) running in data directory "/home/zx/Desktop/bloggy_venv/bloggy/mylocal_db"?
+2021-01-10 21:53:55.448 +03 [35800] LOG:  received fast shutdown request
+2021-01-10 21:53:55.458 +03 [35800] LOG:  aborting any active transactions
+2021-01-10 21:53:55.460 +03 [35800] LOG:  background worker "logical replication launcher" (PID 35807) exited with exit code 1
+2021-01-10 21:53:55.460 +03 [35802] LOG:  shutting down
+2021-01-10 21:53:55.499 +03 [35800] LOG:  database system is shut down
+2021-01-10 21:53:55.585 +03 [285197] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-10 21:53:55.586 +03 [285197] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 21:53:55.600 +03 [285197] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-10 21:53:55.644 +03 [285198] LOG:  database system was shut down at 2021-01-10 21:53:55 +03
+2021-01-10 21:53:55.655 +03 [285197] LOG:  database system is ready to accept connections

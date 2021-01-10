@@ -545,3 +545,76 @@
 2021-01-09 18:01:18.437 +03 [99513] LOG:  invalid record length at 0/4269218: wanted 24, got 0
 2021-01-09 18:01:18.437 +03 [99513] LOG:  redo done at 0/42691E0
 2021-01-09 18:01:18.478 +03 [99511] LOG:  database system is ready to accept connections
+2021-01-10 12:52:34.267 +03 [77977] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 12:52:34.267 +03 [77977] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 12:52:34.275 +03 [77977] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 12:52:34.275 +03 [77977] LOG:  database system is shut down
+2021-01-10 12:52:41.764 +03 [78299] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 12:52:41.764 +03 [78299] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 12:52:41.770 +03 [78299] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 12:52:41.770 +03 [78299] LOG:  database system is shut down
+2021-01-10 12:54:14.959 +03 [84238] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 12:54:14.960 +03 [84238] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 12:54:14.974 +03 [84238] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 12:54:14.974 +03 [84238] LOG:  database system is shut down
+2021-01-10 13:00:33.157 +03 [11187] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 13:00:33.158 +03 [11187] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:00:33.164 +03 [11187] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 13:00:33.164 +03 [11187] LOG:  database system is shut down
+2021-01-10 13:01:39.004 +03 [12379] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 13:01:39.005 +03 [12379] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:01:39.013 +03 [12379] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 13:01:39.013 +03 [12379] LOG:  database system is shut down
+2021-01-10 13:01:47.308 +03 [12698] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 13:01:47.308 +03 [12698] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:01:47.316 +03 [12698] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 13:01:47.316 +03 [12698] LOG:  database system is shut down
+2021-01-10 13:05:12.172 +03 [15336] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 13:05:12.173 +03 [15336] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:05:12.181 +03 [15336] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 13:05:12.181 +03 [15336] LOG:  database system is shut down
+2021-01-10 13:05:22.512 +03 [15682] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 13:05:22.512 +03 [15682] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:05:22.520 +03 [15682] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 13:05:22.520 +03 [15682] LOG:  database system is shut down
+2021-01-10 13:06:54.438 +03 [17023] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 13:06:54.439 +03 [17023] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:06:54.449 +03 [17023] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 13:06:54.449 +03 [17023] LOG:  database system is shut down
+2021-01-10 13:07:07.946 +03 [17406] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 13:07:07.946 +03 [17406] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:07:07.954 +03 [17406] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 13:07:07.954 +03 [17406] LOG:  database system is shut down
+2021-01-10 13:07:14.795 +03 [17818] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-10 13:07:14.796 +03 [17818] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:07:14.810 +03 [17818] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-10 13:07:14.854 +03 [17820] LOG:  database system was interrupted; last known up at 2021-01-09 18:01:18 +03
+2021-01-10 13:07:14.933 +03 [17820] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-10 13:07:14.941 +03 [17820] LOG:  redo starts at 0/4269290
+2021-01-10 13:07:14.941 +03 [17820] LOG:  invalid record length at 0/42692C8: wanted 24, got 0
+2021-01-10 13:07:14.941 +03 [17820] LOG:  redo done at 0/4269290
+2021-01-10 13:07:15.012 +03 [17818] LOG:  database system is ready to accept connections
+2021-01-10 13:07:21.687 +03 [17818] LOG:  received fast shutdown request
+2021-01-10 13:07:21.696 +03 [17818] LOG:  aborting any active transactions
+2021-01-10 13:07:21.699 +03 [17818] LOG:  background worker "logical replication launcher" (PID 17826) exited with exit code 1
+2021-01-10 13:07:21.699 +03 [17821] LOG:  shutting down
+2021-01-10 13:07:21.749 +03 [17818] LOG:  database system is shut down
+2021-01-10 13:09:31.589 +03 [20557] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-10 13:09:31.590 +03 [20557] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:09:31.596 +03 [20557] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-10 13:09:31.596 +03 [20557] LOG:  database system is shut down
+2021-01-10 13:09:36.654 +03 [20726] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-10 13:09:36.655 +03 [20726] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:09:36.667 +03 [20726] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-10 13:09:36.709 +03 [20728] LOG:  database system was shut down at 2021-01-10 13:07:21 +03
+2021-01-10 13:09:36.720 +03 [20726] LOG:  database system is ready to accept connections
+2021-01-10 13:32:10.700 +03 [20726] LOG:  received fast shutdown request
+2021-01-10 13:32:10.709 +03 [20726] LOG:  aborting any active transactions
+2021-01-10 13:32:10.712 +03 [20726] LOG:  background worker "logical replication launcher" (PID 20734) exited with exit code 1
+2021-01-10 13:32:10.713 +03 [20729] LOG:  shutting down
+2021-01-10 13:32:10.765 +03 [20726] LOG:  database system is shut down
+2021-01-10 13:32:10.827 +03 [35800] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-10 13:32:10.828 +03 [35800] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-10 13:32:10.843 +03 [35800] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-10 13:32:10.880 +03 [35801] LOG:  database system was shut down at 2021-01-10 13:32:10 +03
+2021-01-10 13:32:10.888 +03 [35800] LOG:  database system is ready to accept connections

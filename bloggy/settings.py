@@ -37,7 +37,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 # DEBUG = False
 
-ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '.herokuapp.com/', '127.0.0.1', 'localhost', 'example.com/', 'bloggy-dev.eu-central-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '.herokuapp.com/', '127.0.0.1', 'localhost', 'example.com/', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73']
 
 
 # Application definition
@@ -141,8 +141,11 @@ if not DEBUG:
 else:
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (
-        '/home/zx/Desktop/bloggy/staticfiles',
+        '/var/app/curent/staticfiles',
     )
+    # STATICFILES_DIRS = (
+    #     '/home/zx/Desktop/bloggy/staticfiles',
+    # )
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'

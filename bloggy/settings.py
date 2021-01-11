@@ -37,7 +37,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 # DEBUG = False
 
-ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '.herokuapp.com/', '127.0.0.1', 'localhost', 'example.com/', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73']
+ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '.herokuapp.com/', '127.0.0.1', 'localhost', 'example.com/', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '18.194.190.186']
 
 
 # Application definition
@@ -140,9 +140,9 @@ if not DEBUG:
     }
 else:
     STATIC_URL = '/static/'
-    STATICFILES_DIRS = (
-        '/var/app/curent/staticfiles',
-    )
+    # STATICFILES_DIRS = (
+    #     '/var/app/curent/staticfiles',
+    # )
     # STATICFILES_DIRS = (
     #     '/home/zx/Desktop/bloggy/staticfiles',
     # )
@@ -317,16 +317,16 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-if not DEBUG:
-    # SECURE_HSTS_SECONDS = 31536000
-    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    # SECURE_HSTS_PRELOAD = True
-    # SECURE_SSL_REDIRECT = True
-    # SECURE_REFERRER_POLICY = 'same-origin'
-    # SESSION_COOKIE_SECURE = True
-    # CSRF_COOKIE_SECURE = True
-    # Activate Django - Heroku.
-    django_heroku.settings(locals())
+# if not DEBUG:
+#     # SECURE_HSTS_SECONDS = 31536000
+#     # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#     # SECURE_HSTS_PRELOAD = True
+#     # SECURE_SSL_REDIRECT = True
+#     # SECURE_REFERRER_POLICY = 'same-origin'
+#     # SESSION_COOKIE_SECURE = True
+#     # CSRF_COOKIE_SECURE = True
+#     # Activate Django - Heroku.
+#     django_heroku.settings(locals())
 
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")

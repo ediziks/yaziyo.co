@@ -37,7 +37,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 # DEBUG = False
 
-ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '.herokuapp.com/', '127.0.0.1', 'localhost', 'example.com/', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '18.194.190.186']
+ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '.herokuapp.com/', '127.0.0.1', 'localhost', 'example.com/', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '18.194.190.186', 'yaziyo.co']
 
 
 # Application definition

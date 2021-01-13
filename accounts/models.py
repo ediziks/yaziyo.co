@@ -16,7 +16,7 @@ def get_username(request):
 
 class Profile(models.Model):
   user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', on_delete=models.CASCADE)
-  email = models.EmailField(max_length=150, unique=True, blank=False, null=False)
+  # email = models.EmailField(max_length=150, unique=True, blank=False, null=False)
   bio = models.TextField(max_length=280, blank=True)
   avatar = models.ImageField(default='default_avatar.jpg', upload_to='avatars/')
   cover = models.ImageField(default='default_cover.jpg', upload_to='covers/')

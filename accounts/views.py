@@ -45,7 +45,8 @@ def signup_view(request):
       #   if result['success']:
       user = form.save()
       user.refresh_from_db()
-      user.profile.email = form.cleaned_data.get('email')
+      # user.profile.email = form.cleaned_data.get('email')
+      user.email = form.cleaned_data.get('email')
       user.save()
       raw_password = form.cleaned_data.get('password1')
       user = authenticate(username=user.username, password=raw_password)

@@ -3,8 +3,8 @@ from .models import Profile
 
 
 class ProfileAdmin(admin.ModelAdmin):
-  list_display = ('user', 'pk', 'email')
-  search_fields = ('user__username', 'pk', 'email')
+  list_display = ('user', 'pk')
+  search_fields = ('user__username', 'pk')
 
 
 admin.site.register(Profile, ProfileAdmin)

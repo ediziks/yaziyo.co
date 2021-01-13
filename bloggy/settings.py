@@ -356,8 +356,8 @@ TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
 
 TINYMCE_EXTRA_MEDIA = {
     'js': [
-        STATIC_URL + "/tinymce/tinymce.min.js",
-        STATIC_URL + "/js/tinycustom.js"
+        STATIC_URL + "tinymce/tinymce.min.js",
+        STATIC_URL + "js/tinycustom.js"
     ]
 }
 # TINYMCE_DEFAULT_CONFIG = {

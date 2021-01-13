@@ -93,7 +93,7 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
     AWS_DEFAULT_ACL = None
     STATIC_LOCATION = 'static'
     STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-    # STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
+    STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
     # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     # FILEBROWSER_DEFAULT_PERMISSIONS = None
     # FILEBROWSER_LIST_PER_PAGE = 5  # Speeds up the load of the filebrowser files
@@ -148,7 +148,7 @@ else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
 # allauth signup infos

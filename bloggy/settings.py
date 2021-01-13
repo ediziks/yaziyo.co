@@ -30,14 +30,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 't96yfqos@gr6zd-^dy-%=oun5e!d^fnfv^#*e2g#rm55j)@2^4'
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 # DEBUG = False
 
-ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '.herokuapp.com/', '127.0.0.1', 'localhost', 'example.com/', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '18.194.190.186', 'yaziyo.co']
+ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '127.0.0.1', 'localhost', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '18.194.190.186', 'yaziyo.co', '.yaziyo.co']
 
 
 # Application definition
@@ -79,10 +78,10 @@ INSTALLED_APPS = [
 
 if 'AWS_ACCESS_KEY_ID' in os.environ:
     DEBUG_PROPAGATE_EXCEPTIONS = True
-    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-    # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    # AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+    # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = 'yaziyo-staticfilesandmedia'
     AWS_S3_REGION_NAME = 'eu-central-1'
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME

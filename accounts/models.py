@@ -31,12 +31,17 @@ class Profile(models.Model):
   def save(self, *args, **kwargs):
     super(Profile, self).save(*args, **kwargs)
 
-    img = Image.open(self.avatar.path)
-
+    img = Image.open(self.avatar.url)
     if img.height > 300 or img.width > 300:
       output_size = (300, 300)
       img.thumbnail(output_size, Image.BICUBIC)
-      img.save(self.avatar.path)
+      img.save(self.avatar.url, optimize=True)
+
+    img2 = Image.open(self.cover.path)
+    if img2.height > 1920 or img2.width > 1080:
+      img2_output_size = (1920, 1080)
+      img2.thumbnail(img2_output_size, Image.BICUBIC)
+      img2.save(self.cover.path, optimize=True)
 
 
 # Profile and User objects sync

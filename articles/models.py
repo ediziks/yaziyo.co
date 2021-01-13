@@ -37,7 +37,7 @@ class Article(models.Model):
       if img.height > 1920 or img.width > 1080:
         output_size = (1920, 1080)
         img.thumbnail(output_size, Image.BICUBIC)
-        img.save(self.image.path)
+        img.save(self.image.path, optimize=True)
 
   def all_comments(self):
     return self.comments.all().order_by('-created_date')

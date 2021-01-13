@@ -73,71 +73,69 @@ INSTALLED_APPS = [
     'captcha',
     'notifications',
     'storages',
-    # 'filebrowser',
     'tinymce',
 ]
 
 
-if not DEBUG:
+if 'AWS_ACCESS_KEY_ID' in os.environ:
     DEBUG_PROPAGATE_EXCEPTIONS = True
     AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'yaziyo-django-static'
+    # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    # AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = 'yaziyo-staticfilesandmedia'
     AWS_S3_REGION_NAME = 'eu-central-1'
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    AWS_STATIC_LOCATION = 'static'
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
     }
-    AWS_S3_FILE_OVERWRITE = False
+    # AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = None
-    # STATICFILES_DIRS = [
-    #     os.path.join(BASE_DIR, 'static'),
-    # ]
-    # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
-    STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+    STATIC_LOCATION = 'static'
+    STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
+    # STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
     # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     # FILEBROWSER_DEFAULT_PERMISSIONS = None
     # FILEBROWSER_LIST_PER_PAGE = 5  # Speeds up the load of the filebrowser files
     # AWS_PRELOAD_METADATA = True     # Speeds up the load of the filebrowser files
     # AWS_QUERYSTRING_AUTH = False    # Speeds up the load of the filebrowser files
-    MEDIA_LOCATION = 'media'
-    MEDIA_URL = 'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+    # MEDIA_LOCATION = 'media'
+    PUBLIC_MEDIA_LOCATION = 'media'
+    MEDIA_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
     # DIRECTORY = getattr(settings, "FILEBROWSER_DIRECTORY", MEDIA_URL)
     DEFAULT_FILE_STORAGE = 'bloggy.custom_storage.MediaStorage'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'formatters': {
-            'verbose': {
-                'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-                           'pathname=%(pathname)s lineno=%(lineno)s ' +
-                           'funcname=%(funcName)s %(message)s'),
-                'datefmt': '%Y-%m-%d %H:%M:%S'
-            },
-            'simple': {
-                'format': '%(levelname)s %(message)s'
-            }
-        },
-        'handlers': {
-            'null': {
-                'level': 'DEBUG',
-                'class': 'logging.NullHandler',
-            },
-            'console': {
-                'level': 'DEBUG',
-                'class': 'logging.StreamHandler',
-                'formatter': 'verbose'
-            }
-        },
-        'loggers': {
-            'testlogger': {
-                'handlers': ['console'],
-                'level': 'INFO',
-            }
-        }
-    }
+    # LOGGING = {
+    #     'version': 1,
+    #     'disable_existing_loggers': False,
+    #     'formatters': {
+    #         'verbose': {
+    #             'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
+    #                        'pathname=%(pathname)s lineno=%(lineno)s ' +
+    #                        'funcname=%(funcName)s %(message)s'),
+    #             'datefmt': '%Y-%m-%d %H:%M:%S'
+    #         },
+    #         'simple': {
+    #             'format': '%(levelname)s %(message)s'
+    #         }
+    #     },
+    #     'handlers': {
+    #         'null': {
+    #             'level': 'DEBUG',
+    #             'class': 'logging.NullHandler',
+    #         },
+    #         'console': {
+    #             'level': 'DEBUG',
+    #             'class': 'logging.StreamHandler',
+    #             'formatter': 'verbose'
+    #         }
+    #     },
+    #     'loggers': {
+    #         'testlogger': {
+    #             'handlers': ['console'],
+    #             'level': 'INFO',
+    #         }
+    #     }
+    # }
 else:
     STATIC_URL = '/static/'
     # STATICFILES_DIRS = (
@@ -150,8 +148,7 @@ else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
 
-# FILEBROWSER_DIRECTORY = 'images/'
-# DIRECTORY = ''
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
 # allauth signup infos

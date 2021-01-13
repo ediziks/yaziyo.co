@@ -630,3 +630,19 @@
 2021-01-10 21:53:55.600 +03 [285197] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2021-01-10 21:53:55.644 +03 [285198] LOG:  database system was shut down at 2021-01-10 21:53:55 +03
 2021-01-10 21:53:55.655 +03 [285197] LOG:  database system is ready to accept connections
+2021-01-13 15:10:09.728 +03 [5227] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-13 15:10:09.729 +03 [5227] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-13 15:10:09.735 +03 [5227] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-13 15:10:09.735 +03 [5227] LOG:  database system is shut down
+2021-01-13 15:10:13.981 +03 [5886] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-13 15:10:13.981 +03 [5886] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-13 15:10:13.992 +03 [5886] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-13 15:10:14.019 +03 [5887] LOG:  database system was interrupted; last known up at 2021-01-13 14:20:16 +03
+2021-01-13 15:10:14.176 +03 [5887] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-13 15:10:14.183 +03 [5887] LOG:  redo starts at 0/428C6D8
+2021-01-13 15:10:14.183 +03 [5887] LOG:  invalid record length at 0/428C7C0: wanted 24, got 0
+2021-01-13 15:10:14.183 +03 [5887] LOG:  redo done at 0/428C788
+2021-01-13 15:10:14.248 +03 [5886] LOG:  database system is ready to accept connections
+2021-01-13 18:00:09.968 +03 [129299] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-13 18:00:09.968 +03 [129299] DETAIL:  Key (user_id, slug)=(26, storages-test) already exists.
+2021-01-13 18:00:09.968 +03 [129299] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (26, 'storages test', 'storages test', 'storages-test', '2021-01-13T15:00:09.138704+00:00'::timestamptz, 'article_image/largelancsoz.jpg', NULL) RETURNING "articles_article"."id"

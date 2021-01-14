@@ -33,8 +33,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
-# DEBUG = False
+# DEBUG = env('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '127.0.0.1', 'localhost', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '18.194.190.186', 'yaziyo.co', '.yaziyo.co']
 
@@ -140,9 +140,9 @@ else:
     # STATICFILES_DIRS = (
     #     '/var/app/curent/staticfiles',
     # )
-    # STATICFILES_DIRS = (
-    #     '/home/zx/Desktop/bloggy/staticfiles',
-    # )
+    STATICFILES_DIRS = (
+        '/home/zx/Desktop/bloggy/staticfiles',
+    )
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
@@ -285,13 +285,6 @@ USE_TZ = True
 
 SITE_ID = 1
 
-# ReCaptcha
-# RECAPTCHA_SITE_KEY = "6LdVi6UZAAAAAIceAlCEHnKTlgL2ngLi6iDCR5VI"
-# RECAPTCHA_SECRET_KEY = "6LdVi6UZAAAAAHl3l6rFcxjbdWFAdHve84da4zK1"
-# django-recapthca
-# RECAPTCHA_PUBLIC_KEY = '6LdVi6UZAAAAAIceAlCEHnKTlgL2ngLi6iDCR5VI'
-# RECAPTCHA_PRIVATE_KEY = '6LdVi6UZAAAAAHl3l6rFcxjbdWFAdHve84da4zK1'
-# reCaptcha v3
 RECAPTCHA_PUBLIC_KEY = '6LfYfd8ZAAAAAGhY9dkqugc76CflIP-kTW4abiqv'
 RECAPTCHA_PRIVATE_KEY = '6LfYfd8ZAAAAAOtXHBsBmK8jbAhIwQ4hWIGL38g5'
 
@@ -313,14 +306,14 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-if not DEBUG:
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-    SECURE_SSL_REDIRECT = True
-    SECURE_REFERRER_POLICY = 'same-origin'
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+# if not DEBUG:
+#     SECURE_HSTS_SECONDS = 31536000
+#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#     SECURE_HSTS_PRELOAD = True
+#     SECURE_SSL_REDIRECT = False
+#     SECURE_REFERRER_POLICY = 'same-origin'
+#     SESSION_COOKIE_SECURE = True
+#     CSRF_COOKIE_SECURE = True
 #     # Activate Django - Heroku.
 #     django_heroku.settings(locals())
 

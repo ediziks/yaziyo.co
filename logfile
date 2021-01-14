@@ -646,3 +646,12 @@
 2021-01-13 18:00:09.968 +03 [129299] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
 2021-01-13 18:00:09.968 +03 [129299] DETAIL:  Key (user_id, slug)=(26, storages-test) already exists.
 2021-01-13 18:00:09.968 +03 [129299] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (26, 'storages test', 'storages test', 'storages-test', '2021-01-13T15:00:09.138704+00:00'::timestamptz, 'article_image/largelancsoz.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-14 11:10:35.783 +03 [11703] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-14 11:10:35.783 +03 [11703] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-14 11:10:35.795 +03 [11703] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-14 11:10:35.842 +03 [11705] LOG:  database system was interrupted; last known up at 2021-01-14 01:50:06 +03
+2021-01-14 11:10:35.928 +03 [11705] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-14 11:10:35.935 +03 [11705] LOG:  redo starts at 0/42B5CA8
+2021-01-14 11:10:35.936 +03 [11705] LOG:  invalid record length at 0/42B5D90: wanted 24, got 0
+2021-01-14 11:10:35.936 +03 [11705] LOG:  redo done at 0/42B5D58
+2021-01-14 11:10:35.982 +03 [11703] LOG:  database system is ready to accept connections

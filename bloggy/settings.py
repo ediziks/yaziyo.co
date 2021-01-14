@@ -89,7 +89,8 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
         'CacheControl': 'max-age=86400',
     }
     # AWS_S3_FILE_OVERWRITE = False
-    AWS_DEFAULT_ACL = None
+    # AWS_DEFAULT_ACL = None
+    AWS_DEFAULT_ACL = 'public-read'
     STATIC_LOCATION = 'static'
     STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
     STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'

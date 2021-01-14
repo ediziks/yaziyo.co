@@ -655,3 +655,6 @@
 2021-01-14 11:10:35.936 +03 [11705] LOG:  invalid record length at 0/42B5D90: wanted 24, got 0
 2021-01-14 11:10:35.936 +03 [11705] LOG:  redo done at 0/42B5D58
 2021-01-14 11:10:35.982 +03 [11703] LOG:  database system is ready to accept connections
+2021-01-14 23:53:54.578 +03 [347395] ERROR:  duplicate key value violates unique constraint "auth_user_username_key"
+2021-01-14 23:53:54.578 +03 [347395] DETAIL:  Key (username)=(qwe) already exists.
+2021-01-14 23:53:54.578 +03 [347395] STATEMENT:  INSERT INTO "auth_user" ("password", "last_login", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined") VALUES ('pbkdf2_sha256$216000$Yc2L5UXjx7nY$odvNqSWr91IuXfdVffZiduqCYF8EiOsVgx715JF7Owc=', NULL, false, 'qwe', '', '', 'qwqwee@gmail.com', false, true, '2021-01-14T20:53:53.706990+00:00'::timestamptz) RETURNING "auth_user"."id"

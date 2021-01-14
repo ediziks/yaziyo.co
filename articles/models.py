@@ -10,6 +10,8 @@ from taggit.managers import TaggableManager
 from django.contrib.postgres.search import SearchVectorField
 from django.contrib.postgres.indexes import GinIndex
 from PIL import Image
+from django.core.files.storage import default_storage
+from io import BytesIO
 
 
 class Article(models.Model):
@@ -32,12 +34,17 @@ class Article(models.Model):
     super().save(*args, **kwargs)
 
     if self.image:
-      img = Image.open(self.image.path)
+      memfile = BytesIO()
 
+      img = Image.open(self.image)
       if img.height > 1920 or img.width > 1080:
+
         output_size = (1920, 1080)
         img.thumbnail(output_size, Image.BICUBIC)
-        img.save(self.image.path, optimize=True)
+        img.save(memfile, 'JPEG', optimize=True)
+        default_storage.save(self.image.name, memfile)
+        memfile.close()
+        img.close()
 
   def all_comments(self):
     return self.comments.all().order_by('-created_date')

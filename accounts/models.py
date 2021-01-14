@@ -45,37 +45,34 @@ class Profile(models.Model):
   #     img2.thumbnail(img2_output_size, Image.BICUBIC)
   #     img2.save(self.cover.path, optimize=True)
 
-  def save_avatar(self, *args, **kwargs):
+  def save(self, *args, **kwargs):
     # run save of parent class above to save original image to disk
     super().save(*args, **kwargs)
 
-    memfile = BytesIO()
+    if self.avatar:
+      memfile = BytesIO()
 
-    img = Image.open(self.avatar)
-    if img.height > 300 or img.width > 300:
+      img = Image.open(self.avatar)
+      if img.height > 300 or img.width > 300:
 
-      output_size = (300, 300)
-      img.thumbnail(output_size, Image.BICUBIC)
-      img.save(memfile, 'JPEG', optimize=True)
-      default_storage.save(self.avatar.name, memfile)
-      memfile.close()
-      img.close()
+        output_size = (300, 300)
+        img.thumbnail(output_size, Image.BICUBIC)
+        img.save(memfile, 'JPEG', optimize=True)
+        default_storage.save(self.avatar.name, memfile)
+        memfile.close()
+        img.close()
+    if self.cover:
+      memfile = BytesIO()
 
-  def save_cover(self, *args, **kwargs):
-    # run save of parent class above to save original image to disk
-    super().save(*args, **kwargs)
+      img = Image.open(self.cover)
+      if img.height > 1920 or img.width > 1080:
 
-    memfile = BytesIO()
-
-    img = Image.open(self.cover)
-    if img.height > 1920 or img.width > 1080:
-
-      output_size = (1920, 1080)
-      img.thumbnail(output_size, Image.BICUBIC)
-      img.save(memfile, 'JPEG', optimize=True)
-      default_storage.save(self.cover.name, memfile)
-      memfile.close()
-      img.close()
+        output_size = (1920, 1080)
+        img.thumbnail(output_size, Image.BICUBIC)
+        img.save(memfile, 'JPEG', optimize=True)
+        default_storage.save(self.cover.name, memfile)
+        memfile.close()
+        img.close()
 
 
 # Profile and User objects sync

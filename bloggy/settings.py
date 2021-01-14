@@ -36,7 +36,7 @@ SECRET_KEY = env('SECRET_KEY')
 # DEBUG = env('DEBUG')
 DEBUG = True
 
-ALLOWED_HOSTS = ['demo-bloggy.herokuapp.com/', '127.0.0.1', 'localhost', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '172.31.32.97', '18.194.190.186', '172.31.45.194', 'yaziyo.co', 'yaziyo.co/', '.yaziyo.co/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '172.31.32.97', '18.194.190.186', '172.31.45.194', 'yaziyo.co', 'yaziyo.co/', '.yaziyo.co/']
 
 
 # Application definition
@@ -210,28 +210,39 @@ WSGI_APPLICATION = 'bloggy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if 'RDS_DB_NAME' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ebdb',
+        'USER': 'mynonsuperuser',
+        'PASSWORD': 'ediz4845176',
+        'HOST': 'aa1unvaknsz98s8.cgjbxmozqnmr.eu-central-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': env('NAME'),
-            'USER': env('USER'),
-            'PASSWORD': env('PASSWORD'),
-            'HOST': 'localhost',
-            'PORT': '',
-        }
-    }
+}
+
+# if 'RDS_DB_NAME' in os.environ:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': os.environ['RDS_DB_NAME'],
+#             'USER': os.environ['RDS_USERNAME'],
+#             'PASSWORD': os.environ['RDS_PASSWORD'],
+#             'HOST': os.environ['RDS_HOSTNAME'],
+#             'PORT': os.environ['RDS_PORT'],
+#         }
+#     }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': env('NAME'),
+#             'USER': env('USER'),
+#             'PASSWORD': env('PASSWORD'),
+#             'HOST': 'localhost',
+#             'PORT': '',
+#         }
+#     }
 
 # allauth
 AUTHENTICATION_BACKENDS = (

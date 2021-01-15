@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
 {% block content %}
 <div class="banner">
   <img src="{% static 'banner.png' %}" width="100%">
@@ -16,7 +17,7 @@
             <span class="year">{% if article.created_date.year < now|date:"Y" %} %} {{article.created_date|date:"Y"}} {% endif %}</span>
           </div>
           <div class="article-image">
-                <a href="{{article.get_absolute_url}}"><img src="{{article.image.url}}" alt=""></a>
+                <a href="{{article.get_absolute_url}}"><img src="{% thumbnail article.image 346x240 crop %}" alt=""></a>
           </div>
           <div class="data">
             <div class="content">

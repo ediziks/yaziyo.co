@@ -7,6 +7,11 @@ class StaticStorage(S3Boto3Storage):
     default_acl = 'public-read'
 
 
+class ThumbnailStorage(S3Boto3Storage):
+    location = 'media/thumbnails'
+    default_acl = 'public-read'
+
+
 class MediaStorage(S3Boto3Storage):
     bucket_name = settings.AWS_STORAGE_BUCKET_NAME
     location = settings.PUBLIC_MEDIA_LOCATION

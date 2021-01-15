@@ -1,12 +1,13 @@
 {% load social_share %}
 {% load el_pagination_tags %}
 {% load readtime %}
+{% load thumbnail %}
 {% lazy_paginate articlelist %}
 {% for article in articlelist %}
 <div class="articles-container col-12">
   <div class="article-box">
     <div class="bottom-article-image">
-      <a href="{{article.get_absolute_url}}"><img src="{{article.image.url}}" alt=""></a>
+      <a href="{{article.get_absolute_url}}"><img src="{% thumbnail article.image 290x208 crop %}" alt=""></a>
     </div>
     <div class="article-info">
       <div class="title">

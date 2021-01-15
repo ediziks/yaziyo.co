@@ -1,4 +1,5 @@
 {% load static %}
+{% load thumbnail %}
 <div class="base-nav">
   <nav class="navbar navbar-expand-md navbar-light sticky-top" role="navigation" style="height:100px;background-color:#ffffff00;">
     <ul class="navbar-nav mr-auto" id="ul-left">
@@ -67,7 +68,7 @@
         {% if request.user.is_authenticated %}
         <li class="nav-item avatar dropdown wide">
           <a class="nav-link dropdown" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="rounded-circle z-depth-0 account-img" src="{{ request.user.profile.avatar.url }}" name="aboutme" width="50" height="50" alt="avatar image">
+            <img class="rounded-circle z-depth-0 account-img" src="{% thumbnail request.user.profile.avatar 50x50 crop %}" name="aboutme" width="50" height="50" alt="avatar image">
           </a>
           <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55" style="text-align:center;min-width:8rem;">
             <a class="nav-link" id="show_all" href="{% url 'accounts:profile' request.user.username %}">Profil</a>

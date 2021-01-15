@@ -73,10 +73,11 @@ INSTALLED_APPS = [
     'notifications',
     'storages',
     'tinymce',
+    'easy_thumbnails',
 ]
 
 
-if 'AWS_ACCESS_KEY_ID' in os.environ or True:
+if 'AWS_ACCESS_KEY_ID' in os.environ:
     DEBUG_PROPAGATE_EXCEPTIONS = True
     # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
@@ -91,16 +92,15 @@ if 'AWS_ACCESS_KEY_ID' in os.environ or True:
     AWS_S3_FILE_OVERWRITE = True
     AWS_DEFAULT_ACL = None
     AWS_DEFAULT_ACL = 'public-read'
-    STATIC_URL = os.path.join(BASE_DIR, 'allstatic/static/')
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'allstatic/staticfiles/'),)
-    # STATIC_LOCATION = 'static'
-    # STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-    # STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
+    STATIC_LOCATION = 'static'
+    STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
+    STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
     AWS_PRELOAD_METADATA = True     # Speeds up the load of the filebrowser files
     AWS_QUERYSTRING_AUTH = False    # Speeds up the load of the filebrowser files
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
     DEFAULT_FILE_STORAGE = 'bloggy.custom_storage.MediaStorage'
+    THUMBNAIL_DEFAULT_STORAGE = 'bloggy.custom_storage.ThumbnailStorage'
     # LOGGING = {
     #     'version': 1,
     #     'disable_existing_loggers': False,

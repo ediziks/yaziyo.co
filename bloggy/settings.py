@@ -77,7 +77,7 @@ INSTALLED_APPS = [
 ]
 
 
-if 'AWS_ACCESS_KEY_ID' in os.environ:
+if 'AWS_ACCESS_KEY_ID' in os.environ or True:
     DEBUG_PROPAGATE_EXCEPTIONS = True
     # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
@@ -92,9 +92,10 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
     AWS_S3_FILE_OVERWRITE = True
     # AWS_DEFAULT_ACL = None
     AWS_DEFAULT_ACL = 'public-read'
+    STATIC_URL = os.path.join(BASE_DIR, 'allstatic/static/')  # for eb to serve
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic/static/')  # for eb to serve
     # STATIC_LOCATION = 'static'
     # STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-    STATIC_URL = os.path.join(BASE_DIR, 'allstatic/static')
     # STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
     AWS_PRELOAD_METADATA = True     # Speeds up the load of the filebrowser files
     AWS_QUERYSTRING_AUTH = False    # Speeds up the load of the filebrowser files

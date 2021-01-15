@@ -90,11 +90,11 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
         'CacheControl': 'max-age=86400',
     }
     AWS_S3_FILE_OVERWRITE = True
-    AWS_DEFAULT_ACL = None
+    # AWS_DEFAULT_ACL = None
     AWS_DEFAULT_ACL = 'public-read'
     STATIC_LOCATION = 'static'
-    STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-    STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
+    # STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
+    # STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
     AWS_PRELOAD_METADATA = True     # Speeds up the load of the filebrowser files
     AWS_QUERYSTRING_AUTH = False    # Speeds up the load of the filebrowser files
     PUBLIC_MEDIA_LOCATION = 'media'
@@ -135,17 +135,10 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
     # }
 else:
     STATIC_URL = '/static/'
-    # STATICFILES_DIRS = (
-    #     '/var/app/curent/staticfiles',
-    # )
-    STATICFILES_DIRS = (
-        '/home/zx/Desktop/bloggy/staticfiles',
-    )
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic/static/')
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'allstatic/staticfiles'),)
     MEDIA_URL = '/media/'
-
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'allstatic/media/')
 
 
 # allauth signup infos

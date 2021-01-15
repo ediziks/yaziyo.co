@@ -52,7 +52,8 @@ class Profile(models.Model):
     if self.avatar:
       memfile = BytesIO()
 
-      img = Image.open(self.avatar)
+      # img = Image.open(self.avatar)
+      img = default_storage.open(self.avatar, "w")
       if img.height > 300 or img.width > 300:
 
         output_size = (300, 300)

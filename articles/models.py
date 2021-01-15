@@ -35,10 +35,9 @@ class Article(models.Model):
 
     if self.image:
       memfile = BytesIO()
-
       img = Image.open(self.image)
-      if img.height > 1920 or img.width > 1080:
 
+      if img.height > 1920 or img.width > 1080:
         output_size = (1920, 1080)
         img.thumbnail(output_size, Image.BICUBIC)
         img.save(memfile, 'JPEG', optimize=True)

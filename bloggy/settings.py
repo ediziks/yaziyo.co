@@ -76,7 +76,7 @@ INSTALLED_APPS = [
 ]
 
 
-if 'AWS_ACCESS_KEY_ID' in os.environ:
+if 'AWS_ACCESS_KEY_ID' in os.environ or True:
     DEBUG_PROPAGATE_EXCEPTIONS = True
     # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
@@ -88,21 +88,18 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
     }
-    AWS_S3_FILE_OVERWRITE = False
-    # AWS_DEFAULT_ACL = None
+    AWS_S3_FILE_OVERWRITE = True
+    AWS_DEFAULT_ACL = None
     AWS_DEFAULT_ACL = 'public-read'
-    STATIC_LOCATION = 'static'
-    STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-    STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
-    # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    # FILEBROWSER_DEFAULT_PERMISSIONS = None
-    # FILEBROWSER_LIST_PER_PAGE = 5  # Speeds up the load of the filebrowser files
-    # AWS_PRELOAD_METADATA = True     # Speeds up the load of the filebrowser files
-    # AWS_QUERYSTRING_AUTH = False    # Speeds up the load of the filebrowser files
-    # MEDIA_LOCATION = 'media'
+    STATIC_URL = os.path.join(BASE_DIR, 'allstatic/static/')
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'allstatic/staticfiles/'),)
+    # STATIC_LOCATION = 'static'
+    # STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
+    # STATICFILES_STORAGE = 'bloggy.custom_storage.StaticStorage'
+    AWS_PRELOAD_METADATA = True     # Speeds up the load of the filebrowser files
+    AWS_QUERYSTRING_AUTH = False    # Speeds up the load of the filebrowser files
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
-    # DIRECTORY = getattr(settings, "FILEBROWSER_DIRECTORY", MEDIA_URL)
     DEFAULT_FILE_STORAGE = 'bloggy.custom_storage.MediaStorage'
     # LOGGING = {
     #     'version': 1,

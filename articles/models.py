@@ -12,6 +12,11 @@ from django.contrib.postgres.indexes import GinIndex
 from PIL import Image
 from django.core.files.storage import default_storage
 from io import BytesIO
+import os
+
+
+def image_upload_dir(instance, filename):
+  return os.path.join("users/{0}/articles/{1}/".format(instance.user.username, instance.slug), filename)
 
 
 class Article(models.Model):
@@ -23,7 +28,7 @@ class Article(models.Model):
   likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="article_likes", blank=True)
   created_date = models.DateTimeField(default=timezone.now)
   # published_date = models.DateTimeField()
-  image = models.ImageField(default='default_article_image.jpg', upload_to='article_image/', blank=False)
+  image = models.ImageField(default='default_article_image.jpg', upload_to=image_upload_dir, blank=True)
   search_vector = SearchVectorField(null=True, editable=False)
 
   def __init__(self, *args, **kwargs):
@@ -40,6 +45,8 @@ class Article(models.Model):
       if img.height > 1920 or img.width > 1080:
         output_size = (1920, 1080)
         img.thumbnail(output_size, Image.BICUBIC)
+        if img.mode in ('RGBA', 'LA'):
+          img = img.convert("RGB")
         img.save(memfile, 'JPEG', optimize=True)
         default_storage.save(self.image.name, memfile)
         memfile.close()

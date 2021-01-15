@@ -658,3 +658,12 @@
 2021-01-14 23:53:54.578 +03 [347395] ERROR:  duplicate key value violates unique constraint "auth_user_username_key"
 2021-01-14 23:53:54.578 +03 [347395] DETAIL:  Key (username)=(qwe) already exists.
 2021-01-14 23:53:54.578 +03 [347395] STATEMENT:  INSERT INTO "auth_user" ("password", "last_login", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined") VALUES ('pbkdf2_sha256$216000$Yc2L5UXjx7nY$odvNqSWr91IuXfdVffZiduqCYF8EiOsVgx715JF7Owc=', NULL, false, 'qwe', '', '', 'qwqwee@gmail.com', false, true, '2021-01-14T20:53:53.706990+00:00'::timestamptz) RETURNING "auth_user"."id"
+2021-01-15 17:23:29.306 +03 [47038] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-15 17:23:29.307 +03 [47038] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-15 17:23:29.320 +03 [47038] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-15 17:23:29.366 +03 [47040] LOG:  database system was interrupted; last known up at 2021-01-14 23:57:36 +03
+2021-01-15 17:23:29.474 +03 [47040] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-15 17:23:29.482 +03 [47040] LOG:  redo starts at 0/42D8228
+2021-01-15 17:23:29.482 +03 [47040] LOG:  invalid record length at 0/42D8310: wanted 24, got 0
+2021-01-15 17:23:29.482 +03 [47040] LOG:  redo done at 0/42D82D8
+2021-01-15 17:23:29.531 +03 [47038] LOG:  database system is ready to accept connections

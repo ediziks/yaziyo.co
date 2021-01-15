@@ -12,7 +12,7 @@ class MediaStorage(S3Boto3Storage):
     location = settings.PUBLIC_MEDIA_LOCATION
     isfilecached = {}
     default_acl = 'public-read'
-    file_overwrite = False
+    file_overwrite = True
 
     def isdir(self, name):
         if not name:  # Empty name is a directory

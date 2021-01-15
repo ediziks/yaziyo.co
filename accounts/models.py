@@ -8,6 +8,7 @@ from django.contrib import admin
 from PIL import Image
 from django.core.files.storage import default_storage
 from io import BytesIO
+import os
 
 
 def get_username(request):
@@ -16,12 +17,22 @@ def get_username(request):
     username = request.user.username
 
 
+def cover_upload_dir(instance, filename):
+  return os.path.join("users/{}/covers".format(instance.user.username), filename)
+
+
+def avatar_upload_dir(instance, filename):
+  return os.path.join("users/{}/avatars".format(instance.user.username), filename)
+
+
 class Profile(models.Model):
+
   user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', on_delete=models.CASCADE)
   # email = models.EmailField(max_length=150, unique=True, blank=False, null=False)
   bio = models.TextField(max_length=280, blank=True)
-  avatar = models.ImageField(default='default_avatar.jpg', upload_to='avatars/')
-  cover = models.ImageField(default='default_cover.jpg', upload_to='covers/')
+  avatar = models.ImageField(default='default_avatar.jpg', upload_to=avatar_upload_dir)
+  # cover = models.ImageField(default='default_cover.jpg', upload_to='covers/')
+  cover = models.ImageField(default='default_cover.jpg', upload_to=cover_upload_dir)
   followers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='is_following', blank=True)
   bookmarks = models.ManyToManyField(Article, related_name='is_bookmark', blank=True)
   # TBD
@@ -29,21 +40,6 @@ class Profile(models.Model):
 
   def __str__(self):
     return '@{}'.format(self.user.username)
-
-  # def save(self, *args, **kwargs):
-  #   super(Profile, self).save(*args, **kwargs)
-
-  #   img = Image.open(self.avatar.url)
-  #   if img.height > 300 or img.width > 300:
-  #     output_size = (300, 300)
-  #     img.thumbnail(output_size, Image.BICUBIC)
-  #     img.save(self.avatar.url, optimize=True)
-
-  #   img2 = Image.open(self.cover.path)
-  #   if img2.height > 1920 or img2.width > 1080:
-  #     img2_output_size = (1920, 1080)
-  #     img2.thumbnail(img2_output_size, Image.BICUBIC)
-  #     img2.save(self.cover.path, optimize=True)
 
   def save(self, *args, **kwargs):
     # run save of parent class above to save original image to disk
@@ -53,27 +49,35 @@ class Profile(models.Model):
       memfile = BytesIO()
 
       # img = Image.open(self.avatar)
-      img = default_storage.open(self.avatar.name, "w")
+      img = Image.open(self.avatar)
       if img.height > 300 or img.width > 300:
 
         output_size = (300, 300)
         img.thumbnail(output_size, Image.BICUBIC)
+        if img.mode in ('RGBA', 'LA'):
+          img = img.convert("RGB")
         img.save(memfile, 'JPEG', optimize=True)
         default_storage.save(self.avatar.name, memfile)
         memfile.close()
         img.close()
+
     if self.cover:
       memfile = BytesIO()
 
-      img = Image.open(self.cover)
-      if img.height > 1920 or img.width > 1080:
+      try:
+        img = Image.open(self.cover)
+        if img.height > 1920 or img.width > 1080:
 
-        output_size = (1920, 1080)
-        img.thumbnail(output_size, Image.BICUBIC)
-        img.save(memfile, 'JPEG', optimize=True)
-        default_storage.save(self.cover.name, memfile)
-        memfile.close()
-        img.close()
+          output_size = (1920, 1080)
+          img.thumbnail(output_size, Image.BICUBIC)
+          if img.mode in ('RGBA', 'LA'):
+            img = img.convert("RGB")
+          img.save(memfile, 'JPEG', optimize=True)
+          default_storage.save(self.cover.name, memfile)
+          memfile.close()
+          img.close()
+      except FileNotFoundError:
+        self.cover.path = settings.MEDIA_URL + '/default_cover.jpg'
 
 
 # Profile and User objects sync

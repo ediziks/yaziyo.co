@@ -17,9 +17,9 @@
       </div>
       <div class="message">
         {% if article.title|length >= 28 %}
-          <a href="{{article.get_absolute_url}}">{{article.message|safe|truncatechars:75}}</a>
+        <a href="{{article.get_absolute_url}}">{{article.message|safe|truncatechars:75}}</a>
         {% else %}
-          <a href="{{article.get_absolute_url}}">{{article.message|safe|truncatechars:120}}</a>
+        <a href="{{article.get_absolute_url}}">{{article.message|safe|truncatechars:120}}</a>
         {% endif %}
       </div>
       <div class="user-and-date">

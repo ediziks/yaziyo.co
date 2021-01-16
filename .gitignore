@@ -2,6 +2,10 @@
 .mylocal_db/
 .mylocal_db/*
 
+# allstatic
+.allstatic/
+.allstatic/*
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

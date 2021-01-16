@@ -11,19 +11,22 @@
       <form method="POST">
       {% csrf_token %}
       {% bootstrap_form form layout='inline' %}
-      <div class="g-recaptcha" data-sitekey="6LdVi6UZAAAAAIceAlCEHnKTlgL2ngLi6iDCR5VI"></div>
-      <br/>
+      <br>
       <input class="btn btn-success" type="submit" value="Giriş">
-      <button class="btn btn-primary ml-2"><a style="color:white" href="{% url 'accounts:signup' %}">Üye Ol</a></button>
+      <button class="btn btn-primary ml-1"><a style="color:white" href="{% url 'accounts:signup' %}">Kaydol</a></button>
     </form>
     <br>
-    <a id="github" href="/accounts/github/login" class="btn btn-outline-info">Github</a>
-    <a id="twitter_login" href="/accounts/twitter/login" class="btn btn-outline-primary">Twitter</a>
-    <a id="google_login" href="/accounts/google/login" class="btn btn-outline-danger">Google</a>
-    <div class="mt-2">
-      <small class="text-muted mt-auto">
-        <a href="{% url 'accounts:password_reset' %}">Şifremi Unuttum</a>
-      </small>
+    <span>-- veya --</span>
+    <br>
+    <br>
+    <a id="github" href="/accounts/github/login" class="btn btn-outline-info"><span class="fa fa-github"></span> Github</a>
+    <a id="twitter_login" href="/accounts/twitter/login" class="btn btn-outline-primary"><span class="fa fa-twitter"></span> Twitter</a>
+    <a id="google_login" href="/accounts/google/login" class="btn btn-outline-danger"><span class="fa fa-google"></span> Google</a>
+    <br>
+    <br>
+    <span>ile kaydol</span>
+    <div class="mt-3">
+      <a class="text-muted" href="{% url 'accounts:password_reset' %}">Şifremi Unuttum</a>
     </div>
   </div>
 </div>

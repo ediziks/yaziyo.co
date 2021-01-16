@@ -3,21 +3,43 @@
 {% load socialaccount %}
 {% block content %}
 <div class="container">
+{% if messages %}
+  {% for msg in messages %}
+      {% if forloop.last %}
+      <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{msg.message}}
+      </div>
+      {% endif %}
+  {% endfor %}
+{% endif %}
+</div>
+<div class="container">
   <div class="jumbotron" style="text-align: center;">
     <form method="POST">
       {% csrf_token %}
       {% bootstrap_form form layout='inline' %}
       <br />
-      <input class="btn btn-success mb-2" type="submit" value="Kaydol">
+      <input class="btn btn-success mb-2" type="submit" value="Kayıt">
+      <br>
+      <span>-- veya --</span>
+      <br>
       <br>
       <a class="btn btn-outline-info" href="{% provider_login_url 'github' %}">
         <span class="fa fa-github"></span>
-        Github ile Kaydol
+        Github
       </a>
       <a class="btn btn-outline-primary" href="{% provider_login_url 'twitter' %}">
         <span class="fa fa-twitter"></span>
-        Twitter ile Kaydol
+        Twitter
       </a>
+      <a class="btn btn-outline-danger" href="{% provider_login_url 'google' %}">
+        <span class="fa fa-google"></span>
+        Google
+      </a>
+      <br>
+      <br>
+      <span>ile kaydol</span>
     </form>
   </div>
 </div>

@@ -14,19 +14,19 @@ class ArticleForm(forms.ModelForm):
       'message': forms.CharField(widget=TinyMCE())
     }
 
-  def title_namecheck(self):
+  def clean(self):
     title = self.cleaned_data.get('title')
     if Article.objects.filter(title=title):
-      raise ValidationError('Bu başlığa sahip bir yazı mevcut. Başka bir başlık seçebilirsiniz.')
+      raise ValidationError('Bu başlığa sahip bir yazı mevcut. Lütfen bir başka başlık seçiniz.')
 
   def clean_image(self):
     image = self.cleaned_data.get('image', False)
     if image:
       if image._size > 5 * 1024 * 1024:
-        raise ValidationError("Yazı görseli çok büyük ( > 5mb )")
+        raise ValidationError("Yazı görseli 5mb'den küçük olmalıdır.")
       return image
     else:
-      raise ValidationError("Yüklenen görsel okunamadı")
+      raise ValidationError("Görsel aktarılamadı...")
 
   # def __init__(self, *args, **kwargs):
   #   user = kwargs.pop('user', None)

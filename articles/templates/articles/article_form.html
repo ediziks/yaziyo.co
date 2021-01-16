@@ -7,6 +7,18 @@
 {% endblock head %}
 {% block content %}
 <div class="all-form">
+  <div class="container">
+    {% if messages %}
+    {% for msg in messages %}
+    {% if forloop.last %}
+    <div class="alert alert-warning alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{msg.message}}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
   <div class="article-form">
     <form class="article-form-form" method="POST" action="{% url 'articles:create' %}" id="ArticleForm" enctype="multipart/form-data">
       {% csrf_token %}

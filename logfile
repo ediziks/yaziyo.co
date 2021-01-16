@@ -676,3 +676,60 @@
 2021-01-16 13:04:19.045 +03 [30196] LOG:  invalid record length at 0/43B9DE8: wanted 24, got 0
 2021-01-16 13:04:19.045 +03 [30196] LOG:  redo done at 0/43B9DB0
 2021-01-16 13:04:19.092 +03 [30194] LOG:  database system is ready to accept connections
+2021-01-16 17:55:28.664 +03 [213451] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 17:55:28.664 +03 [213451] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 17:55:28.664 +03 [213451] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>aslşd&ouml;aslşd</p>', 'article-from-zxed', '2021-01-16T14:55:28.652294+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 18:02:47.498 +03 [219471] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 18:02:47.498 +03 [219471] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 18:02:47.498 +03 [219471] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>aslşd&ouml;aslşd</p>', 'article-from-zxed', '2021-01-16T15:02:47.490147+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 18:03:43.496 +03 [220248] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 18:03:43.496 +03 [220248] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 18:03:43.496 +03 [220248] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>askldl</p>', 'article-from-zxed', '2021-01-16T15:03:43.487347+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 18:04:31.929 +03 [220891] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 18:04:31.929 +03 [220891] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 18:04:31.929 +03 [220891] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>askldl</p>', 'article-from-zxed', '2021-01-16T15:04:31.920855+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 18:05:47.766 +03 [221930] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 18:05:47.766 +03 [221930] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 18:05:47.766 +03 [221930] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>askldl</p>', 'article-from-zxed', '2021-01-16T15:05:47.756988+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:44:08.166 +03 [228402] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:44:08.166 +03 [228402] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:44:08.166 +03 [228402] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>askldl</p>', 'article-from-zxed', '2021-01-16T17:44:08.163388+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:46:57.130 +03 [230595] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:46:57.130 +03 [230595] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:46:57.130 +03 [230595] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>asd</p>', 'article-from-zxed', '2021-01-16T17:46:57.127267+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:48:58.622 +03 [232094] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:48:58.622 +03 [232094] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:48:58.622 +03 [232094] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>asdasd</p>', 'article-from-zxed', '2021-01-16T17:48:58.619141+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:49:18.787 +03 [232429] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:49:18.787 +03 [232429] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:49:18.787 +03 [232429] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qweqwe</p>', 'article-from-zxed', '2021-01-16T17:49:18.783793+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:50:42.276 +03 [233371] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:50:42.276 +03 [233371] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:50:42.276 +03 [233371] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qwe</p>', 'article-from-zxed', '2021-01-16T17:50:42.273220+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:50:59.337 +03 [233668] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:50:59.337 +03 [233668] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:50:59.337 +03 [233668] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qwe</p>', 'article-from-zxed', '2021-01-16T17:50:59.334067+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:51:06.680 +03 [233789] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:51:06.680 +03 [233789] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:51:06.680 +03 [233789] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qwe</p>', 'article-from-zxed', '2021-01-16T17:51:06.677519+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:53:31.523 +03 [235784] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:53:31.523 +03 [235784] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:53:31.523 +03 [235784] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qwe</p>', 'article-from-zxed', '2021-01-16T17:53:31.516881+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:54:35.899 +03 [236649] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:54:35.899 +03 [236649] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:54:35.899 +03 [236649] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qwe</p>', 'article-from-zxed', '2021-01-16T17:54:35.895347+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:55:13.521 +03 [237163] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:55:13.521 +03 [237163] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:55:13.521 +03 [237163] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qwe</p>', 'article-from-zxed', '2021-01-16T17:55:13.518705+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:55:33.436 +03 [237594] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:55:33.436 +03 [237594] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:55:33.436 +03 [237594] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qwe</p>', 'article-from-zxed', '2021-01-16T17:55:33.433725+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:55:40.739 +03 [237717] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:55:40.739 +03 [237717] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:55:40.739 +03 [237717] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>asdasd</p>', 'article-from-zxed', '2021-01-16T17:55:40.736697+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:55:51.393 +03 [237825] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:55:51.393 +03 [237825] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:55:51.393 +03 [237825] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qweqwq</p>', 'article-from-zxed', '2021-01-16T17:55:51.391096+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"
+2021-01-16 20:56:09.027 +03 [238079] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-01-16 20:56:09.027 +03 [238079] DETAIL:  Key (user_id, slug)=(14, article-from-zxed) already exists.
+2021-01-16 20:56:09.027 +03 [238079] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (14, 'Article From Zxed', '<p>qweqwe</p>', 'article-from-zxed', '2021-01-16T17:56:09.023554+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"

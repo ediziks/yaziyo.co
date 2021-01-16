@@ -31,8 +31,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
     path('articles/', include('articles.urls', namespace='articles')),
-    path('tinymce/', include('tinymce.urls')),
     path('search/', SearchView.as_view(), name='search'),
+    path('tinymce/', include('tinymce.urls')),
     path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
 ]
 

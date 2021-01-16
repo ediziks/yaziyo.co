@@ -77,7 +77,7 @@ INSTALLED_APPS = [
 ]
 
 
-if 'AWS_ACCESS_KEY_ID' in os.environ or True:
+if 'AWS_ACCESS_KEY_ID' in os.environ:
     DEBUG_PROPAGATE_EXCEPTIONS = True
     # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
@@ -92,8 +92,9 @@ if 'AWS_ACCESS_KEY_ID' in os.environ or True:
     AWS_S3_FILE_OVERWRITE = True
     # AWS_DEFAULT_ACL = None
     AWS_DEFAULT_ACL = 'public-read'
-    STATIC_URL = '/static/'
+    STATIC_URL = '/static/'  # for eb to serve
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')  # for eb to serve
+    # statics below are to serve from s3
     # STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic/static/')  # for eb to serve
     # STATIC_LOCATION = 'static'
     # STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
@@ -140,8 +141,8 @@ else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic/static/')
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'allstatic/staticfiles'),)
-    MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'allstatic/media/')
+    MEDIA_URL = '/media/'
 
 
 # allauth signup infos

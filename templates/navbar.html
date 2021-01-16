@@ -48,8 +48,8 @@
             <p>✏️&nbsp;Yeni Yazı</p>
           </a>
         </li>
-        {% if user.is_authenticated %}
           
+        {% if request.user.is_authenticated %}
         <li class="nav-item small align-self-center my-2">
           <a href="{% url 'accounts:profile' request.user.username %}">👤 Profil</a>
         </li>

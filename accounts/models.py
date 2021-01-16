@@ -35,7 +35,7 @@ class Profile(models.Model):
   cover = models.ImageField(default='default_cover.jpg', upload_to=cover_upload_dir)
   followers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='is_following', blank=True)
   bookmarks = models.ManyToManyField(Article, related_name='is_bookmark', blank=True)
-  # TBD
+  # TBD for email authentication
   # activated = models.BooleanField(default=False)
 
   def __str__(self):
@@ -48,18 +48,22 @@ class Profile(models.Model):
     if self.avatar:
       memfile = BytesIO()
 
-      # img = Image.open(self.avatar)
-      img = Image.open(self.avatar)
-      if img.height > 300 or img.width > 300:
+      try:
+        # img = Image.open(self.avatar)
+        img = Image.open(self.avatar)
+        if img.height > 300 or img.width > 300:
 
-        output_size = (300, 300)
-        img.thumbnail(output_size, Image.BICUBIC)
-        if img.mode in ('RGBA', 'LA'):
-          img = img.convert("RGB")
-        img.save(memfile, 'JPEG', optimize=True)
-        default_storage.save(self.avatar.name, memfile)
-        memfile.close()
-        img.close()
+          output_size = (300, 300)
+          img.thumbnail(output_size, Image.BICUBIC)
+          if img.mode in ('RGBA', 'LA'):
+            img = img.convert("RGB")
+          img.save(memfile, 'JPEG', optimize=True)
+          default_storage.save(self.avatar.name, memfile)
+          memfile.close()
+          img.close()
+      # images not found exc
+      except (FileNotFoundError):
+        pass
 
     if self.cover:
       memfile = BytesIO()
@@ -77,10 +81,11 @@ class Profile(models.Model):
           memfile.close()
           img.close()
       except FileNotFoundError:
-        self.cover.path = settings.MEDIA_URL + '/default_cover.jpg'
-
+        pass
 
 # Profile and User objects sync
+
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
   # Creates user profile after signup

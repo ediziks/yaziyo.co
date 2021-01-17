@@ -78,7 +78,7 @@ INSTALLED_APPS = [
 ]
 
 
-if os.environ['USER'] == 'ec2-user':
+if os.environ['USER'] == 'ec2-user' or True:
     DEBUG_PROPAGATE_EXCEPTIONS = True
     # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')

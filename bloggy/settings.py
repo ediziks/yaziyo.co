@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import os
 import environ
 from django.conf import settings
@@ -33,8 +32,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = env('DEBUG')
-DEBUG = True
+if os.environ['USER'] == 'zx':
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', '172.31.7.73', '172.31.32.97', '18.194.190.186', '172.31.45.194', 'yaziyo.co', 'yaziyo.co/', '.yaziyo.co/']
 
@@ -77,7 +78,7 @@ INSTALLED_APPS = [
 ]
 
 
-if 'AWS_ACCESS_KEY_ID' in os.environ and os.environ['USER'] != 'zx':
+if os.environ['USER'] == 'ec2-user':
     DEBUG_PROPAGATE_EXCEPTIONS = True
     # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
@@ -137,10 +138,10 @@ if 'AWS_ACCESS_KEY_ID' in os.environ and os.environ['USER'] != 'zx':
     #         }
     #     }
     # }
-else:
+elif os.environ['USER'] == 'zx':
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic/static/')
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'allstatic/staticfiles'),)
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'allstatic/staticfiles/'),)
     MEDIA_ROOT = os.path.join(BASE_DIR, 'allstatic/media/')
     MEDIA_URL = '/media/'
 
@@ -315,6 +316,12 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
+TINYMCE_EXTRA_MEDIA = {
+    'js': [
+        STATIC_URL + "tinymce/tinymce.min.js",
+        STATIC_URL + "js/tinycustom.js"
+    ]
+}
 # TINYMCE_FILEBROWSER = True
 # TINYMCE_DEFAULT_CONFIG = {
 #     'height': 300,
@@ -342,12 +349,6 @@ TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
 # TINYMCE_JS_URL = "/static/tinymce/tinymce.min.js"
 # TINYMCE_JS_ROOT = "/static/tinymce"
 
-TINYMCE_EXTRA_MEDIA = {
-    'js': [
-        STATIC_URL + "tinymce/tinymce.min.js",
-        STATIC_URL + "js/tinycustom.js"
-    ]
-}
 # TINYMCE_DEFAULT_CONFIG = {
 #     # 'plugins': "image, imagetools,table,spellchecker,wordcount",
 #     'selector': 'textarea',

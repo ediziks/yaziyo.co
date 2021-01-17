@@ -2,6 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from tinymce.widgets import TinyMCE
 from .models import Article, Comment
+from taggit.forms import TagField
 
 
 class ArticleForm(forms.ModelForm):
@@ -11,10 +12,10 @@ class ArticleForm(forms.ModelForm):
     fields = ('image', 'title', 'message', 'tags')
     widgets = {
       'title': forms.Textarea(attrs={'placeholder': 'Başlık'}),
-      'message': forms.CharField(widget=TinyMCE())
+      'message': forms.CharField(widget=TinyMCE()),
     }
 
-  def clean(self):
+  def clean_image(self):
     title = self.cleaned_data.get('title')
     if Article.objects.filter(title=title):
       raise ValidationError('Bu başlığa sahip bir yazı mevcut. Lütfen bir başka başlık seçiniz.')

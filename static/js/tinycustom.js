@@ -5,8 +5,9 @@ tinyMCE.init({
   theme: 'silver',
   mobile: {
     theme: 'mobile',
-    plugins: 'autosave lists autolink',
-    toolbar: 'undo bold italic'
+    plugins: 'quickbars wordcount preview codesample image imagetools hr link lists media fullscreen autosave powerpaste nonbreaking',
+    toolbar: 'undo redo bold italic underline',
+    powerpaste_allow_local_images : false,
   },
   toolbar: 'undo redo | preview fullscreen',
   menubar: 'false',

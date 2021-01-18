@@ -10,6 +10,8 @@ from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank
 from django.db.models import F
 from el_pagination.views import AjaxListView
 from django.db.models import Count
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 
 class HomePage(TemplateView):
@@ -53,12 +55,14 @@ def index(request, template='index.html', extra_context=None):
   return render(request, template, context)
 
 
-# not working yet
-# def notifications_navbar(request):
-#   template = 'noti_nav.html'
-#   if request.user.is_authenticated:
-#     context = {
-#       'notifications': request.user.notifications.all()
-#     }
-#   print('NOTIS CALLEDDDDDDDDDDDDDDDDDDDDDD HERE')
-#   return render(request, template, context)
+# will be uncommented after error templates written
+# def handler404(request, *args, **argv):
+#   response = render_to_response('404.html', {}, context_instance=RequestContext(request))
+#   response.status_code = 404
+#   return response
+
+
+# def handler500(request, *args, **argv):
+#   response = render_to_response('500.html', {}, context_instance=RequestContext(request))
+#   response.status_code = 500
+#   return response

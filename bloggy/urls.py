@@ -40,7 +40,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# handler404 = 'bloggy.views.my_custom_page_not_found_view'
-# handler500 = 'bloggy.views.my_custom_error_view'
+# handler404 = 'bloggy.views.handler404'
+# handler500 = 'bloggy.views.handler500'
 # handler403 = 'bloggy.views.my_custom_permission_denied_view'
 # handler400 = 'bloggy.views.my_custom_bad_request_view'

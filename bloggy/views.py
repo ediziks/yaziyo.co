@@ -10,8 +10,6 @@ from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank
 from django.db.models import F
 from el_pagination.views import AjaxListView
 from django.db.models import Count
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 
 
 class HomePage(TemplateView):

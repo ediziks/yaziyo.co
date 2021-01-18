@@ -19,7 +19,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import HomePage, index, SearchView
 import notifications.urls
-# from filebrowser.sites import site
 
 
 urlpatterns = [

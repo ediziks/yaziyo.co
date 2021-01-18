@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import environ
 from django.conf import settings
-import django_heroku
 # for aws logging
 from boto3.session import Session
 
@@ -271,14 +270,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# FILEBROWSER SETTINGS
-# DIRECTORY = getattr(settings, "FILEBROWSER_DIRECTORY", 'media/uploads/')
-# IMAGE_MAXBLOCK = getattr(settings, 'FILEBROWSER_IMAGE_MAXBLOCK', 1024 * 1024)
-# MAX_UPLOAD_SIZE = getattr(settings, "FILEBROWSER_MAX_UPLOAD_SIZE", 10485760)
-# VERSION_QUALITY = getattr(settings, 'FILEBROWSER_VERSION_QUALITY', 90)
-
-
 SITE_ID = 2
 
 RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
@@ -302,16 +293,14 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-# if not DEBUG:
-#     SECURE_HSTS_SECONDS = 31536000
-#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#     SECURE_HSTS_PRELOAD = True
-#     SECURE_SSL_REDIRECT = False
-#     SECURE_REFERRER_POLICY = 'same-origin'
-#     SESSION_COOKIE_SECURE = True
-#     CSRF_COOKIE_SECURE = True
-#     # Activate Django - Heroku.
-#     django_heroku.settings(locals())
+if not DEBUG:
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_REFERRER_POLICY = 'same-origin'
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")

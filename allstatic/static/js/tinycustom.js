@@ -6,7 +6,7 @@ tinyMCE.init({
     mobile: {
         theme: 'mobile',
         plugins: 'autosave autolink',
-        toolbar: 'undo bold italic styleselect',
+        toolbar: 'undo bold italic underline',
     },
     toolbar: 'undo redo | preview fullscreen',
     menubar: 'false',

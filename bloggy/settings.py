@@ -78,7 +78,7 @@ INSTALLED_APPS = [
 ]
 
 
-if os.environ['USER'] == 'ec2-user' or True:
+if os.environ['USER'] != 'zx':
     DEBUG_PROPAGATE_EXCEPTIONS = True
     # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
@@ -138,7 +138,7 @@ if os.environ['USER'] == 'ec2-user' or True:
     #         }
     #     }
     # }
-elif os.environ['USER'] == 'zx':
+else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'allstatic/static/')
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'allstatic/staticfiles/'),)

@@ -5,8 +5,8 @@ tinyMCE.init({
     theme: 'silver',
     mobile: {
         theme: 'mobile',
-        plugins: 'autosave autolink',
-        toolbar: 'undo bold italic styleselect',
+        plugins: ['autosave', 'lists', 'autolink'],
+        toolbar: ['undo', 'redo', 'bold', 'link', 'bullist', 'numlist', 'styleselect',],
     },
     toolbar: 'undo redo | preview fullscreen',
     menubar: 'false',

@@ -4,10 +4,9 @@ tinyMCE.init({
   powerpaste_allow_local_images : false,
   theme: 'silver',
   mobile: {
-    theme: 'mobile',
-    plugins: 'quickbars wordcount preview codesample image imagetools hr link lists media fullscreen autosave powerpaste nonbreaking',
-    toolbar: 'undo redo bold italic underline',
-    powerpaste_allow_local_images : false,
+      theme: 'mobile',
+      plugins: ['autosave', 'lists', 'autolink'],
+      toolbar: ['undo', 'redo', 'bold', 'link', 'bullist', 'numlist', 'styleselect',]
   },
   toolbar: 'undo redo | preview fullscreen',
   menubar: 'false',

@@ -21,7 +21,7 @@
             <div class="content">
               <span class="author"><a href="accounts/{{article.user.username}}"><img class="rounded-circle z-depth-0" src="{{article.user.profile.avatar.url}}" alt="" height=25px width=25px>{{article.user.username}}</a></span>
               <div class="float-right">
-                <span class="fa fa-heart-o"> {{article.likes.count}}</span>
+                <span class="far fa-heart"> {{article.likes.count}}</span>
                 <span class="far fa-comment-dots"> {{article.comments.count}}</span>
               </div>
               <div class="title">
@@ -49,12 +49,20 @@
     <h2>&nbsp;&nbsp;keşfet</h2>
   </div>
   <div class="row">
-    <div class="col-md-4 col-sm-12 tags">
+    <div class="col-md-4 col-sm-12 tags" style="">
       <div class="tags-box">
         <h3>ilginizi çekebilecek konular</h3>
         {% for tag in top_tags %}
         <a href="{% url 'articles:tags' tag=tag.slug %}"><button type="button" class="btn btn-info btn-sm">#{{tag.slug}}</button></a>
         {% endfor %}
+      </div>
+      <div class="social-box mt-3">
+        <a href="#">Hakkımızda</a>
+        <a href="https://instagram.com/yaziyoco"><i class="fab fa-instagram"></i></a>
+        <span class="dot"></span>
+        <a href="https://twitter.com/yaziyoco"><i class="fab fa-twitter"></i></a>
+        <span class="dot"></span>
+        <a href="mailto:info@yaziyo.co"><i class="fas fa-at"></i></a>
       </div>
     </div>
     <div class="col-md-8 col-sm-12 order-first articles-bottom-col">
@@ -87,6 +95,7 @@ $.endlessPaginate({
     font-size: 1rem;
     max-height: 2.8rem;
     display: block;
+    overflow-wrap: anywhere;
   }
 
   .article-info {
@@ -155,12 +164,26 @@ $.endlessPaginate({
     display: block !important;
     object-fit: cover;
   }
+
+  .tags-box {
+    position: relative !important;
+    top: 0 !important;
+  }
+
+  .social-box {
+    position: relative !important;
+    top: 0 !important;
+  }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
   .beta-msg a img {
     object-fit: scale-down;
     max-height: 15rem;
+  }
+
+  .article-info .title a h1 {
+    overflow-wrap: anywhere;
   }
 }
 
@@ -194,14 +217,28 @@ $.endlessPaginate({
   font-size: 15px;
 }
 
+.tags {
+  position: relative;
+}
+
 .tags-box {
   position: -webkit-sticky;
   position: sticky;
-  top: 47px;
+  top: auto;
   background: #DDDDDD;
   border-radius: 5px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   padding: 1em;
+}
+
+.social-box {
+  position: -webkit-sticky;
+  position: sticky;
+  top: auto;
+  background: #DDDDDD;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  padding: 0.7em 1.1em;
 }
 
 .top-explore {
@@ -424,12 +461,36 @@ $.endlessPaginate({
   text-decoration: none;
 }
 
-.fa-heart-o:hover {
+.dot {
+  height: 7px;
+  width: 7px;
+  background-color: dimgray;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 0.3em;
+}
+
+.fa-instagram, .fa-twitter, .fa-at {
+  font-size: 130%;
+  color: white;
+}
+
+.fa-instagram:hover, .fa-twitter:hover, .fa-at:hover {
+  color: #2cc4bb
+}
+
+.fa-heart {
+  color: black;
+  cursor: default;
+}
+
+.fa-heart:hover {
   color: red;
 }
 
 .fa-comment-dots {
   margin-left: 0.1em;
+  cursor: default;
 }
 
 .fa-comment-dots:hover {

@@ -13,7 +13,11 @@ from django.db.models import Count
 
 
 class HomePage(TemplateView):
-  template_name = 'index.html'
+  context_object_name = 'notifications'
+  template_name = 'base.html'
+
+  def get_queryset(self):
+    return self.request.user.notifications.all()
 
 
 class SearchView(AjaxListView):

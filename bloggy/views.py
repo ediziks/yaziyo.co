@@ -13,11 +13,7 @@ from django.db.models import Count
 
 
 class HomePage(TemplateView):
-  context_object_name = 'notifications'
-  template_name = 'base.html'
-
-  def get_queryset(self):
-    return self.request.user.notifications.all()
+  template_name = 'index.html'
 
 
 class SearchView(AjaxListView):
@@ -49,9 +45,7 @@ def index(request, template='index.html', extra_context=None):
       'editorpicks': Article.objects.annotate(like_counts=Count('likes')).order_by('-like_counts')[:6],
       'top_tags': Article.tags.most_common()[:10],
   }
-  # notifications dropdown is only working on index.html and that's an issue
-  if request.user.is_authenticated:
-    context['notifications'] = request.user.notifications.all()[:10]
+
   if extra_context is not None:
     context.update(extra_context)
   return render(request, template, context)

@@ -57,7 +57,12 @@
         {% endfor %}
       </div>
       <div class="social-box mt-3">
-        <a href="#">Hakkımızda</a>
+        <a href="#"><p>Hakkımızda</p></a>
+        <span class="dot"></span>
+        <a href="#"><p>Gizlilik</p></a>
+        <span class="dot"></span>
+        <a href="#"><p>S.S.S.</p></a>
+        <span class="dot"></span>
         <a href="https://instagram.com/yaziyoco"><i class="fab fa-instagram"></i></a>
         <span class="dot"></span>
         <a href="https://twitter.com/yaziyoco"><i class="fab fa-twitter"></i></a>
@@ -239,6 +244,17 @@ $.endlessPaginate({
   border-radius: 5px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   padding: 0.7em 1.1em;
+  line-height: 1.2em;
+}
+
+.social-box a p {
+  color: lightslategray;
+  font-size: 0.8em;
+  display: inline-block;
+}
+
+.social-box a p:hover {
+  color: #2cc4bb;
 }
 
 .top-explore {
@@ -464,15 +480,19 @@ $.endlessPaginate({
 .dot {
   height: 7px;
   width: 7px;
-  background-color: dimgray;
+  background-color: darkgray;
   border-radius: 50%;
   display: inline-block;
   margin-bottom: 0.3em;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+  vertical-align: sub;
 }
 
 .fa-instagram, .fa-twitter, .fa-at {
   font-size: 130%;
-  color: white;
+  color: lightslategray;
+  vertical-align: sub;
 }
 
 .fa-instagram:hover, .fa-twitter:hover, .fa-at:hover {

@@ -763,3 +763,21 @@
 2021-01-19 11:15:49.383 +03 [29507] LOG:  invalid record length at 0/47A5358: wanted 24, got 0
 2021-01-19 11:15:49.383 +03 [29507] LOG:  redo done at 0/47A5320
 2021-01-19 11:15:49.427 +03 [29505] LOG:  database system is ready to accept connections
+2021-01-19 20:47:34.872 +03 [33251] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-19 20:47:34.873 +03 [33251] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-19 20:47:34.886 +03 [33251] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-19 20:47:34.931 +03 [33253] LOG:  database system was interrupted; last known up at 2021-01-19 15:16:37 +03
+2021-01-19 20:47:35.040 +03 [33253] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-19 20:47:35.049 +03 [33253] LOG:  redo starts at 0/47A7138
+2021-01-19 20:47:35.049 +03 [33253] LOG:  invalid record length at 0/47A7220: wanted 24, got 0
+2021-01-19 20:47:35.049 +03 [33253] LOG:  redo done at 0/47A71E8
+2021-01-19 20:47:35.096 +03 [33251] LOG:  database system is ready to accept connections
+2021-01-19 22:20:32.555 +03 [7602] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-19 22:20:32.558 +03 [7602] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-19 22:20:33.622 +03 [7602] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-19 22:20:34.262 +03 [7615] LOG:  database system was interrupted; last known up at 2021-01-19 21:47:39 +03
+2021-01-19 22:20:34.385 +03 [7615] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-19 22:20:34.392 +03 [7615] LOG:  redo starts at 0/47C8328
+2021-01-19 22:20:34.392 +03 [7615] LOG:  invalid record length at 0/47C8410: wanted 24, got 0
+2021-01-19 22:20:34.392 +03 [7615] LOG:  redo done at 0/47C83D8
+2021-01-19 22:20:34.434 +03 [7602] LOG:  database system is ready to accept connections

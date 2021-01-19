@@ -45,15 +45,15 @@
           {% if article in request.user.profile.bookmarks.all %}
           <a title="kaydedilenlerden çıkar" href="{% url 'articles:delete_bookmark' bookmark_slug=article.slug %}"><button type="button" class="btn btn-outline-primary"><i class="fa fa-bookmark"></i>&nbsp;<i class="fas fa-check"></i></button></a>
           {% else %}
-          <a title="kaydet" href="{% url 'articles:add_bookmark' bookmark_slug=article.slug %}"><button type="button" class="btn btn-outline-primary"><i class="fa fa-bookmark-o"></i></button></a>
+          <a title="kaydet" href="{% url 'articles:add_bookmark' bookmark_slug=article.slug %}"><button type="button" class="btn btn-outline-primary"><i class="far fa-bookmark"></i></button></a>
           {% endif %}
           {% if request.user in article.likes.all %}
           <a title="beğeniyi geri çek" href="{{article.get_like_url}}"><button type="button" class="btn btn-outline-danger"><i class="fa fa-heart"></i> <strong>{{article.likes.count}}</strong></button></a>
           {% else %}
-          <a title="beğen" href="{{article.get_like_url}}"><button type="button" class="btn btn-outline-danger"><i class="fa fa-heart-o"></i> <strong>{{article.likes.count}}</strong></button></a>
+          <a title="beğen" href="{{article.get_like_url}}"><button type="button" class="btn btn-outline-danger"><i class="far fa-heart"></i> <strong>{{article.likes.count}}</strong></button></a>
           {% endif %}
           <div class="tw-share">
-            <span class="btn btn-outline-info btn-lg fa fa-twitter">{% post_to_twitter "My New Article: {{article.title}}. Check it out!" object_or_url "" %}</span>
+            {% post_to_twitter "Yeni yazıma buradan göz atabilirsiniz: {{article.title}}. Check it out!" object_or_url "" %}
           </div>
         </div>
       </div>

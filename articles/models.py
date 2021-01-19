@@ -45,8 +45,8 @@ class Article(models.Model):
       if img.height > 1920 or img.width > 1080:
         output_size = (1920, 1080)
         img.thumbnail(output_size, Image.BICUBIC)
-        if img.mode in ('RGBA', 'LA'):
-          img = img.convert("RGB")
+        if img.mode != 'RGB':
+          img = img.convert('RGB')
         img.save(memfile, 'JPEG', optimize=True)
         default_storage.save(self.image.name, memfile)
         memfile.close()

@@ -24,6 +24,7 @@ from notifications.signals import notify
 from django.views.generic.edit import FormMixin
 from django.conf import settings
 import requests
+from django.core.exceptions import ObjectDoesNotExist
 
 user = get_user_model()
 
@@ -32,17 +33,6 @@ def signup_view(request):
   if request.method == 'POST':
     form = SignUpForm(request.POST)
     if form.is_valid():
-      # # Begin reCAPTCHA validation
-      # recaptcha_response = request.POST.get('g-recaptcha-response')
-      # data = {
-      #     'secret': settings.RECAPTCHA_PRIVATE_KEY,
-      #     'response': recaptcha_response
-      # }
-      # r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-      # result = r.json()
-      # print(result)
-      # if result['success']:
-      # # End reCAPTCHA validation
       user = form.save()
       user.refresh_from_db()
       # user.profile.email = form.cleaned_data.get('email')

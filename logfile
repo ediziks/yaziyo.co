@@ -781,3 +781,16 @@
 2021-01-19 22:20:34.392 +03 [7615] LOG:  invalid record length at 0/47C8410: wanted 24, got 0
 2021-01-19 22:20:34.392 +03 [7615] LOG:  redo done at 0/47C83D8
 2021-01-19 22:20:34.434 +03 [7602] LOG:  database system is ready to accept connections
+2021-01-20 10:30:56.505 +03 [7320] LOG:  starting PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+2021-01-20 10:30:56.506 +03 [7320] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-20 10:30:56.513 +03 [7320] FATAL:  could not create lock file "/var/run/postgresql/.s.PGSQL.5432.lock": Permission denied
+2021-01-20 10:30:56.513 +03 [7320] LOG:  database system is shut down
+2021-01-20 10:31:01.385 +03 [7497] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-20 10:31:01.386 +03 [7497] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-20 10:31:01.397 +03 [7497] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-20 10:31:01.441 +03 [7502] LOG:  database system was interrupted; last known up at 2021-01-20 02:05:40 +03
+2021-01-20 10:31:01.497 +03 [7502] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-20 10:31:01.503 +03 [7502] LOG:  redo starts at 0/482E148
+2021-01-20 10:31:01.503 +03 [7502] LOG:  invalid record length at 0/482E230: wanted 24, got 0
+2021-01-20 10:31:01.503 +03 [7502] LOG:  redo done at 0/482E1F8
+2021-01-20 10:31:01.546 +03 [7497] LOG:  database system is ready to accept connections

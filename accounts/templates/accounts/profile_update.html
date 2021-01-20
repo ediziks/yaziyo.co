@@ -18,7 +18,8 @@
 <form method="POST" enctype="multipart/form-data" class="p-2">
   {% csrf_token %}
   <fieldset class="form-group">
-    {% bootstrap_form_errors form layout='inline' %}
+    {% bootstrap_form_errors u_form layout='inline' %}
+    {% bootstrap_form_errors p_form layout='inline' %}
     {% bootstrap_form u_form layout='inline' %}
     <div class="col-6">
     <p>Kapak Gorseli: <img id="cover" src="{{user.profile.cover.url}}" width="600px" alt=""></p>

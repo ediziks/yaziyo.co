@@ -3,6 +3,9 @@
 {% load el_pagination_tags %}
 {% load readtime %}
 {% block content %}
+<div class="container result-tag mt-5" style="text-align: center; font-size: 2em;">
+  <h1><strong>#{{tag}}</strong></h1>
+</div>
 <div class="container articles-tags">
 {% for article in tags_list %}
 <div class="articles-container col-12">
@@ -24,7 +27,7 @@
         {% endif %}
         <div class="tags">
         {% for tag in article.tags.all %}
-        <a class="badge badge-info" id="article-tags" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.slug }}</a>
+        <a class="badge badge-info" id="article-tags" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag }}</a>
         {% endfor %}
         </div>
       </div>
@@ -117,7 +120,7 @@ hr {
 }
 
 .articles-container:first-child {
-  margin-top: 4em;
+  margin-top: 2.5em;
 }
 
 .bottom-article-image {

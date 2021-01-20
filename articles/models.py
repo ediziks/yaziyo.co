@@ -12,6 +12,7 @@ from django.contrib.postgres.indexes import GinIndex
 from PIL import Image
 from django.core.files.storage import default_storage
 from io import BytesIO
+from unidecode import unidecode
 import os
 
 
@@ -35,7 +36,7 @@ class Article(models.Model):
     super().__init__(*args, **kwargs)
 
   def save(self, *args, **kwargs):
-    self.slug = slugify(self.title)
+    self.slug = slugify(unidecode(self.title))
     super().save(*args, **kwargs)
 
     if self.image:

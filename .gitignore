@@ -4,6 +4,7 @@ mylocal_db/*
 
 # allstatic
 allstatic/
+allstatic/*
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

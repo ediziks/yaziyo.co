@@ -58,7 +58,7 @@
         <div class="tags-box">
           <h3>ilginizi çekebilecek konular</h3>
           {% for tag in top_tags %}
-          <a href="{% url 'articles:tags' tag=tag.slug %}"><button type="button" class="btn btn-info btn-sm">#{{tag.slug}}</button></a>
+          <a href="{% url 'articles:tags' tag=tag.slug %}"><button type="button" class="btn btn-info btn-sm">#{{tag}}</button></a>
           {% endfor %}
         </div>
         <div class="social-box mt-3">

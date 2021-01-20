@@ -38,6 +38,7 @@ else:
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', 'yaziyo.co', 'yaziyo.co/', '.yaziyo.co/']
 
+# ADMIN_ENABLED = False # or DEBUG
 
 # Application definition
 INSTALLED_APPS = [
@@ -288,10 +289,10 @@ SOCIALACCOUNT_EMAIL_REQUIRED = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtpout.secureserver.net'
-EMAIL_HOST_USER = 'info@yaziyo.co'
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = 'Ediz4845176.'
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 80
 EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True

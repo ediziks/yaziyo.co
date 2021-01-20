@@ -18,7 +18,11 @@
   <div class="jumbotron" style="text-align: center;">
     <form method="POST">
       {% csrf_token %}
+      {% bootstrap_form_errors form layout='inline' %}
       {% bootstrap_form form layout='inline' %}
+      {% for fld in form.visible_fields %}
+        <span class="help-block">{{ fld.error }}</span>
+      {% endfor %}
       <br />
       <input class="btn btn-success mb-2" type="submit" value="Kaydol">
       <br>

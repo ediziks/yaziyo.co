@@ -25,6 +25,7 @@
       {% for hidden in form.hidden_fields %}
       {{ hidden }}
       {% endfor %}
+      {% bootstrap_form_errors form layout='inline' %}
       <div class="title-body-all container">
         <div class="form-group">
           {% render_field form.title class="form-control title" placeholder="Başlık Böyle Olur..." autocomplete="false" data-lpignore="true" maxlength="140" type="text" %}

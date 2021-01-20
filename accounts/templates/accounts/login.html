@@ -11,6 +11,7 @@
       <form method="POST">
       {% csrf_token %}
       {% bootstrap_form form layout='inline' %}
+      {% bootstrap_form_errors form layout='inline' %}
       <br>
       <input class="btn btn-success" type="submit" value="Giriş">
       <button class="btn btn-primary ml-1"><a style="color:white" href="{% url 'accounts:signup' %}">Kaydol</a></button>

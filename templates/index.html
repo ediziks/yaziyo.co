@@ -14,8 +14,12 @@
           <div class="date">
             <span class="day">{{article.created_date|date:"d"}}</span>
             <span class="month">{{article.created_date|date:"M"}}</span>
-            <span class="year">{% if article.created_date.year < now|date:"Y" %} %} {{article.created_date|date:"Y"}} {% endif %}</span> </div> <div class="article-image">
-                <a href="{{article.get_absolute_url}}"><img src="{% thumbnail article.image 346x240 crop %}" alt=""></a>
+            {% if article.created_date.year < now|date:"Y" %}
+            <span class="year">{{article.created_date|date:"Y"}}</span>
+            {% endif %}
+          </div>
+          <div class="article-image">
+            <a href="{{article.get_absolute_url}}"><img src="{% thumbnail article.image 346x240 crop %}" alt=""></a>
           </div>
           <div class="data">
             <div class="content">
@@ -27,11 +31,13 @@
               <div class="title">
                 <h1 class="title"><a href="{{article.get_absolute_url}}">{{article.title|truncatechars:53}}</a></h1>
               </div>
-              <a href="{{article.get_absolute_url}}" id="art-message-a">
-                <div class="article-message" style="overflow: hidden;">
-                  {{article.message|safe|truncatechars:100}}
-                </div>
-              </a>
+              <div class="truncated-message">
+                <a href="{{article.get_absolute_url}}" id="art-message-a">
+                  <p class="article-message" style="overflow: hidden;">
+                    {{article.message|safe|truncatechars:100}}
+                  </p>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -58,11 +64,17 @@
           {% endfor %}
         </div>
         <div class="social-box mt-3">
-          <a href="#"><p>Hakkımızda</p></a>
+          <a href="#">
+            <p>Hakkımızda</p>
+          </a>
           <span class="dot"></span>
-          <a href="#"><p>Gizlilik</p></a>
+          <a href="#">
+            <p>Gizlilik</p>
+          </a>
           <span class="dot"></span>
-          <a href="#"><p>S.S.S.</p></a>
+          <a href="#">
+            <p>S.S.S.</p>
+          </a>
           <span class="dot"></span>
           <a href="https://instagram.com/yaziyoco"><i class="fab fa-instagram"></i></a>
           <span class="dot"></span>
@@ -231,7 +243,7 @@ $.endlessPaginate({
 .sticky-box {
   position: -webkit-sticky;
   position: sticky;
-  top:38px;
+  top: 38px;
 }
 
 .tags-box {
@@ -495,13 +507,17 @@ $.endlessPaginate({
   vertical-align: sub;
 }
 
-.fa-instagram, .fa-twitter, .fa-at {
+.fa-instagram,
+.fa-twitter,
+.fa-at {
   font-size: 130%;
   color: lightslategray;
   vertical-align: sub;
 }
 
-.fa-instagram:hover, .fa-twitter:hover, .fa-at:hover {
+.fa-instagram:hover,
+.fa-twitter:hover,
+.fa-at:hover {
   color: #2cc4bb
 }
 

@@ -33,9 +33,7 @@
               </div>
               <div class="truncated-message">
                 <a href="{{article.get_absolute_url}}" id="art-message-a">
-                  <p class="article-message">
-                    <pre style="overflow: hidden; white-space: pre-wrap;">{{article.message|safe|truncatechars:100}}</pre>
-                  </p>
+                  <pre class="article-message" style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:100}}</pre>
                 </a>
               </div>
             </div>
@@ -389,6 +387,7 @@ $.endlessPaginate({
   position: relative;
   z-index: 1;
   min-height: inherit;
+  max-height: 194px;
 }
 
 .card .data .content .float-right {
@@ -424,6 +423,10 @@ $.endlessPaginate({
   padding-bottom: 0px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
+}
+
+.truncated-message a pre * {
+  position: absolute;
 }
 
 .article .date {

@@ -16,13 +16,13 @@
         </a>
       </div>
       <div class="message">
-        {% if article.title|length >= 28 %}
-        <a href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: pre-wrap;"{{article.message|safe|truncatechars:75}}</pre></a>
+        {% if article.title|length <= 28 %}
+        <a href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:120}}</pre></a>
         {% else %}
-        <a href="{{article.get_absolute_url}}">{{article.message|safe|truncatechars:120}}</a>
+        <a href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:75}}</a></pre>
         {% endif %}
       </div>
-      <div class="user-and-date">
+      <div class="user-and-date" id="user-and-date">
         <div class="user-image">
           <a href="accounts/{{article.user.username}}"><img class="rounded-circle" src="{{article.user.profile.avatar.url}}" alt="" height="25px" width="25px">{{article.user.username}}</a>
         </div>
@@ -126,6 +126,10 @@ hr {
   width: 100%;
 }
 
+.article-info .message a pre *{
+  position: absolute;
+}
+
 .article-info .title {
   padding: 0.5em 0 0.2em 0.5em;
 }
@@ -141,7 +145,7 @@ hr {
   color: gray;
 }
 
-.article-info .message * {
+.article-info .message a {
   font-family: 'Inter', sans-serif;
   font-size: 1rem !important;
   font-weight: normal !important;
@@ -166,7 +170,7 @@ hr {
   margin-right: 1em;
 }
 
-.article-info .date p {
+#user-and-date .user-image a * {
   font-size: 14px;
   color: gray;
 }
@@ -199,7 +203,7 @@ hr {
   color: black;
   color: #1f1f1f;
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.8rem !important;
   font-weight: 300;
 }
 
@@ -211,5 +215,6 @@ hr {
 .article-info .user-and-date .date p {
   margin: inherit;
   align-items: end;
+  font-size: 0.8rem;
 }
 </style>

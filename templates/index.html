@@ -33,8 +33,8 @@
               </div>
               <div class="truncated-message">
                 <a href="{{article.get_absolute_url}}" id="art-message-a">
-                  <p class="article-message" style="overflow: hidden;">
-                    {{article.message|safe|truncatechars:100}}
+                  <p class="article-message">
+                    <pre style="overflow: hidden; white-space: pre-wrap;">{{article.message|safe|truncatechars:100}}</pre>
                   </p>
                 </a>
               </div>

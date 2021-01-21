@@ -34,7 +34,7 @@
           </div>
           <div class="tags">
             {% for tag in article.tags.all %}
-            <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.slug }}</a>
+            <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.name|cut:'#' }}</a>
             {% endfor %}
           </div>
         </div>
@@ -77,7 +77,7 @@ html {
 
 .tags {
   display: flex;
-  margin-bottom: 1.5em;
+  margin: 2em 0;
   flex-wrap: wrap;
 }
 

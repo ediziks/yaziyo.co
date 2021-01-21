@@ -58,11 +58,11 @@
         <div class="tags-box">
           <h3>ilginizi çekebilecek konular</h3>
           {% for tag in top_tags %}
-          <a href="{% url 'articles:tags' tag=tag.slug %}"><button type="button" class="btn btn-info btn-sm">#{{tag}}</button></a>
+          <a href="{% url 'articles:tags' tag=tag.slug %}"><button type="button" class="btn btn-info btn-sm">#{{tag.name|cut:'#'}}</button></a>
           {% endfor %}
         </div>
         <div class="social-box mt-3">
-          <a href="#">
+          <a href="/articles/yaziyo-team/tanitim-yazisi-vol2/">
             <p>Hakkımızda</p>
           </a>
           <span class="dot"></span>
@@ -427,6 +427,8 @@ $.endlessPaginate({
 
 .truncated-message a pre * {
   position: absolute;
+  display: contents;
+  line-height: 1.2;
 }
 
 .article .date {

@@ -25,7 +25,7 @@
         {% endif %}
         <div class="searches">
           {% for tag in article.tags.all %}
-          <a class="badge badge-info" id="article-searches" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.slug }}</a>
+          <a class="badge badge-info" id="article-searches" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.name|cut:'#' }}</a>
           {% endfor %}
         </div>
       </div>

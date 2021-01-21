@@ -19,7 +19,7 @@ tinyMCE.init({
     elementpath: false,
     language: 'tr_TR',
     placeholder: "İçerik buradan başlar...",
-    content_style: 'body {font-family:Inter,Arial,sans-serif; font-size:14pt;}',
+    content_style: 'body {font-family:Inter,Arial,sans-serif; font-size:14pt; line-height:1; }',
     fontsize_formats: "14pt 20pt",
     nonbreaking_force_tab: true,
     image_title: true,

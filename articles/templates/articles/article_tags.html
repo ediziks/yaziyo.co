@@ -4,7 +4,7 @@
 {% load readtime %}
 {% block content %}
 <div class="container result-tag mt-5" style="text-align: center; font-size: 2em;">
-  <h1><strong>#{{tag}}</strong></h1>
+  <h1><strong>#{{tag|cut:'#'}}</strong></h1>
 </div>
 <div class="container articles-tags">
 {% for article in tags_list %}
@@ -27,7 +27,7 @@
         {% endif %}
         <div class="tags">
         {% for tag in article.tags.all %}
-        <a class="badge badge-info" id="article-tags" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag }}</a>
+        <a class="badge badge-info" id="article-tags" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.name|cut:'#' }}</a>
         {% endfor %}
         </div>
       </div>

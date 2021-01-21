@@ -16,7 +16,7 @@
       <p>{{ user.profile.bio }}</p>
     </div>
     <div class="takip">
-      <span>Takipçi <strong>{{user.profile.followers.all.count}}</strong> &nbsp;</span><span> Takip Edilen <strong>{{user.is_following.all.count}}</strong></span>
+      <span>Takipçi <strong>{{user.profile.followers.all.count}}</strong> &nbsp;</span><span>&nbsp; Takip Edilen <strong>{{user.is_following.all.count}}</strong></span>
     </div>
     {% if user.is_authenticated %}
     <form class="follow-form" action="{% url 'accounts:follow' user.username %}" method="POST">
@@ -56,7 +56,7 @@
         </div>
         <div class="row col-md-12 mt-3 profile-article-tags">
           {% for tag in article.tags.all %}
-            <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.slug }}</a>
+            <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.name|cut:'#' }}</a>
           {% endfor %}
         </div>
         <div class="row col-md-12 mt-3 profile-article-info">

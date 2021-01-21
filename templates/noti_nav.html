@@ -25,7 +25,11 @@
   </div>
 </li>
 <li class="nav-item small align-self-center my-2">
+  {% if request.user.notifications.unread and not request.user.notifications.unread == 0 %}
+  <a href="{% url 'accounts:notifications' request.user.username %}" style="color:red;">🔔 Bildirimler</a>
+  {% else %}
   <a href="{% url 'accounts:notifications' request.user.username %}">🔔 Bildirimler</a>
+  {% endif %}
 </li>
 {% endif %}
 

@@ -48,8 +48,72 @@
     width: auto;
   }
 
+  .article-info .title a h1 {
+    font-size: 1rem;
+    max-height: 2.8rem;
+    display: block;
+    overflow-wrap: anywhere;
+  }
+
+  .article-info {
+    padding: 0 0 0 0.3em;
+  }
+
+  .article-info .user-and-date {
+    left: 0.8em;
+    padding: 0;
+  }
+
+  .article-info .user-and-date .date p {
+    font-size: 0.3em;
+  }
+
+  .article-info .message {
+    display: none;
+  }
+
+  .article-info .message * {
+    max-height: 2rem;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+  }
+
+  .article-info .user-and-date img {
+    height: 13px;
+    width: 13px;
+  }
+
+  .article-info .user-and-date .date p {
+    margin: 0 !important;
+    font-size: 0.6rem !important;
+  }
+
+  .article-info .user-and-date a {
+    color: #1f1f1f;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem !important;
+    font-weight: 300;
+  }
+
   .article-info .date {
-    margin-top: 0 !important;
+    margin-top: 7px !important;
+  }
+
+  .article-info .user-and-date {
+    display: block;
+  }
+
+  .article-info .title a h1 {
+    font-size: 1rem !important;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .article-info .title a h1 {
+    overflow-wrap: anywhere;
   }
 }
 
@@ -206,7 +270,7 @@ hr {
   color: black;
   color: #1f1f1f;
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem !important;
+  font-size: 0.8rem;
   font-weight: 300;
 }
 

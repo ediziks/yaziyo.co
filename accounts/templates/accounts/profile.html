@@ -12,12 +12,10 @@
     <div class="username">
       <p>{{ user.profile }}</p>
     </div>
-    <div class="bio">
-      <p>{{ user.profile.bio }}</p>
-    </div>
     <div class="takip">
       <span>Takipçi <strong>{{user.profile.followers.all.count}}</strong> &nbsp;</span><span>&nbsp; Takip Edilen <strong>{{user.is_following.all.count}}</strong></span>
     </div>
+    <div class="form-div">
     {% if user.is_authenticated %}
     <form class="follow-form" action="{% url 'accounts:follow' user.username %}" method="POST">
       {% csrf_token %}
@@ -38,6 +36,10 @@
     {% if user in request.user.profile.followers.all %}
     <p>Seni takip ediyor</p>
     {% endif %}
+    <div class="bio">
+      <p>{{ user.profile.bio }}</p>
+    </div>
+    </div>
 </div>
 </div>
 <div class="container articles-profile">
@@ -65,7 +67,7 @@
           {% else %}
           <button type="button" class="btn btn-outline-danger" disabled="disabled"><i class="far fa-heart"></i> <strong>{{article.likes.count}}</strong></button>
           {% endif %}
-          <button type="button" class="btn btn-outline-success ml-2" disabled="disabled"><i class="far fa-comment-dots"></i></i> <strong>{{article.comments.count}}</strong></button>
+          <button type="button" class="btn btn-outline-success ml-2" disabled="disabled"><i class="far fa-comment"></i></i> <strong>{{article.comments.count}}</strong></button>
         </div>
       </div>
     </div>

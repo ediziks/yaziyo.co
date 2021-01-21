@@ -18,6 +18,9 @@
           </svg></a>
       </li>
     </ul>
+    {% if request.user.notifications.unread and not request.user.notifications.unread == 0 %}
+    <span class="badge badge-pill badge-danger" style="left: 5.6em; bottom: 2.1em;">{{request.user.notifications.unread.count}}</span>
+    {% endif %}
     <button class="navbar-toggler mb-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

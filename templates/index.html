@@ -26,7 +26,7 @@
               <span class="author"><a href="accounts/{{article.user.username}}"><img class="rounded-circle z-depth-0" src="{{article.user.profile.avatar.url}}" alt="" height=25px width=25px>{{article.user.username}}</a></span>
               <div class="float-right">
                 <span class="far fa-heart"> {{article.likes.count}}</span>
-                <span class="far fa-comment-dots"> {{article.comments.count}}</span>
+                <span class="far fa-comment"> {{article.comments.count}}</span>
               </div>
               <div class="title">
                 <h1 class="title"><a href="{{article.get_absolute_url}}">{{article.title|truncatechars:53}}</a></h1>
@@ -108,62 +108,6 @@ $.endlessPaginate({
     bottom: -2rem;
   }
 
-  .article-info .title a h1 {
-    font-size: 1rem;
-    max-height: 2.8rem;
-    display: block;
-    overflow-wrap: anywhere;
-  }
-
-  .article-info {
-    padding: 0 0 0 0.3em;
-  }
-
-  .article-info .user-and-date {
-    left: 0.8em;
-    padding: 0;
-  }
-
-  .article-info .user-and-date .date p {
-    font-size: 0.3em;
-  }
-
-  .article-info .message {
-    display: none;
-  }
-
-  .article-info .message * {
-    max-height: 2rem;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
-  }
-
-  .article-info .user-and-date img {
-    height: 13px;
-    width: 13px;
-  }
-
-  .article-info .user-and-date .date p {
-    margin: 0;
-  }
-
-  .article-info .user-and-date a {
-    color: #1f1f1f;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 300;
-  }
-
-  .article-info .date {
-    margin: 0.2em 0 0 0.2em;
-  }
-
-  .article-info .user-and-date {
-    display: block;
-  }
-
   hr {
     display: none;
     visibility: hidden;
@@ -197,10 +141,6 @@ $.endlessPaginate({
   .beta-msg a img {
     object-fit: scale-down;
     max-height: 15rem;
-  }
-
-  .article-info .title a h1 {
-    overflow-wrap: anywhere;
   }
 }
 
@@ -535,12 +475,12 @@ $.endlessPaginate({
   color: red;
 }
 
-.fa-comment-dots {
+.fa-comment {
   margin-left: 0.1em;
   cursor: default;
 }
 
-.fa-comment-dots:hover {
+.fa-comment:hover {
   color: #28a745;
 }
 </style>

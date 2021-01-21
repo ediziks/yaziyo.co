@@ -55,14 +55,14 @@ class Profile(models.Model):
 
           output_size = (300, 300)
           img.thumbnail(output_size, Image.BICUBIC)
-          if img.mode in ('RGBA', 'LA'):
+          if img.mode != 'RGB':
             img = img.convert("RGB")
           img.save(memfile, 'JPEG', optimize=True)
           default_storage.save(self.avatar.name, memfile)
           memfile.close()
           img.close()
       # images not found exc
-      except (FileNotFoundError):
+      except FileNotFoundError:
         pass
 
     if self.cover:
@@ -74,7 +74,7 @@ class Profile(models.Model):
 
           output_size = (1920, 1080)
           img.thumbnail(output_size, Image.BICUBIC)
-          if img.mode in ('RGBA', 'LA'):
+          if img.mode != 'RGB':
             img = img.convert("RGB")
           img.save(memfile, 'JPEG', optimize=True)
           default_storage.save(self.cover.name, memfile)
@@ -83,9 +83,8 @@ class Profile(models.Model):
       except FileNotFoundError:
         pass
 
+
 # Profile and User objects sync
-
-
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
   # Creates user profile after signup

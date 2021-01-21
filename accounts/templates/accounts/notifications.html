@@ -7,7 +7,7 @@
         <tbody>
         {% for noti in notifications %}
           {% if noti.verb == 'like' %} 
-        <tr><td scope="col"><p><a href="{% url 'accounts:profile' username=noti.actor %}">{{noti.actor}}</a> <a href="{{noti.action_object.get_absolute_url}}">{{noti.action_object.title}}</a> başlıklı yazını beğendi  ❤️  {{noti.timesince}} önce</p></td></tr>
+        <tr><td scope="col"><p><a href="{% url 'accounts:profile' username=noti.actor %}">{{noti.actor}}, </a> <a href="{{noti.action_object.get_absolute_url}}">{{noti.action_object.title}}</a> başlıklı yazını beğendi  ❤️  {{noti.timesince}} önce</p></td></tr>
       {% elif noti.verb == 'takip' %}
         <tr><td scope="row"><p><a href="{% url 'accounts:profile' username=noti.actor %}">{{noti.actor}}</a> seni takip etmeye başladı  ✨  {{noti.timesince}} önce</p></td></tr>
       {% elif noti.verb == 'yorum' %}

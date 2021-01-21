@@ -27,7 +27,7 @@
           <div class="modal-footer">
             <p><a href="{{article.get_like_url}}">Like: {{article.likes.count}}</a></p>
             <div class="tw-share">
-              <span class="btn btn-outline-info fa fa-twitter">{% post_to_twitter "My New Article: {{article.title}}. Check it out!" object_or_url "tweet" %}</span>
+              {% post_to_twitter "Yeni yazımı buradan inceleyebilirsiniz!" object_or_url '<span class="btn btn-outline-info btn-lg fab fa-twitter">' %}
             </div>
           </div>
           <form method="POST">

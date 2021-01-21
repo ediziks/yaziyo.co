@@ -50,7 +50,7 @@
             {% if post.featured_image %}
             <label class="upload-label" id="upfile1" onclick="document.getElementById('id_image').click();"><img id="featured" src="{{article.image.url}}" /></label>
             {% else %}
-            <label class="upload-label" id="upfile1" onclick="document.getElementById('id_image').click();"><img id="featured" src="{% static 'angryimg.png' %}" alt="your image" /><div class="upload-text">Görsel yüklemek için bu alana tıkla</div></label>
+            <label class="upload-label" id="upfile1" onclick="document.getElementById('id_image').click();"><img id="featured" src="{% static 'angryimg.png' %}" alt="your image" /><div class="upload-text">Kapak görseli yüklemek için bu alana tıklayın</div></label>
             {% endif %}
             <br>
             {% render_field form.image style="display: none;" %}
@@ -73,6 +73,8 @@
   transform: translate(-50%, -50%);
   font-size: 18px;
   color: white;
+  background-color: gray;
+  opacity: 0.8;
 }
 
 p {
@@ -83,6 +85,7 @@ p {
 .upload-label {
   cursor: pointer;
   position: relative;
+  max-width: 80%;
 }
 
 .form-group {
@@ -90,7 +93,7 @@ p {
 }
 
 .form-group img {
-  max-width: 80%;
+  max-width: 100%;
   border: 14px solid lightgray;
 }
 

@@ -53,7 +53,7 @@
           <a title="beğen" href="{{article.get_like_url}}"><button type="button" class="btn btn-outline-danger"><i class="far fa-heart"></i> <strong>{{article.likes.count}}</strong></button></a>
           {% endif %}
           <div class="tw-share">
-            {% post_to_twitter "Yeni yazıma buradan göz atabilirsiniz: {{article.title}}. Check it out!" object_or_url "" %}
+            {% post_to_twitter "Yeni yazımı buradan inceleyebilirsiniz!" object_or_url '<span class="btn btn-outline-info btn-lg fab fa-twitter">' %}
           </div>
         </div>
       </div>

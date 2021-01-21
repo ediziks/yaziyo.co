@@ -63,7 +63,7 @@
           {% if request.user in article.likes.all %}
           <button type="button" class="btn btn-outline-danger" disabled="disabled"><i class="fa fa-heart"></i> <strong>{{article.likes.count}}</strong></button>
           {% else %}
-          <button type="button" class="btn btn-outline-danger" disabled="disabled"><i class="fa fa-heart-o"></i> <strong>{{article.likes.count}}</strong></button>
+          <button type="button" class="btn btn-outline-danger" disabled="disabled"><i class="far fa-heart"></i> <strong>{{article.likes.count}}</strong></button>
           {% endif %}
           <button type="button" class="btn btn-outline-success ml-2" disabled="disabled"><i class="far fa-comment-dots"></i></i> <strong>{{article.comments.count}}</strong></button>
         </div>
@@ -87,6 +87,7 @@
 
   .profile-article-title * {
     font-size: 1em !important;
+    letter-spacing: 0.5px;
   }
 
   .profile-article-message * {

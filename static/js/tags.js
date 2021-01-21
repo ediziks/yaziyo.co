@@ -70,7 +70,7 @@
           return;
         
         // Makes item LowerCase
-        item = item.toLowerCase();
+        // item = item.toLowerCase();
         
         // Replaces whitespace with dash
         if (/\s/.test(item)) {

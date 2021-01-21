@@ -17,8 +17,8 @@
       },
       freeInput: true,
       addOnBlur: true,
-      maxTags: undefined,
-      maxChars: undefined,
+      maxTags: 5,
+      maxChars: 25,
       confirmKeys: [13, 44],
       delimiter: ',',
       delimiterRegex: null,
@@ -70,8 +70,8 @@
           return;
         
         // Makes item LowerCase
-        item = item.toLowerCase();
-        
+        // item = item.toLowerCase();
+
         // Replaces whitespace with dash
         if (/\s/.test(item)) {
           item = item.replace(/\s+/g, '-');

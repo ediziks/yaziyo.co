@@ -308,6 +308,7 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
 
 
+TINYMCE_COMPRESSOR = False
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
 TINYMCE_EXTRA_MEDIA = {
@@ -316,7 +317,36 @@ TINYMCE_EXTRA_MEDIA = {
         STATIC_URL + "js/tinycustom.js"
     ]
 }
-# TINYMCE_FILEBROWSER = True
+# TINYMCE_JS_URL = "/static/tinymce/tinymce.min.js"
+# TINYMCE_JS_ROOT = "/static/tinymce"
+
+# TINYMCE_DEFAULT_CONFIG = {
+#     # 'plugins': "image, imagetools,table,spellchecker,wordcount",
+#     'selector': 'textarea',
+#     # 'mode': 'textareas',
+#     # 'selector': 'textarea',
+#     'theme': "silver",
+#     'cleanup_on_startup': True,
+#     'custom_undo_redo_levels': 10,
+#     'min_height': 500,
+#     # 'toolbar': [
+#     #     'undo redo | bold italic underline | fontselect fontsizeselect',
+#     #     'forecolor backcolor | alignleft aligncenter alignright alignfull | numlist bullist outdent indent'
+#     # ],
+#     # 'skin': {'content': 'dark', 'ui': 'oxide-dark'}
+#     # 'inline': True,
+#     'plugins': ['quickbars', 'wordcount', 'preview', 'codesample', 'imagetools', 'hr', 'link', 'spellchecker', 'lists', 'media', 'fullscreen', 'autoresize'],
+#     'toolbar': ['undo redo | fullscreen'],
+#     'menubar': False,
+#     # 'statusbar': False,
+#     'quickbars_insert_toolbar': ' media quickimage pageembed | bullist numlist | hr',
+#     'quickbars_selection_toolbar': 'bold italic underline blockquote | h1 h2 codesample | link | alignleft aligncenter alignright alignjustify | preview',
+#     'quickbars_image_toolbar': 'alignleft aligncenter alignright | blockquote | '
+# }
+# TINYMCE_SPELLCHECKER = True
+# TINYMCE_COMPRESSOR = True
+
+
 # TINYMCE_DEFAULT_CONFIG = {
 #     'height': 300,
 #     'cleanup_on_startup': True,
@@ -337,121 +367,4 @@ TINYMCE_EXTRA_MEDIA = {
 #     'contextmenu': 'formats | link image',
 #     'menubar': True,
 #     'statusbar': True,
-# }
-
-
-# TINYMCE_JS_URL = "/static/tinymce/tinymce.min.js"
-# TINYMCE_JS_ROOT = "/static/tinymce"
-
-# TINYMCE_DEFAULT_CONFIG = {
-#     # 'plugins': "image, imagetools,table,spellchecker,wordcount",
-#     'selector': 'textarea',
-#     # 'mode': 'textareas',
-#     # 'selector': 'textarea',
-#     'theme': "silver",
-#     'cleanup_on_startup': True,
-#     'custom_undo_redo_levels': 10,
-#     'min_height': 500,
-#     # 'toolbar': [
-#     #     'undo redo | bold italic underline | fontselect fontsizeselect',
-#     #     'forecolor backcolor | alignleft aligncenter alignright alignfull | numlist bullist outdent indent'
-#     # ],
-#     # 'skin': {'content': 'dark', 'ui': 'oxide-dark'}
-#     # 'inline': True,
-#     'plugins': ['quickbars', 'wordcount', 'preview', 'codesample', 'imagetools', 'hr', 'link', 'spellchecker', 'lists', 'media', 'fullscreen', 'autoresize'],
-#     'toolbar': ['fullscreen undo redo '],
-#     # 'menubar': False,
-#     # 'statusbar': False,
-#     'quickbars_insert_toolbar': ' media quickimage pageembed | bullist numlist | hr',
-#     'quickbars_selection_toolbar': 'bold italic underline blockquote | h1 h2 codesample | link | alignleft aligncenter alignright alignjustify | preview',
-#     'quickbars_image_toolbar': 'alignleft aligncenter alignright | blockquote | '
-# }
-# TINYMCE_SPELLCHECKER = True
-# TINYMCE_COMPRESSOR = True
-# TINYMCE_EXTRA_MEDIA = {
-#     'css': {
-#         'all': [
-#             ...
-#         ],
-#     },
-#     'js': [
-#         ...
-#     ],
-# }
-
-
-# CKEditor
-# CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor"
-# CKEDITOR_UPLOAD_PATH = "/media/articles/images/"
-# CKEDITOR_RESTRICT_BY_USER = True
-# CKEDITOR_IMAGE_BACKEND = 'pillow'
-# CKEDITOR_IMAGE_MAX_WIDTH = '100'
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         'skin': 'moono-lisa',
-#         # 'skin': 'office2013',
-#         'toolbar': 'Basic',
-#         'toolbar_CustomToolbar': [
-#             # {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-#             # {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-#             # {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
-#             # {'name': 'forms',
-#             #  'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
-#             #            'HiddenField']},
-#             # '/',
-#             {'name': 'basicstyles',
-#              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'Image', 'Table', '-', 'RemoveFormat']},
-#             {'name': 'paragraph',
-#              'items': ['BulletedList', 'NumberedList', '-', 'Blockquote', 'CodeSnippet', '-',
-#                        'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']},
-#             {'name': 'links', 'items': ['Link', 'Unlink']},
-#             # {'name': 'insert',
-#             #  'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
-#             # '/',
-#             {'name': 'styles', 'items': ['Font', 'Format']},
-#             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-#             {'name': 'tools', 'items': ['Maximize', 'Preview', ]},
-#             # put this to force next toolbar on new line
-#         ],
-#         'toolbar': 'CustomToolbar',  # put selected toolbar config here
-#         'toolbarGroups': [{'name': 'document', 'groups': ['mode', 'document', 'doctools']}],
-#         'height': 'auto',
-#         'width': 'auto',
-#         # 'filebrowserWindowHeight': 725,
-#         # 'filebrowserWindowWidth': 900,
-#         'toolbarCanCollapse': False,
-#         'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
-#         'tabSpaces': 2,
-#         # image size
-#         # 'imageResize': {
-#         #     'maxWidth': 800,
-#         #     'maxHeight': 800,
-#         # },
-#         'extraPlugins': ','.join([
-#             # 'uploadimage',  # the upload image feature
-#             # your extra plugins here
-#             # 'div',
-#             'autolink',
-#             # 'autoembed',
-#             # 'autocomplete',
-#             # 'image2',
-#             # 'easyimage',
-#             # 'imagebase',
-#             'codesnippet',
-#             'embedsemantic',
-#             'autogrow',
-#             # 'devtools',
-#             'widget',
-#             'lineutils',
-#             # 'emoji',
-#             'button',
-#             'panelbutton',
-#             'clipboard',
-#             # 'textmatch',
-#             # 'textwatcher',
-#             'dialog',
-#             'dialogui',
-#             'elementspath'
-#         ]),
-#     }
 # }

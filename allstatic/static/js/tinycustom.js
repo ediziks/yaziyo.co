@@ -1,14 +1,14 @@
 tinyMCE.init({
     selector: 'textarea',
-    plugins: 'quickbars wordcount preview codesample image imagetools hr link lists media fullscreen autosave powerpaste nonbreaking',
+    plugins: 'quickbars wordcount codesample image imagetools hr link lists media fullscreen autosave powerpaste nonbreaking',
     powerpaste_allow_local_images: false,
     theme: 'silver',
     mobile: {
         theme: 'mobile',
-        plugins: 'autosave autolink',
-        toolbar: 'undo bold italic underline',
+        plugins: ['autosave', 'lists', 'autolink'],
+        toolbar: ['undo', 'redo', 'bold', 'link', 'bullist', 'numlist', 'styleselect',],
     },
-    toolbar: 'undo redo | preview fullscreen',
+    toolbar: 'undo redo | fullscreen',
     menubar: 'false',
     // 'quickimage' or file_picker_callback will be integrated for local image/file upload
     quickbars_insert_toolbar: 'media image | bullist numlist | hr',
@@ -19,7 +19,7 @@ tinyMCE.init({
     elementpath: false,
     language: 'tr_TR',
     placeholder: "İçerik buradan başlar...",
-    content_style: 'body {font-family:Inter,Arial,sans-serif; font-size:14pt;}',
+    content_style: 'body {font-family:Inter,Arial,sans-serif; font-size:14pt; line-height:1; }',
     fontsize_formats: "14pt 20pt",
     nonbreaking_force_tab: true,
     image_title: true,

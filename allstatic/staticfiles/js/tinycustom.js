@@ -1,6 +1,6 @@
 tinyMCE.init({
     selector: 'textarea',
-    plugins: 'quickbars wordcount preview codesample image imagetools hr link lists media fullscreen autosave powerpaste nonbreaking',
+    plugins: 'quickbars wordcount codesample image imagetools hr link lists media fullscreen autosave powerpaste nonbreaking',
     powerpaste_allow_local_images: false,
     theme: 'silver',
     mobile: {
@@ -8,7 +8,7 @@ tinyMCE.init({
         plugins: ['autosave', 'lists', 'autolink'],
         toolbar: ['undo', 'redo', 'bold', 'link', 'bullist', 'numlist', 'styleselect',],
     },
-    toolbar: 'undo redo | preview fullscreen',
+    toolbar: 'undo redo | fullscreen',
     menubar: 'false',
     // 'quickimage' or file_picker_callback will be integrated for local image/file upload
     quickbars_insert_toolbar: 'media image | bullist numlist | hr',

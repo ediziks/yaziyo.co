@@ -2,9 +2,9 @@
 <li class="nav-item mt-3 mr-1 wide">
   <div class="notifications-dropdown" title="Bildirimler">
     {% if request.user.notifications.unread and not request.user.notifications.unread == 0 %}
-    <span class="badge badge-pill badge-danger">{{request.user.notifications.unread.count}}</span>
+    <span class="badge badge-pill badge-danger" id="wideBadge">{{request.user.notifications.unread.count}}</span>
     {% endif %}
-    <a class="notifications-button" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a0a0a0;"><i class="far fa-bell"></i></a>
+    <a class="notifications-button" href="#" role="button" id="noti-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a0a0a0;"><i class="far fa-bell"></i></a>
     <div class="dropdown-menu" id="noti-drop-menu" aria-labelledby="dropdownMenuLink">
       {% for noti in request.user.notifications.all|slice:":10" %}
       {% if noti.verb == 'like' %}
@@ -13,7 +13,7 @@
       {% elif noti.verb == 'takip' %}
       <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a> seni takip etmeye başladı ✨ {{noti.timesince}}</p>
       {% elif noti.verb == 'yorum' %}
-      <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>, başlığı <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> olan yazına bir yorum bıraktı 💬 {{noti.timesince}}</p>
+      <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>, başlığı <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> olan yazına bir yorum bıraktı <i class="fas fa-comment" style="color:#28a745;"></i> {{noti.timesince}}</p>
       {% endif %}
       {% endfor %}
       {% if not request.user.notifications.count %}

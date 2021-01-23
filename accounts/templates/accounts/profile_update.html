@@ -1,75 +1,196 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
-
 {% block content %}
 <div class="container">
-{% if messages %}
-  {% for msg in messages %}
+  
+</div>
+<div class="form-div">
+  <form method="POST" enctype="multipart/form-data" class="p-2">
+    {% csrf_token %}
+    <fieldset class="form-group mt-4">
+      <div class="cover-pic"><figure><img id="cover" onclick="document.getElementById('id_cover').click();" src="{{user.profile.cover.url}}" width="600px" alt=""><span class="upload-icon">add photo</span></figure></div>
+      <div class="avatar-pic mt-4 mb-4"><figure><img id="avatar" onclick="document.getElementById('id_avatar').click();" src="{{user.profile.avatar.url}}" width="300px" alt=""></figure></div>
+      <div class="name-mail-bio col-lg-6 col-md-8 col-sm-12">
+      {% if messages %}
+      {% for msg in messages %}
       {% if forloop.last %}
-      <div class="alert alert-success alert-dismissable">
+      <div class="alert alert-success alert-dismissable" style="">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         {{msg.message}}
       </div>
       {% endif %}
-  {% endfor %}
-{% endif %}
+      {% endfor %}
+      {% endif %}
+      {% bootstrap_form_errors u_form layout='inline' %}
+      {% bootstrap_form_errors p_form layout='inline' %}
+      {% bootstrap_form u_form layout='inline' %}
+      {% bootstrap_field p_form.bio layout='inline' field_class='bio' %}
+      <button class="btn btn-outline-info float-right" type="submit">Güncelle</button>
+      </div>
+      {% bootstrap_form p_form layout='inline' form_group_class="pform" %}
+    </fieldset>
+  </form>
 </div>
-<div class="form-div">
-<form method="POST" enctype="multipart/form-data" class="p-2">
-  {% csrf_token %}
-  <fieldset class="form-group">
-    {% bootstrap_form_errors u_form layout='inline' %}
-    {% bootstrap_form_errors p_form layout='inline' %}
-    {% bootstrap_form u_form layout='inline' %}
-    <div class="col-6">
-    <p>Kapak Gorseli: <img id="cover" src="{{user.profile.cover.url}}" width="600px" alt=""></p>
-    <p>Avatar: <img id="avatar" src="{{user.profile.avatar.url}}" width="300px" alt=""></p>
-    </div>
-    {% bootstrap_form p_form layout='inline' %}
-  </fieldset>
-  <div class="form-group">
-    <div class="form-group">
-      <button class="btn btn-outline-info float-right mb-5" type="submit">Güncelle</button>
-    </div>
-  </div>
-</form>
-</div>
-</div>
-
 <style>
+@media only screen and (max-width: 320px){
+  #cover {
+    top: 91px !important;;
+  }
+
+  #avatar {
+    top: 13rem !important;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+  #cover {
+    top: 91px !important;
+  }
+
+  #avatar {
+    top: 13.4rem !important;
+  }
+}
+
+@media only screen and  (min-width: 376px) and (max-width: 425px) {
+  #cover {
+    top: 91px !important;
+  }
+
+  #avatar {
+    top: 13.7rem !important;
+  }
+}
+
+@media only screen and  (min-width: 426px) and (max-width: 768px) {
+  #cover {
+    top: 91px !important;
+  }
+
+  #avatar {
+    top: 14.6rem !important;
+  }
+}
+
+@media only screen and  (min-width: 769px) and (max-width: 1024px) {
+  #avatar {
+    top: 15.4rem !important;
+  }
+}
+
+@media only screen and  (min-width: 1025px) and (max-width: 1440px) {
+  #avatar {
+    top: 15.7rem !important;
+  }
+}
+
+
+#cover {
+  width: 100%;
+  height: 200px;
+  left: 0;
+  top: 101px;
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  object-fit: cover;
+  clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -webkit-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -o-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -moz-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -ms-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+}
+
+#avatar {
+  width: 140px;
+  height: 160px;
+  top: 15.9rem;
+  cursor: pointer;
+  object-fit: cover;
+  left: calc(50% - 70px);
+  display: inline-block;
+  position: absolute;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  o-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -moz-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -ms-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.cover-pic figure img {
+  filter: brightness(1);
+  transition: .3s ease-in-out;
+  -webkit-transition: .3s ease-in-out;
+}
+
+.cover-pic figure:hover img {
+  filter: brightness(1.25);
+}
+
+.avatar-pic figure img {
+  filter: brightness(1);
+  transition: .3s ease-in-out;
+  -webkit-transition: .3s ease-in-out;
+}
+
+.avatar-pic figure:hover img {
+  filter: brightness(1.25);
+}
+
+.upload-icon {
+  z-index: 1;
+  position: relative;
+  color: white;
+}
+
+.btn-outline-info.float-right {
+  margin: .5em 0 14em 0;
+}
+
+.name-mail-bio {
+  margin: 18em auto 0;
+}
+
+.bio textarea {
+  resize: none;
+}
+
+.pform {
+  display: none;
+}
+
 .form-div {
   width: 80%;
   margin: 0 auto;
 }
 </style>
 {% endblock content %}
-
 {% block bottom %}
 <script>
-(function () {
+(function() {
   var avatar = document.getElementById("id_avatar");
   var cover = document.getElementById("id_cover");
-  avatar.onchange = function () {
-      var reader = new FileReader();
+  avatar.onchange = function() {
+    var reader = new FileReader();
 
-      reader.onload = function (e) {
-          // get loaded data and render thumbnail.
-          document.getElementById("avatar").src = e.target.result;
-      };
+    reader.onload = function(e) {
+      // get loaded data and render thumbnail.
+      document.getElementById("avatar").src = e.target.result;
+    };
 
-      // read the image file as a data URL.
-      reader.readAsDataURL(this.files[0]);
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
   };
-  cover.onchange = function () {
-      var reader = new FileReader();
+  cover.onchange = function() {
+    var reader = new FileReader();
 
-      reader.onload = function (e) {
-          // get loaded data and render thumbnail.
-          document.getElementById("cover").src = e.target.result;
-      };
+    reader.onload = function(e) {
+      // get loaded data and render thumbnail.
+      document.getElementById("cover").src = e.target.result;
+    };
 
-      // read the image file as a data URL.
-      reader.readAsDataURL(this.files[0]);
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
   };
 })();
 </script>

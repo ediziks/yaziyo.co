@@ -45,12 +45,13 @@
           <span class="help-block">{{ error }}</span>
           {% endfor %}
         </div>
-        <div class="container-fluid">
+        <div class="article-image-upload">
           <div class="form-group image-upload">
             {% if post.featured_image %}
-            <label class="upload-label" id="upfile1" onclick="document.getElementById('id_image').click();"><img id="featured" src="{{article.image.url}}" /></label>
+            <label class="upload-label" onclick="document.getElementById('id_image').click();"><img id="featured" src="{{article.image.url}}"></label>
             {% else %}
-            <label class="upload-label" id="upfile1" onclick="document.getElementById('id_image').click();"><img id="featured" src="{% static 'angryimg.png' %}" alt="your image" /><div class="upload-text">Kapak görseli yüklemek için bu alana tıklayın</div></label>
+            <label class="upload-label" onclick="document.getElementById('id_image').click();"><img id="featured" src="{% static 'angryimg.png' %}" alt="your image"><span class="upload-text">Kapak görseli yüklemek için bu alana tıklayın</span>
+            </label>
             {% endif %}
             <br>
             {% render_field form.image style="display: none;" %}

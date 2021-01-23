@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
+{% load thumbnail %}
 {% block content %}
 <div class="container">
   
@@ -8,8 +9,8 @@
   <form method="POST" enctype="multipart/form-data" class="p-2">
     {% csrf_token %}
     <fieldset class="form-group mt-4">
-      <div class="cover-pic"><figure><img id="cover" onclick="document.getElementById('id_cover').click();" src="{{user.profile.cover.url}}" width="600px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro"></i></span></figure></div>
-      <div class="avatar-pic mt-4 mb-4"><figure><img id="avatar" onclick="document.getElementById('id_avatar').click();" src="{{user.profile.avatar.url}}" width="300px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro"></i></span></figure></div>
+      <div class="cover-pic"><figure><img id="cover" onclick="document.getElementById('id_cover').click();" src="{% thumbnail user.profile.cover 1900x200 crop %}" width="600px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro"></i></span></figure></div>
+      <div class="avatar-pic mt-4 mb-4"><figure><img id="avatar" onclick="document.getElementById('id_avatar').click();" src="{% thumbnail user.profile.avatar 140x160 crop %}" width="300px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro"></i></span></figure></div>
       <div class="name-mail-bio col-lg-6 col-md-8 col-sm-12">
       {% if messages %}
       {% for msg in messages %}

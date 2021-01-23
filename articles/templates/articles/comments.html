@@ -1,4 +1,5 @@
 {% load widget_tweaks %}
+{% load thumbnail %}
 <div class="yorum-header container">
   <h2><span>yorumlar</span></h2>
 </div>
@@ -6,7 +7,7 @@
 {% for comment in article.all_comments %}
 <div class="panel panel-default comment-container">
   <div class="panel panel-head">
-    <img class="comment-author-img" src="{{comment.author.profile.avatar.url}}" height="32" width="32" alt="">
+    <img class="comment-author-img" src="{% thumbnail comment.author.profile.avatar 50x50 crop %}" height="50" width="50" alt="">
     <span class="comment-author-name">
       <a href="/accounts/{{comment.author.username}}">@{{comment.author}}</a>
     </span>

@@ -3,9 +3,10 @@
 {% load static %}
 {% load readtime %}
 {% block content %}
+{% load thumbnail %}
 <div class="top-images">
-  <img class="cover-img" src="{{user.profile.cover.url}}" name="aboutme">
-  <img id="account-img" src="{{user.profile.avatar.url}}" name="aboutme">
+  <img class="cover-img" src="{% thumbnail user.profile.cover 1900x200 crop %}" name="aboutme">
+  <img id="account-img" src="{% thumbnail user.profile.avatar 140x160 crop %}" name="aboutme">
 </div>
 <div class="container-fluid">
   <div class="span3 well jumbotron">
@@ -46,7 +47,7 @@
   {% for article in articles %}
   <div class="profile-article-box col-md-8 col-sm-12 flex-lg-row jumbotron">
     <div class="profile-article-image">
-      <a href="{{article.get_absolute_url}}"><img src="{{article.image.url}}" alt=""></a>
+      <a href="{{article.get_absolute_url}}"><img src="{% thumbnail article.image 680x380 crop %}" alt=""></a>
     </div>
     <div class="media-body">
       <div class="media-heading">

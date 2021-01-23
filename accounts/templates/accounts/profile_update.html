@@ -8,8 +8,8 @@
   <form method="POST" enctype="multipart/form-data" class="p-2">
     {% csrf_token %}
     <fieldset class="form-group mt-4">
-      <div class="cover-pic"><figure><img id="cover" onclick="document.getElementById('id_cover').click();" src="{{user.profile.cover.url}}" width="600px" alt=""><span class="upload-icon">add photo</span></figure></div>
-      <div class="avatar-pic mt-4 mb-4"><figure><img id="avatar" onclick="document.getElementById('id_avatar').click();" src="{{user.profile.avatar.url}}" width="300px" alt=""></figure></div>
+      <div class="cover-pic"><figure><img id="cover" onclick="document.getElementById('id_cover').click();" src="{{user.profile.cover.url}}" width="600px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro"></i></span></figure></div>
+      <div class="avatar-pic mt-4 mb-4"><figure><img id="avatar" onclick="document.getElementById('id_avatar').click();" src="{{user.profile.avatar.url}}" width="300px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro"></i></span></figure></div>
       <div class="name-mail-bio col-lg-6 col-md-8 col-sm-12">
       {% if messages %}
       {% for msg in messages %}
@@ -40,6 +40,10 @@
   #avatar {
     top: 13rem !important;
   }
+
+  .avatar-pic .upload-icon {
+    top: 5.6em !important;
+  }
 }
 
 @media only screen and (min-width: 321px) and (max-width: 375px) {
@@ -49,6 +53,10 @@
 
   #avatar {
     top: 13.4rem !important;
+  }
+
+  .avatar-pic .upload-icon {
+    top: 6em !important;
   }
 }
 
@@ -60,6 +68,10 @@
   #avatar {
     top: 13.7rem !important;
   }
+
+  .avatar-pic .upload-icon {
+    top: 6.3em !important;
+  }
 }
 
 @media only screen and  (min-width: 426px) and (max-width: 768px) {
@@ -69,6 +81,10 @@
 
   #avatar {
     top: 14.6rem !important;
+  }
+
+  .avatar-pic .upload-icon {
+    top: 6.7em !important;
   }
 }
 
@@ -137,10 +153,23 @@
   filter: brightness(1.25);
 }
 
+.avatar-pic .upload-icon {
+  top: 7.7em;
+}
+
 .upload-icon {
   z-index: 1;
   position: relative;
   color: white;
+  top: 2em;
+  display: block;
+  text-align: center;
+  text-align: -webkit-center;
+  cursor: pointer;
+}
+
+.upload-icon .fa-camera-retro {
+  font-size: 2em;
 }
 
 .btn-outline-info.float-right {
@@ -148,7 +177,7 @@
 }
 
 .name-mail-bio {
-  margin: 18em auto 0;
+  margin: 15em auto 0;
 }
 
 .bio textarea {

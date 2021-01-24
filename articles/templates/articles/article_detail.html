@@ -6,8 +6,8 @@
 {% block content %}
 {% load thumbnail %}
 {% if article.image %}
-<div class="article-image" id="art-img" style="background-image:url({{article.image.url}});">
-  <h2></h2>
+<div class="article-image" id="art-img">
+  <img src="{{article.image.url}}" alt="">
 </div>
 {% endif %}
 <div class="col-md-12">
@@ -65,9 +65,15 @@
   {% include "articles/comments.html" %}
 </div>
 <style>
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .user-info {
     padding: 2.6em 1.5em !important;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .dropdown-menu-lg-right {
+    left: -2.8em !important;
   }
 }
 
@@ -152,32 +158,19 @@ pre {
 #art-img {
   /*  padding-top: 10em;
   padding-bottom: 10em; */
-  margin-bottom: 1.3em;
+  margin: 0 auto 1.3em;
   overflow: hidden;
   position: relative;
-  height: 100vh;
-  background-attachment: fixed;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  /*   background-position-x: right;
-  background-position-y: center; */
-  background-repeat: no-repeat;
-  background-position: top center;
+  width: 100%;
+  text-align: center;
+  text-align: -webkit-center;
+  /* height: 100vh; */
 }
 
-/* #art-img h2 {
-  font-size: 70px;
-  letter-spacing: 0.18em;
-  text-align: center;
-  color: white;
-  font-weight: 500;
-  text-transform: uppercase;
-  z-index: 10;
-  opacity: 0.9;
-  text-shadow: 2.5px 2.5px #000000;
-  padding: 0 0.5em 0 0.5em;
-} */
+#art-img img {
+  max-width: 100%;
+}
+
 </style>
 {% endblock content %}
 {% block bottom %}

@@ -141,17 +141,19 @@
 }
 
 .cover-pic figure:hover img {
-  filter: brightness(1.25);
+  filter: brightness(.8);
 }
 
 .avatar-pic figure img {
   filter: brightness(1);
+  box-shadow: inset 0 0 0 0px rgba(0,0,0,.2);
   transition: .3s ease-in-out;
   -webkit-transition: .3s ease-in-out;
 }
 
 .avatar-pic figure:hover img {
-  filter: brightness(1.25);
+  filter: brightness(.8);
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
 }
 
 .avatar-pic .upload-icon {
@@ -167,6 +169,12 @@
   text-align: center;
   text-align: -webkit-center;
   cursor: pointer;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.fa-camera-retro {
+  opacity: 1;
 }
 
 .upload-icon .fa-camera-retro {

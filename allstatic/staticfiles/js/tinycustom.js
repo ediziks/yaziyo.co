@@ -1,12 +1,12 @@
 tinyMCE.init({
     selector: 'textarea',
-    plugins: 'quickbars wordcount codesample image imagetools hr link lists media fullscreen autosave powerpaste nonbreaking',
+    plugins: 'quickbars wordcount codesample image imagetools hr autolink link lists media fullscreen autosave powerpaste nonbreaking',
     powerpaste_allow_local_images: false,
     theme: 'silver',
     mobile: {
         theme: 'mobile',
         plugins: ['autosave', 'lists', 'autolink'],
-        toolbar: ['undo', 'redo', 'bold', 'link', 'bullist', 'numlist', 'styleselect',],
+        toolbar: ['undo', 'redo', 'bold', 'italic', 'underline', 'link', 'bullist', 'numlist'],
     },
     toolbar: 'undo redo | fullscreen',
     menubar: 'false',
@@ -19,7 +19,7 @@ tinyMCE.init({
     elementpath: false,
     language: 'tr_TR',
     placeholder: "İçerik buradan başlar...",
-    content_style: 'body {font-family:Inter,Arial,sans-serif; font-size:14pt; line-height:1; }',
+    content_style: 'body {font-family:'Inter', sans-serif; font-size:14pt; line-height:1; } img {max-width: 100%; height: auto;}',
     fontsize_formats: "14pt 20pt",
     nonbreaking_force_tab: true,
     image_title: true,

@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% load thumbnail %}
+{% block head %}
+  <title>yaziyo.co</title>
+  <meta name="title" content="yaziyo.co">
+  <meta name="description" content="İlgili Olduklarınızı Okuyun, Bilgili Olduklarını Yazın">
+{% endblock head %}
 {% block content %}
 <div class="banner">
   <img src="{% static 'banner.png' %}" width="100%">

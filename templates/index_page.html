@@ -17,7 +17,7 @@
       </div>
       <div class="message">
         {% if article.title|length <= 28 %}
-        <a href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:120}}</pre></a>
+        <a href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:122}}</pre></a>
         {% else %}
         <a href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:75}}</a></pre>
         {% endif %}
@@ -225,6 +225,10 @@ hr {
   margin: auto;
   padding: 0 1em 0 0.5em;
   height: 60%;
+}
+
+.article-info .message pre * {
+  display: contents;
 }
 
 .article-info .message img {

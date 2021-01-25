@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% block head %}
+  <!-- Primary Meta Tags -->
+  <title>Kaydedilenler</title>
+  <meta name="title" content="Kaydedilenler">
+{% endblock head %}
 {% block content %}
 <div class="justify-content-center mt-5">
   {% for article in bookmarks %}

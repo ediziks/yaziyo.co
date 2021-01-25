@@ -2,12 +2,14 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load thumbnail %}
-<html lang="en">
+<html lang="tr">
 
 <head>
-  <title>yaziyo.co</title>
+  {% block head %}
+  {% endblock head %}
   <!-- Required meta tags -->
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{% static 'bootstrap-4.6.0-dist/css/bootstrap.min.css' %}">
@@ -32,8 +34,6 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="{% static 'yaziyo-favicon/ms-icon-144x144.png' %}">
   <meta name="theme-color" content="#ffffff">
-  {% block head %}
-  {% endblock head %}
 </head>
 
 <body>

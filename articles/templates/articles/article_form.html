@@ -28,7 +28,7 @@
       {% bootstrap_form_errors form layout='inline' %}
       <div class="title-body-all container">
         <div class="form-group">
-          {% render_field form.title class="form-control title" placeholder="Başlık Böyle Olur..." autocomplete="false" data-lpignore="true" maxlength="140" type="text" %}
+          {% render_field form.title class="form-control title" placeholder="Başlık Böyle Olur..." autocomplete="off" data-lpignore="true" maxlength="140" type="text" %}
           {% for error in field.errors %}
           <span class="help-block">{{ error }}</span>
           {% endfor %}
@@ -92,6 +92,7 @@ p {
 .form-group img {
   max-width: 100%;
   border: 14px solid lightgray;
+  border-radius: 5px;
 }
 
 .form-control.title {

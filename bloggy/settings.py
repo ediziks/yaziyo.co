@@ -36,7 +36,7 @@ if os.environ['USER'] == 'zx':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', 'yaziyo.co', 'yaziyo.co/', '.yaziyo.co/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'bloggy-dev.eu-central-1.elasticbeanstalk.com', 'yaziyo.co', '*.yaziyo.co', 'www.yaziyo.co']
 
 # ADMIN_ENABLED = False # or DEBUG
 

@@ -3,6 +3,12 @@
 {% load readtime %}
 {% load social_share %}
 {% load widget_tweaks %}
+{% block head %}
+  <meta name="twitter:image" content="https://yaziyo.co/{{article.image.url}}"/>
+  <meta property="twitter:image:alt" content="{{article.title}}" />
+  <meta name="twitter:card" content="{{article.message|safe|truncatechars:150}}"/>
+  <meta name="twitter:site" content="@{{article.user.username}}"/>
+{% endblock head %}
 {% block content %}
 {% load thumbnail %}
 {% if article.image %}
@@ -100,7 +106,7 @@ html {
 .fa-calendar-alt {
   border-left: 1px solid black;
   padding-left: 1em;
-} 
+}
 
 .username a {
   color: black;
@@ -170,7 +176,6 @@ pre {
 #art-img img {
   max-width: 100%;
 }
-
 </style>
 {% endblock content %}
 {% block bottom %}

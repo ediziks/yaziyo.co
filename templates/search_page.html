@@ -9,7 +9,7 @@
     <div class="article-info">
       <div class="title">
         <a href="{{article.get_absolute_url}}">
-          <h1>{{article.title}}</h1>
+          <h1>{{article.title|truncatechars:80}}</h1>
         </a>
       </div>
       <div class="message">

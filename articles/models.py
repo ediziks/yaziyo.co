@@ -22,9 +22,9 @@ def image_upload_dir(instance, filename):
 
 class Article(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='articles', on_delete=models.CASCADE)
-  title = models.CharField(max_length=255, default='', blank=False)
+  title = models.CharField(max_length=255, default='', blank=False, unique=False)
   message = HTMLField(blank=False, null=False)
-  slug = models.SlugField(max_length=140, allow_unicode=True, default='', blank=False, unique=False)
+  slug = models.SlugField(max_length=140, allow_unicode=True, default='', blank=False)
   tags = TaggableManager(blank=True)
   likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="article_likes", blank=True)
   created_date = models.DateTimeField(default=timezone.now)

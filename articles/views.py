@@ -15,6 +15,8 @@ from . import models, forms
 from accounts.models import Profile
 from notifications.signals import notify
 from django.db import IntegrityError
+from django.utils.text import slugify
+from unidecode import unidecode
 
 
 class CreateArticle(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
@@ -33,6 +35,34 @@ class CreateArticle(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
       except (IntegrityError, ValueError):
         messages.error(self.request, "Aynı başlığa sahip başka bir yazınız bulunmakta. Farklı bir başlık seçebilir veya başlığa ekleme/çıkarma yapabilirsiniz.")
         return HttpResponseRedirect('/articles/new')
+
+  def get_success_url(self):
+    return reverse('articles:single', kwargs={'username': self.object.user.username, 'slug': self.object.slug})
+
+
+class UpdateArticle(LoginRequiredMixin, SelectRelatedMixin, generic.UpdateView):
+  model = models.Article
+  fields = ('image', 'title', 'message', 'tags')
+  select_related = ('user',)
+  template_name = 'articles/article_update.html'
+
+  def form_valid(self, form):
+    if form.is_valid():
+      self.object = form.save(commit=False)
+      self.object.user = self.request.user
+      try:
+        tobeupd = models.Article.objects.get(pk=self.object.pk)
+        tobeupd.title = self.object.title
+        tobeupd.slug = slugify(unidecode(self.object.slug))
+        tobeupd.message = self.object.message
+        tobeupd.image = self.object.image
+        tobeupd.save()
+        # the next line is for tags
+        form.save_m2m()
+        return super().form_valid(form)
+      except (IntegrityError, ValueError):
+        messages.error(self.request, "Aynı başlığa sahip başka bir yazınız bulunmakta. Farklı bir başlık seçebilir veya başlığa ekleme/çıkarma yapabilirsiniz.")
+        return HttpResponseRedirect('articles:update', kwargs={'username': self.object.user.username, 'slug': self.object.slug})
 
   def get_success_url(self):
     return reverse('articles:single', kwargs={'username': self.object.user.username, 'slug': self.object.slug})

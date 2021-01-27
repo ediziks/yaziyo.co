@@ -13,7 +13,7 @@
   <img id="cover-img" src="{% thumbnail user.profile.cover 1900x200 crop %}" name="aboutme">
   <img id="account-img" src="{% thumbnail user.profile.avatar 140x160 crop %}" name="aboutme">
 </div>
-<div class="container-fluid">
+<div class="container-fluid col-xl-6 col-lg-10 col-md-10">
   <div class="span3 well jumbotron">
     <div class="username">
       <p>{{ user.profile }}</p>

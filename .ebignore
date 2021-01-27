@@ -1,5 +1,14 @@
 # db
+mylocal_db
+mylocal_db/
 mylocal_db/*
 
 # allstatic
+allstatic
+allstatic/
 allstatic/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

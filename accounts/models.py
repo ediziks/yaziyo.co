@@ -49,7 +49,6 @@ class Profile(models.Model):
       memfile = BytesIO()
 
       try:
-        # img = Image.open(self.avatar)
         img = Image.open(self.avatar)
         if img.height > 300 or img.width > 300:
           output_size = (300, 300)
@@ -69,7 +68,7 @@ class Profile(models.Model):
           memfile.close()
           img.close()
       # images not found exc
-      except FileNotFoundError:
+      except (FileNotFoundError, AttributeError):
         pass
 
     if self.cover:

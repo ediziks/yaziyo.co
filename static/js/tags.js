@@ -78,14 +78,9 @@
         }
 
         // add '#' as first char
-        if (item.charAt(0) !== '#') {
+        if (item.charAt(0) !== '#' && item.length >= 1) {
           item = '#' + item;
         } 
-
-        // remove item contains only '#'
-        if (item.charAt(0) === '#' && item.length <= 1) {
-          item.remove();
-        }
 
         // Ignore falsey values, except false
         if (item !== false && !item)

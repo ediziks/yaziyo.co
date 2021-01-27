@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from tinymce.widgets import TinyMCE
 from .models import Article, Comment
 from taggit.forms import TagField
+from taggit.forms import TagWidget
 
 
 class ArticleForm(forms.ModelForm):
@@ -13,12 +14,13 @@ class ArticleForm(forms.ModelForm):
     widgets = {
       'title': forms.Textarea(attrs={'placeholder': 'Başlık'}),
       'message': forms.CharField(widget=TinyMCE()),
+      'tags': TagWidget(),
     }
 
-  def clean_image(self):
-    title = self.cleaned_data.get('title')
-    if Article.objects.filter(title=title):
-      raise ValidationError('Bu başlığa sahip bir yazı mevcut. Lütfen bir başka başlık seçiniz.')
+  # def clean_title(self):
+  #   title = self.cleaned_data.get('title')
+  #   if Article.objects.filter(title=title):
+  #     raise ValidationError('Bu başlığa sahip bir yazı mevcut. Lütfen bir başka başlık seçiniz.')
 
   def clean_image(self):
     image = self.cleaned_data.get('image', False)
@@ -32,6 +34,13 @@ class ArticleForm(forms.ModelForm):
   # def __init__(self, *args, **kwargs):
   #   user = kwargs.pop('user', None)
   #   super().__init__(*args, **kwargs)
+
+
+class ArticleUpdateForm(forms.ModelForm):
+  class Meta():
+    # abstract = True
+    model = Article
+    fields = ('image', 'title', 'message', 'tags')
 
 
 class CommentForm(forms.ModelForm):

@@ -52,13 +52,20 @@ class Profile(models.Model):
         # img = Image.open(self.avatar)
         img = Image.open(self.avatar)
         if img.height > 300 or img.width > 300:
-
           output_size = (300, 300)
           img.thumbnail(output_size, Image.BICUBIC)
           if img.mode != 'RGB':
             img = img.convert("RGB")
           img.save(memfile, 'JPEG', optimize=True)
           default_storage.save(self.avatar.name, memfile)
+          memfile.close()
+          img.close()
+        else:
+          img.thumbnail(img.size, Image.BICUBIC)
+          if img.mode != 'RGB':
+            img = img.convert('RGB')
+          img.save(memfile, 'JPEG', optimize=True)
+          default_storage.save(self.image.name, memfile)
           memfile.close()
           img.close()
       # images not found exc
@@ -71,13 +78,20 @@ class Profile(models.Model):
       try:
         img = Image.open(self.cover)
         if img.height > 1920 or img.width > 1080:
-
           output_size = (1920, 1080)
           img.thumbnail(output_size, Image.BICUBIC)
           if img.mode != 'RGB':
             img = img.convert("RGB")
           img.save(memfile, 'JPEG', optimize=True)
           default_storage.save(self.cover.name, memfile)
+          memfile.close()
+          img.close()
+        else:
+          img.thumbnail(img.size, Image.BICUBIC)
+          if img.mode != 'RGB':
+            img = img.convert('RGB')
+          img.save(memfile, 'JPEG', optimize=True)
+          default_storage.save(self.image.name, memfile)
           memfile.close()
           img.close()
       except FileNotFoundError:

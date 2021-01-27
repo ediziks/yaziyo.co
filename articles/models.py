@@ -52,6 +52,14 @@ class Article(models.Model):
         default_storage.save(self.image.name, memfile)
         memfile.close()
         img.close()
+      else:
+        img.thumbnail(img.size, Image.BICUBIC)
+        if img.mode != 'RGB':
+          img = img.convert('RGB')
+        img.save(memfile, 'JPEG', optimize=True)
+        default_storage.save(self.image.name, memfile)
+        memfile.close()
+        img.close()
 
   def all_comments(self):
     return self.comments.all().order_by('-created_date')

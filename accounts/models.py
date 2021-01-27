@@ -64,7 +64,7 @@ class Profile(models.Model):
           if img.mode != 'RGB':
             img = img.convert('RGB')
           img.save(memfile, 'JPEG', optimize=True)
-          default_storage.save(self.image.name, memfile)
+          default_storage.save(self.avatar.name, memfile)
           memfile.close()
           img.close()
       # images not found exc
@@ -90,10 +90,10 @@ class Profile(models.Model):
           if img.mode != 'RGB':
             img = img.convert('RGB')
           img.save(memfile, 'JPEG', optimize=True)
-          default_storage.save(self.image.name, memfile)
+          default_storage.save(self.cover.name, memfile)
           memfile.close()
           img.close()
-      except FileNotFoundError:
+      except (FileNotFoundError, AttributeError):
         pass
 
 

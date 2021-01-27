@@ -887,3 +887,9 @@
 2021-01-27 17:27:38.054 +03 [220258] ERROR:  duplicate key value violates unique constraint "taggit_tag_slug_key"
 2021-01-27 17:27:38.054 +03 [220258] DETAIL:  Key (slug)=(-tag) already exists.
 2021-01-27 17:27:38.054 +03 [220258] STATEMENT:  INSERT INTO "taggit_tag" ("name", "slug") VALUES ('--tag', '-tag') RETURNING "taggit_tag"."id"
+2021-01-27 20:04:52.112 +03 [335886] ERROR:  duplicate key value violates unique constraint "taggit_tag_slug_key"
+2021-01-27 20:04:52.112 +03 [335886] DETAIL:  Key (slug)=(other) already exists.
+2021-01-27 20:04:52.112 +03 [335886] STATEMENT:  INSERT INTO "taggit_tag" ("name", "slug") VALUES ('#other', 'other') RETURNING "taggit_tag"."id"
+2021-01-27 20:04:52.125 +03 [335886] ERROR:  duplicate key value violates unique constraint "taggit_tag_slug_key"
+2021-01-27 20:04:52.125 +03 [335886] DETAIL:  Key (slug)=(tags) already exists.
+2021-01-27 20:04:52.125 +03 [335886] STATEMENT:  INSERT INTO "taggit_tag" ("name", "slug") VALUES ('#tags', 'tags') RETURNING "taggit_tag"."id"

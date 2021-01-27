@@ -2,6 +2,11 @@
 {% load social_share %}
 {% load el_pagination_tags %}
 {% load readtime %}
+{% block head %}
+  <title>#{{tag|cut:'#'}} - yaziyo.co</title>
+  <meta name="title" content="{{tag|cut:'#'}}">
+  <meta name="description" content="Tag arama">
+{% endblock head %}
 {% block content %}
 <div class="container result-tag mt-5" style="text-align: center; font-size: 2em;">
   <h1><strong>#{{tag|cut:'#'}}</strong><span style="color:dimgray;"> için bulunan </span><strong>{{tags_list.count}}</strong><span style="color:dimgray;"> yazı</span></h1>

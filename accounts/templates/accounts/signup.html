@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load socialaccount %}
+{% block head %}
+  <title>Kaydol - yaziyo.co</title>
+  <meta name="title" content="Kaydol">
+  <meta name="description" content="Kayıt ol">
+{% endblock head %}
 {% block content %}
 <div class="container">
 {% if messages %}

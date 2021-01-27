@@ -1,5 +1,10 @@
 {% extends "articles/article_base.html" %}
 {% load social_share %}
+{% block head %}
+  <title>Yazı Silme Onay '{{article.title}}' - yaziyo.co</title>
+  <meta name="title" content="Yazı Silme Onay '{{article.title}}'">
+  <meta name="description" content="Yazı Silme Onay Sayfası">
+{% endblock head %}
 {% block content %}
 <div class="jumbotron">
   <h3>You sure you wanna delete?</h3>

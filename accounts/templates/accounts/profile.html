@@ -2,6 +2,11 @@
 {% load bootstrap4 %}
 {% load static %}
 {% load readtime %}
+{% block head %}
+  <title>@{{user.username}} Profil - yaziyo.co</title>
+  <meta name="title" content="@{{user.username}} Profil">
+  <meta name="description" content="Profil Sayfası">
+{% endblock head %}
 {% block content %}
 {% load thumbnail %}
 <div class="top-images">

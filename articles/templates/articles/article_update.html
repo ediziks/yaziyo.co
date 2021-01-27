@@ -3,9 +3,9 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block head %}
-  <title>Yeni Yazı - yaziyo.co</title>
-  <meta name="title" content="Yeni Yazı">
-  <meta name="description" content="Yeni Yazı Yaz">
+  <title>Yazı Güncelle '{{article.title}}' - yaziyo.co</title>
+  <meta name="title" content="Yazı Güncelle - '{{article.title}}'">
+  <meta name="description" content="{{article.message|safe|truncatechars:55}}">
   {{ form.media }}
 {% endblock head %}
 {% block content %}
@@ -14,7 +14,7 @@
     {% if messages %}
     {% for msg in messages %}
     {% if forloop.last %}
-    <div class="alert alert-warning alert-dismissable">
+    <div class="alert alert-success alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       {{msg.message}}
     </div>
@@ -23,7 +23,7 @@
     {% endif %}
   </div>
   <div class="article-form">
-    <form class="article-form-form" method="POST" action="{% url 'articles:create' %}" id="ArticleForm" enctype="multipart/form-data">
+    <form class="article-form-form" method="POST" id="ArticleForm" enctype="multipart/form-data">
       {% csrf_token %}
       {% for hidden in form.hidden_fields %}
       {{ hidden }}
@@ -43,19 +43,14 @@
           {% endfor %}
         </div>
         <div class="form-group">
-          {% render_field form.tags data-role="tagsinput" type="text" data-lpignore="true" class="form-control tags" name="tags" placeholder="Tag + Enter (en fazla 5)" size="10" %}
+          {% render_field form.tags data-role="tagsinput" type="text" data-lpignore="true" class="form-control tags" name="tags" placeholder="#Tag + Enter (Maks = 5)" size="10" %}
           {% for error in field.errors %}
           <span class="help-block">{{ error }}</span>
           {% endfor %}
         </div>
         <div class="article-image-upload">
           <div class="form-group image-upload">
-            {% if post.featured_image %}
             <label class="upload-label" onclick="document.getElementById('id_image').click();"><img id="featured" src="{{article.image.url}}"></label>
-            {% else %}
-            <label class="upload-label" onclick="document.getElementById('id_image').click();"><img id="featured" src="{% static 'angryimg.png' %}" alt="your image"><span class="upload-text">Kapak görseli yüklemek için bu alana tıklayın</span>
-            </label>
-            {% endif %}
             <br>
             {% render_field form.image style="display: none;" %}
           </div>

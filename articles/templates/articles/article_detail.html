@@ -5,7 +5,7 @@
 {% load widget_tweaks %}
 {% block head %}
   <!-- Primary Meta Tags -->
-  <title>{{article.title}}</title>
+  <title>{{article.title}} - yaziyo.co</title>
   <meta name="title" content="{{article.title}}">
   <meta name="description" content="{{article.message|safe|truncatechars:55}}">
   <!-- Open Graph / Facebook -->
@@ -59,7 +59,8 @@
         </div>
         <div class="modal-footer">
           {% if user.is_authenticated and article.user == request.user %}
-          <a class="ml-auto" title="sil" href="{% url 'articles:delete' username=request.user.username slug=article.slug %}"><button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button></a>
+          <a class="edit-button" title="düzenle" href="{% url 'articles:update' request.user.username article.slug %}"><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></a>
+          <a class="delete-button" title="sil" href="{% url 'articles:delete' username=request.user.username slug=article.slug %}"><button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button></a>
           {% endif %}
           {% if article in request.user.profile.bookmarks.all %}
           <a title="kaydedilenlerden çıkar" href="{% url 'articles:delete_bookmark' bookmark_slug=article.slug %}"><button type="button" class="btn btn-outline-primary"><i class="fa fa-bookmark"></i>&nbsp;<i class="fas fa-check"></i></button></a>
@@ -143,6 +144,10 @@ h1 {
   font-weight: 800 !important;
   border-top: 1px solid #dee2e6 !important;
   padding-top: 0.6em !important;
+}
+
+.edit-button, .delete-button {
+  display: content;
 }
 
 .badge-info {

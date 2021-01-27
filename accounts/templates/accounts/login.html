@@ -2,6 +2,11 @@
 {% load bootstrap4 %}
 {% load socialaccount %}
 {% load widget_tweaks %}
+{% block head %}
+  <title>Giriş - yaziyo.co</title>
+  <meta name="title" content="Giriş">
+  <meta name="description" content="Giriş Yap">
+{% endblock head %}
 {% block content %}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% if user.is_authenticated %}

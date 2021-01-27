@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load thumbnail %}
+{% block head %}
+  <title>@{{user.username}} Profil Güncelle - yaziyo.co</title>
+  <meta name="title" content="@{{user.username}} Profil Güncelle">
+  <meta name="description" content="Profil Güncelleme Sayfası">
+{% endblock head %}
 {% block content %}
 <div class="form-div">
   <form method="POST" enctype="multipart/form-data" class="p-2">

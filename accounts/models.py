@@ -26,7 +26,6 @@ def avatar_upload_dir(instance, filename):
 
 
 class Profile(models.Model):
-
   user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', on_delete=models.CASCADE)
   # email = models.EmailField(max_length=150, unique=True, blank=False, null=False)
   bio = models.TextField(max_length=280, blank=True)

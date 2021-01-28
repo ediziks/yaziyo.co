@@ -23,12 +23,11 @@ import notifications.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('admin/filebrowser/', site.urls),
     path('', index, name='home'),
-    # path('', include('accounts.urls', namespace='accounts')), -> if you don't wanna show accounts prefix in url
-    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
+    # path('', include('accounts.urls', namespace='accounts')), -> if you don't wanna show accounts prefix in url
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('articles/', include('articles.urls', namespace='articles')),
     path('search/', SearchView.as_view(), name='search'),
     path('tinymce/', include('tinymce.urls')),

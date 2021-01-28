@@ -195,6 +195,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',  # For EL-pagination
+                'bloggy.context_processors.google_analytics',  # For Google Analytics Key to base.html
             ],
         },
     },
@@ -275,6 +276,9 @@ SITE_ID = 2
 
 RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
+
+if not DEBUG:
+    GOOGLE_ANALYTICS_KEY = env('GOOGLE_ANALYTICS_KEY')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'

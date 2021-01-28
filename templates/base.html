@@ -3,9 +3,19 @@
 {% load bootstrap4 %}
 {% load thumbnail %}
 <html lang="tr">
-
 <head>
+  {% if GA_KEY %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{GA_KEY}}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{GA_KEY}}');
+    </script> 
+  {% endif %}
   {% block head %}
+
   {% endblock head %}
   <!-- Required meta tags -->
   <meta charset="UTF-8">

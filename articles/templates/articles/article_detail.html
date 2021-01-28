@@ -15,7 +15,7 @@
   <meta property="og:description" content="{{article.message|safe|truncatechars:55}}">
   <meta property="og:image" content="{{article.image.url}}">
   <!-- Twitter -->
-  <meta property="twitter:card" content="{{article.message|safe|truncatechars:55}}">
+  <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://yaziyo.co/{{article.get_absolute_url}}">
   <meta property="twitter:title" content="{{article.title}}">
   <meta property="twitter:description" content="{{article.message|safe|truncatechars:55}}">
@@ -33,7 +33,7 @@
     <div class="article media">
       <div class="media-body">
         <div class="media-heading">
-          <div class="user-info">
+          <div class="user-info col-xl-7 col-lg-8 col-md-10 col-sm-12">
             <span class="username">
               <a href="{% url 'accounts:profile' username=article.user.username %}"><img src="{% thumbnail article.user.profile.avatar 50x50 crop %}" class="rounded-circle mr-1" width="50" height="50" alt="">@{{article.user.username}}</a>
             </span>
@@ -176,6 +176,7 @@ pre {
   background: #c8c8c8;
   padding: 1.3em 1.5em;
   border-radius: 10px;
+  margin: 0 auto;
 }
 
 #art-img {

@@ -27,7 +27,8 @@
           <a href="accounts/{{article.user.username}}"><img class="rounded-circle" src="{{article.user.profile.avatar.url}}" alt="" height="25px" width="25px">{{article.user.username}}</a>
         </div>
         <div class="date">
-          <p>{{article.created_date|date:"d-M-Y" }}</p>
+          <span class="far fa-heart"> {{article.likes.count}}</span>
+          <span class="far fa-comment"> {{article.comments.count}}</span>
         </div>
       </div>
     </div>
@@ -64,10 +65,6 @@
     padding: 0;
   }
 
-  .article-info .user-and-date .date p {
-    font-size: 0.3em;
-  }
-
   .article-info .message {
     display: none;
   }
@@ -85,7 +82,7 @@
     width: 13px;
   }
 
-  .article-info .user-and-date .date p {
+  .article-info .user-and-date .date span {
     margin: 0 !important;
     font-size: 0.6rem !important;
   }
@@ -236,9 +233,9 @@ hr {
 }
 
 .article-info .date {
-  margin-top: 4px;
+  margin-top: 7px;
   margin-left: auto;
-  margin-right: 1em;
+  margin-right: 2em;
 }
 
 #user-and-date .user-image a * {
@@ -246,10 +243,17 @@ hr {
   color: gray;
 }
 
-.article-info .date p:hover {
+.article-info .date:hover {
   cursor: default;
 }
 
+.article-info .date * {
+  color: black;
+}
+
+.article-info .date *:hover {
+  color: black;
+}
 
 .article-info .user-image img {
   display: inline-block;

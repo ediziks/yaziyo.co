@@ -40,10 +40,9 @@ class SearchView(AjaxListView):
 @page_template('index_page.html')
 def index(request, template='index.html', extra_context=None):
   context = {
-      # 'userlist': User.objects.all()[:10],
-      'articlelist': Article.objects.all(),
-      'editorpicks': Article.objects.annotate(like_counts=Count('likes')).order_by('-like_counts')[:6],
-      'top_tags': Article.tags.most_common()[:10],
+    'articlelist': Article.objects.all(),
+    'editorpicks': Article.objects.annotate(like_counts=Count('likes')).order_by('-like_counts')[:6],
+    'top_tags': Article.tags.most_common()[:10],
   }
 
   if extra_context is not None:

@@ -51,6 +51,10 @@ def index(request, template='index.html', extra_context=None):
   return render(request, template, context)
 
 
+def handler404(request, exception):
+  return render(request, '404.html')
+
+
 # will be uncommented after error templates written
 # def handler404(request, *args, **argv):
 #   response = render_to_response('404.html', {}, context_instance=RequestContext(request))

@@ -10,7 +10,7 @@
       {% if noti.verb == 'like' and noti.actor and noti.action_object %}
       <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>,
         <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> başlıklı yazını beğendi <i class="fas fa-heart"></i> {{noti.timesince}}</p>
-      {% elif noti.verb == 'takip' and noti.actor and noti.action_object %}
+      {% elif noti.verb == 'takip' and noti.actor %}
       <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a> seni takip etmeye başladı ✨ {{noti.timesince}}</p>
       {% elif noti.verb == 'yorum' and noti.actor and noti.action_object %}
       <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>, başlığı <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> olan yazına bir yorum bıraktı <i class="fas fa-comment" style="color:#28a745;"></i> {{noti.timesince}}</p>

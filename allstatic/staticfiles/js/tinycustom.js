@@ -1,6 +1,6 @@
 tinyMCE.init({
     selector: 'textarea',
-    plugins: 'quickbars wordcount codesample image imagetools hr autoresize autolink link lists media fullscreen autosave paste nonbreaking',
+    plugins: 'quickbars wordcount codesample image imagetools hr autoresize link lists media fullscreen autosave paste nonbreaking',
     theme: 'silver',
     mobile: {
         theme: 'mobile',
@@ -20,18 +20,25 @@ tinyMCE.init({
     elementpath: false,
     language: 'tr_TR',
     placeholder: "İçerik buradan başlar...",
+    relative_urls : false,
+    remove_script_host : false,
+    target_list: false,
+    convert_urls: true,
+    default_link_target: '_blank',
+    rel_list: [
+        {title: 'default', value: 'nofollow noopener noreferrer'}
+    ],
+    link_assume_external_targets: true,
     content_style: "body * {margin-block-start: 0 !important; margin-block-end: 0 !important; line-height: 1.5 !important;} body {font-family:'Inter', sans-serif; font-size:14pt;} img {max-width: 100%; height: auto;}",
     fontsize_formats: "14pt 20pt",
     nonbreaking_force_tab: true,
     image_title: true,
     image_caption: true,
     // paste_data_images: true,
-    automatic_uploads: true,
+    // automatic_uploads: true,
     // images_upload_url: "/static/js/postAcceptor.php",
     // images_upload_base_path: "/static/js",
     // images_upload_credentials: true,
-    // convert_urls: false,
-    // relative_urls : false,
 
     // images_upload_handler : function handler(blobInfo, success, failure, progress) {
     //     {

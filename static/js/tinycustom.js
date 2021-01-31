@@ -20,6 +20,15 @@ tinyMCE.init({
   elementpath: false,
   language: 'tr_TR',
   placeholder: "İçerik buradan başlar...",
+  relative_urls : false,
+  remove_script_host : false,
+  target_list: false,
+  convert_urls: true,
+  default_link_target: '_blank',
+  rel_list: [
+      {title: 'default', value: 'nofollow noopener noreferrer'}
+  ],
+  link_assume_external_targets: true,
   content_style: "body {font-family:'Inter', sans-serif; font-size:14pt; line-height: normal !important; } img {max-width: 100%; height: auto;}",
   fontsize_formats: "14pt 20pt",
   nonbreaking_force_tab: true,

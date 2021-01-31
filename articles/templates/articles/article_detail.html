@@ -16,11 +16,11 @@
 <meta property="og:description" content="{{article.message|safe|truncatechars:55}}">
 <meta property="og:image" content="{{article.image.url}}">
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yaziyo.co/{{article.get_absolute_url}}">
-<meta property="twitter:title" content="{{article.title}}">
-<meta property="twitter:description" content="{{article.message|safe|truncatechars:55}}">
-<meta property="twitter:image" content="{{article.image.url}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://yaziyo.co{{article.get_absolute_url}}">
+<meta name="twitter:title" content="{{article.title}}">
+<meta name="twitter:description" content="{{article.message|safe|truncatechars:55}}">
+<meta name="twitter:image" content="{{article.image.url}}">
 {% endblock head %}
 {% block content %}
 {% if article.image %}

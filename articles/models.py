@@ -62,7 +62,7 @@ class Article(models.Model):
         img.close()
 
   def all_comments(self):
-    return self.comments.all().order_by('-created_date')
+    return self.comments.all().order_by('created_date')
 
   def get_like_url(self):
     return reverse('articles:article-like', kwargs={'username': self.user.username, 'slug': self.slug})

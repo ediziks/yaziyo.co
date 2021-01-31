@@ -3,7 +3,7 @@
 {% load bootstrap4 %}
 {% load thumbnail %}
 <html lang="tr">
-<head>
+<head prefix="og: http://ogp.me/ns#">
   {% if GA_KEY and GA_KEY != 'notonlocaldev' %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{GA_KEY}}"></script>
@@ -14,13 +14,14 @@
       gtag('config', '{{GA_KEY}}');
     </script> 
   {% endif %}
-  {% block head %}
-
-  {% endblock head %}
   <!-- Required meta tags -->
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="canonical" href="https://yaziyo.co">
+  {% block head %}
+
+  {% endblock head %}
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{% static 'bootstrap-4.6.0-dist/css/bootstrap.min.css' %}">
   <!-- FontAwesome -->

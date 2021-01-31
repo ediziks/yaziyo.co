@@ -7,15 +7,12 @@
     <a class="notifications-button" href="#" role="button" id="noti-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a0a0a0;"><i class="far fa-bell"></i></a>
     <div class="dropdown-menu" id="noti-drop-menu" aria-labelledby="dropdownMenuLink">
       {% for noti in request.user.notifications.all|slice:":10" %}
-      {% if noti.actor is None %}
-        {{ noti.mark_all_as_deleted }}
-      {% endif %}
-      {% if noti.verb == 'like' %}
+      {% if noti.verb == 'like' and noti.actor and noti.action_object %}
       <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>,
         <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> başlıklı yazını beğendi <i class="fas fa-heart"></i> {{noti.timesince}}</p>
-      {% elif noti.verb == 'takip' %}
+      {% elif noti.verb == 'takip' and noti.actor and noti.action_object %}
       <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a> seni takip etmeye başladı ✨ {{noti.timesince}}</p>
-      {% elif noti.verb == 'yorum' %}
+      {% elif noti.verb == 'yorum' and noti.actor and noti.action_object %}
       <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>, başlığı <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> olan yazına bir yorum bıraktı <i class="fas fa-comment" style="color:#28a745;"></i> {{noti.timesince}}</p>
       {% endif %}
       {% endfor %}

@@ -902,3 +902,21 @@
 2021-01-28 11:45:07.694 +03 [30653] LOG:  invalid record length at 0/4DFC408: wanted 24, got 0
 2021-01-28 11:45:07.694 +03 [30653] LOG:  redo done at 0/4DFC3D0
 2021-01-28 11:45:07.742 +03 [30651] LOG:  database system is ready to accept connections
+2021-01-30 20:33:30.691 +03 [583602] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-30 20:33:30.692 +03 [583602] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-30 20:33:30.709 +03 [583602] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-30 20:33:30.759 +03 [583616] LOG:  database system was interrupted; last known up at 2021-01-28 22:11:59 +03
+2021-01-30 20:33:30.858 +03 [583616] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-30 20:33:30.865 +03 [583616] LOG:  redo starts at 0/4E68A90
+2021-01-30 20:33:30.865 +03 [583616] LOG:  invalid record length at 0/4E68B78: wanted 24, got 0
+2021-01-30 20:33:30.865 +03 [583616] LOG:  redo done at 0/4E68B40
+2021-01-30 20:33:30.919 +03 [583602] LOG:  database system is ready to accept connections
+2021-01-31 11:44:24.781 +03 [96980] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-01-31 11:44:24.782 +03 [96980] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-31 11:44:24.800 +03 [96980] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-31 11:44:24.859 +03 [96982] LOG:  database system was interrupted; last known up at 2021-01-30 20:38:34 +03
+2021-01-31 11:44:24.948 +03 [96982] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-01-31 11:44:24.955 +03 [96982] LOG:  redo starts at 0/4E83840
+2021-01-31 11:44:24.956 +03 [96982] LOG:  invalid record length at 0/4E83928: wanted 24, got 0
+2021-01-31 11:44:24.956 +03 [96982] LOG:  redo done at 0/4E838F0
+2021-01-31 11:44:25.065 +03 [96980] LOG:  database system is ready to accept connections

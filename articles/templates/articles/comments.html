@@ -13,9 +13,7 @@
     </span>
     <span class="comment-date"> {{comment.created_date|timesince}} önce</span>
     {% if user.is_authenticated and comment.author == request.user or article.user == request.user %}
-    <button type="button" class="comment-delete btn btn-sm btn-outline-danger float-right">
-      <a href="{% url 'articles:delete-comment' pk=comment.pk %}"><i class="fas fa-trash"></i></a>
-    </button>
+      <a type="button" class="comment-delete btn btn-sm btn-outline-danger float-right" href="{% url 'articles:delete-comment' pk=comment.pk %}"><i class="fas fa-trash"></i></a>
     {% endif %}
   </div>
   <div class="panel-body comment-content">
@@ -113,7 +111,7 @@
 }
 
 
-.comment-delete a {
+.comment-delete {
   color: gray;
 }
 

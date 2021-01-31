@@ -3,26 +3,26 @@
 {% load readtime %}
 {% load social_share %}
 {% load widget_tweaks %}
+{% load thumbnail %}
 {% block head %}
-  <!-- Primary Meta Tags -->
-  <title>{{article.title}} - yaziyo.co</title>
-  <meta name="title" content="{{article.title}}">
-  <meta name="description" content="{{article.message|safe|truncatechars:55}}">
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yaziyo.co/{{article.get_absolute_url}}">
-  <meta property="og:title" content="{{article.title}}">
-  <meta property="og:description" content="{{article.message|safe|truncatechars:55}}">
-  <meta property="og:image" content="{{article.image.url}}">
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://yaziyo.co/{{article.get_absolute_url}}">
-  <meta property="twitter:title" content="{{article.title}}">
-  <meta property="twitter:description" content="{{article.message|safe|truncatechars:55}}">
-  <meta property="twitter:image" content="{{article.image.url}}">
+<!-- Primary Meta Tags -->
+<title>{{article.title}} - yaziyo.co</title>
+<meta name="title" content="{{article.title}}">
+<meta name="description" content="{{article.message|safe|truncatechars:55}}">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yaziyo.co/{{article.get_absolute_url}}">
+<meta property="og:title" content="{{article.title}}">
+<meta property="og:description" content="{{article.message|safe|truncatechars:55}}">
+<meta property="og:image" content="{{article.image.url}}">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://yaziyo.co/{{article.get_absolute_url}}">
+<meta property="twitter:title" content="{{article.title}}">
+<meta property="twitter:description" content="{{article.message|safe|truncatechars:55}}">
+<meta property="twitter:image" content="{{article.image.url}}">
 {% endblock head %}
 {% block content %}
-{% load thumbnail %}
 {% if article.image %}
 <div class="article-image" id="art-img">
   <img src="{{article.image.url}}" alt="">

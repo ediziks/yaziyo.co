@@ -929,3 +929,6 @@
 2021-02-01 10:58:25.496 +03 [24057] LOG:  invalid record length at 0/4EE9168: wanted 24, got 0
 2021-02-01 10:58:25.496 +03 [24057] LOG:  redo done at 0/4EE9130
 2021-02-01 10:58:25.536 +03 [24053] LOG:  database system is ready to accept connections
+2021-02-01 14:49:21.503 +03 [167609] ERROR:  duplicate key value violates unique constraint "taggit_tag_slug_key"
+2021-02-01 14:49:21.503 +03 [167609] DETAIL:  Key (slug)=(-qwe) already exists.
+2021-02-01 14:49:21.503 +03 [167609] STATEMENT:  INSERT INTO "taggit_tag" ("name", "slug") VALUES ('#-#qwe', '-qwe') RETURNING "taggit_tag"."id"

@@ -31,7 +31,7 @@ tinyMCE.init({
     link_assume_external_targets: true,
     content_style: "body * {margin-block-start: 0 !important; margin-block-end: 0 !important; line-height: 1.5 !important;} body {font-family:'Inter', sans-serif; font-size:14pt;} img {max-width: 100%; height: auto;}",
     fontsize_formats: "14pt 20pt",
-    nonbreaking_force_tab: true,
+    // nonbreaking_force_tab: true,
     image_title: true,
     image_caption: true,
     // paste_data_images: true,

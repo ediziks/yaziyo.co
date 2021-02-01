@@ -8,18 +8,19 @@
 <!-- Primary Meta Tags -->
 <title>{{article.title}} - yaziyo.co</title>
 <meta name="title" content="{{article.title}}">
-<meta name="description" content="{{article.message|safe|truncatechars:65}}">
+<meta name="description" content=" ">
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://yaziyo.co/{{article.get_absolute_url}}">
+<meta property="og:url" content="https://yaziyo.co{{article.get_absolute_url}}">
 <meta property="og:title" content="{{article.title}}">
-<meta property="og:description" content="{{article.message|safe|truncatechars:55}}">
+<meta property="og:description" content=" ">
 <meta property="og:image" content="{{article.image.url}}">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:domain" content="yaziyo.co">
 <meta name="twitter:url" content="https://yaziyo.co{{article.get_absolute_url}}">
 <meta name="twitter:title" content="{{article.title}}">
-<meta name="twitter:description" content="{{article.message|safe|truncatechars:55}}">
+<meta name="twitter:description" content=" ">
 <meta name="twitter:image" content="{{article.image.url}}">
 {% endblock head %}
 {% block content %}
@@ -198,4 +199,12 @@ pre {
 {% endblock content %}
 {% block bottom %}
 {# code syntax highlight #}
+
+<!-- message description in plaintext -->
+<script>
+  var msg = '{{article.message|safe|truncatechars:170}}'.replace(/<[^>]*>/g, '');
+  document.querySelector('meta[name="description"]').setAttribute("content", msg);
+  document.querySelector('meta[property="og:description"]').setAttribute("content", msg);
+  document.querySelector('meta[name="twitter:description"]').setAttribute("content", msg);
+</script>
 {% endblock bottom %}

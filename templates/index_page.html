@@ -17,9 +17,9 @@
       </div>
       <div class="message">
         {% if article.title|length <= 28 %}
-        <a href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:122}}</pre></a>
+        <a id="msg_long" href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:122}}</pre></a>
         {% else %}
-        <a href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:75}}</a></pre>
+        <a id="msg_short" href="{{article.get_absolute_url}}"><pre style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:75}}</a></pre>
         {% endif %}
       </div>
       <div class="user-and-date" id="user-and-date">
@@ -36,6 +36,7 @@
 </div>
 {% endfor %}
 {% show_more 'daha fazla...' %}
+
 <style>
 @media only screen and (max-width: 768px) {
   .articles-container {

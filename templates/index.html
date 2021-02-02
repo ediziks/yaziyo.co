@@ -38,7 +38,7 @@
               </div>
               <div class="truncated-message">
                 <a href="{{article.get_absolute_url}}" id="art-message-a">
-                  <pre class="article-message" style="overflow: hidden; white-space: normal;">{{article.message|safe|truncatechars:100}}</pre>
+                  <pre id="top-pre-{{article.pk}}" class="article-message" style="overflow: hidden; white-space: normal; line-height: 1.2;"></pre>
                 </a>
               </div>
             </div>
@@ -103,6 +103,15 @@ $.endlessPaginate({
 });
 </script>
 {% endblock js %}
+
+<script>
+{% for article in editorpicks %}
+var topPrePlainMsg = jQuery('<div>').html(`{{article.message|safe|truncatechars:120}}`).text().replace(/(?:\r\n|\r|\n)/g, ' ').trim();
+var topPre = document.getElementById('top-pre-{{article.pk}}');
+topPre.innerHTML = topPrePlainMsg;
+{% endfor %}
+</script>
+
 <style>
 @media only screen and (max-width: 767px) {
 

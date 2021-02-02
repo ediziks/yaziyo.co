@@ -5,7 +5,7 @@
 <html lang="tr">
 <head prefix="og: http://ogp.me/ns#">
   {% if GA_KEY and GA_KEY != 'notonlocaldev' %}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics && Yandex Metrica -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{GA_KEY}}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,6 +13,21 @@
       gtag('js', new Date());
       gtag('config', '{{GA_KEY}}');
     </script> 
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(71765005, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/71765005" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
   {% endif %}
   <!-- Required meta tags -->
   <meta charset="UTF-8">

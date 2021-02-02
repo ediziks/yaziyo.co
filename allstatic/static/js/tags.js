@@ -77,6 +77,16 @@
           item = item.replace(/\s+/g, '-');
         }
 
+        // add '#' as first char
+        if (item.charAt(0) !== '#' && item.length >= 1) {
+          item = '#' + item;
+        } 
+
+        // remove '-' at the beginning
+        if (item.charAt(0) === '-') {
+          item.replace(item.charAt(0), '');
+        }
+
         // Ignore falsey values, except false
         if (item !== false && !item)
           return;
@@ -112,7 +122,7 @@
             return;
           }
         }
-  
+
         var itemValue = self.options.itemValue(item),
             itemText = self.options.itemText(item),
             tagClass = self.options.tagClass(item),

@@ -84,6 +84,7 @@
 <div class="comments-from-article-detail">
   {% include "articles/comments.html" %}
 </div>
+
 <style>
 @media only screen and (max-width: 768px) {
   .user-info {
@@ -202,9 +203,10 @@ pre {
 
 <!-- message description in plaintext -->
 <script>
-  var msg = '{{article.message|safe|truncatechars:170}}'.replace(/<[^>]*>/g, '');
-  document.querySelector('meta[name="description"]').setAttribute("content", msg);
-  document.querySelector('meta[property="og:description"]').setAttribute("content", msg);
-  document.querySelector('meta[name="twitter:description"]').setAttribute("content", msg);
+  var plainMsg = jQuery('<div>').html(`{{article.message|safe|truncatechars:170}}`).text().replace(/(?:\r\n|\r|\n)/g, ' ');
+  console.log(plainMsg);
+  document.querySelector('meta[name="description"]').setAttribute("content", plainMsg);
+  document.querySelector('meta[property="og:description"]').setAttribute("content", plainMsg);
+  document.querySelector('meta[name="twitter:description"]').setAttribute("content", plainMsg);
 </script>
 {% endblock bottom %}

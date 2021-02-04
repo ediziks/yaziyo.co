@@ -1239,3 +1239,12 @@
 2021-02-04 03:43:18.898 +03 [874141] ERROR:  duplicate key value violates unique constraint "taggit_tag_slug_key"
 2021-02-04 03:43:18.898 +03 [874141] DETAIL:  Key (slug)=(asd) already exists.
 2021-02-04 03:43:18.898 +03 [874141] STATEMENT:  INSERT INTO "taggit_tag" ("name", "slug") VALUES ('asd', 'asd') RETURNING "taggit_tag"."id"
+2021-02-04 11:39:59.098 +03 [13547] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-02-04 11:39:59.099 +03 [13547] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-04 11:39:59.112 +03 [13547] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-04 11:39:59.158 +03 [13549] LOG:  database system was interrupted; last known up at 2021-02-04 06:34:17 +03
+2021-02-04 11:39:59.265 +03 [13549] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-04 11:39:59.274 +03 [13549] LOG:  redo starts at 0/502D330
+2021-02-04 11:39:59.274 +03 [13549] LOG:  invalid record length at 0/502D418: wanted 24, got 0
+2021-02-04 11:39:59.274 +03 [13549] LOG:  redo done at 0/502D3E0
+2021-02-04 11:39:59.322 +03 [13547] LOG:  database system is ready to accept connections

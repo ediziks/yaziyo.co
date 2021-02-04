@@ -4,6 +4,9 @@ mylocal_db/
 # allstatic local files
 allstatic/
 
+# .env
+bloggy/*.env
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

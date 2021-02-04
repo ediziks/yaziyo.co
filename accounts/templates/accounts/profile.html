@@ -14,7 +14,47 @@
   <img id="account-img" src="{% thumbnail user.profile.avatar 175x200 crop %}" name="aboutme">
 </div>
 <div class="container-fluid col-xl-6 col-lg-10 col-md-10">
-  <div class="span3 well jumbotron">
+
+
+  <div class="span3 well new">
+    <div class="username">
+      <h2>{{user.profile}}</h2>
+    </div>
+    <div class="takip">
+      <span><strong>{{user.profile.followers.all.count}}</strong>&nbsp; Takipçi &nbsp;</span>&nbsp;<span class="dot"></span><span>&nbsp;&nbsp;<strong>{{user.is_following.all.count}}</strong>&nbsp; Takip</span>
+    </div>
+    <div class="form-div">
+      {% if user.is_authenticated %}
+      <form class="follow-form" action="{% url 'accounts:follow' user.username %}" method="POST" style="margin: 1.2em 0;">
+        {% csrf_token %}
+        {% if user != request.user %}
+        {% if request.user in user.profile.followers.all %}
+        <input type="hidden" name="username" value="{{user.username}}">
+        <button class="btn btn-outline-danger">Takibi Bırak</button>
+        {% else %}
+        <input type="hidden" name="username" value="{{user.username}}">
+        <button class="btn btn-primary">Takip Et</button>
+        {% endif %}
+        {% endif %}
+      </form>
+      {% endif %}
+      {% if user == request.user %}
+      <a href="{% url 'accounts:bookmarks' username=request.user.username %}">bookmarks</a>
+      {% endif %}
+      {% if user in request.user.profile.followers.all %}
+      <p>Seni takip ediyor</p>
+      {% endif %}
+      <div class="bio">
+        <p><i>{{user.profile.bio}}</i></p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!--<div class="span3 well jumbotron">
     <div class="username">
       <p>{{ user.profile }}</p>
     </div>
@@ -46,7 +86,7 @@
         <p>{{ user.profile.bio }}</p>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>
 <div class="container articles-profile">
   {% for article in articles %}
@@ -342,9 +382,20 @@
   background-color: #dddddd;
 }
 
-.username p {
+.span3.new {
+  padding: 1em;
+  text-align: center;
+  text-align: -webkit-center;
+  width: 60%;
+  min-width: 18rem;
+  margin-inline: auto;
+  margin: 19.6rem auto 0;
+  /* background-color: #dddddd; */
+}
+
+.username h2 {
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin-bottom: 0.7em;
 }
 
@@ -360,16 +411,28 @@
   margin-bottom: 0.7em;
 }
 
-.takip span:first-child {
-  border-right: 2px solid #999999;
+.dot {
+  height: 7px;
+  width: 7px;
+  background-color: darkgray;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 0.3em;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+  vertical-align: sub;
 }
 
-.btn.btn-primary.btn-sm {
+/* .takip span:first-child {
+  border-right: 2px solid #999999;
+} */
+
+.btn.btn-primary.btn {
   background-color: #2cc4bb;
   border-color: #2cc4bb;
 }
 
-.btn.btn-primary.btn-sm:hover {
+.btn.btn-primary.btn:hover {
   background-color: #3b9991;
 }
 

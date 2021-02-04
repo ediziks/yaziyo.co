@@ -2,41 +2,46 @@
 {% load bootstrap4 %}
 {% load thumbnail %}
 {% block head %}
-  <title>@{{user.username}} Profil Güncelle - yaziyo.co</title>
-  <meta name="title" content="@{{user.username}} Profil Güncelle">
-  <meta name="description" content="Profil Güncelleme Sayfası">
+<title>@{{user.username}} Profil Güncelle - yaziyo.co</title>
+<meta name="title" content="@{{user.username}} Profil Güncelle">
+<meta name="description" content="Profil Güncelleme Sayfası">
 {% endblock head %}
 {% block content %}
 <div class="form-div">
   <form method="POST" enctype="multipart/form-data" class="p-2">
     {% csrf_token %}
     <fieldset class="form-group mt-4">
-      <div class="cover-pic"><figure><img id="cover" onclick="document.getElementById('id_cover').click();" src="{% thumbnail user.profile.cover 1900x200 crop %}" width="600px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro" onclick="document.getElementById('id_cover').click();"></i></span></figure></div>
-      <div class="avatar-pic mt-4 mb-4"><figure><img id="avatar" onclick="document.getElementById('id_avatar').click();" src="{% thumbnail user.profile.avatar 140x160 crop %}" width="300px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro" onclick="document.getElementById('id_avatar').click();"></i></span></figure></div>
-      <div class="name-mail-bio col-lg-6 col-md-8 col-sm-12">
-      {% if messages %}
-      {% for msg in messages %}
-      {% if forloop.last %}
-      <div class="alert alert-success alert-dismissable" style="">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{msg.message}}
+      <div class="cover-pic">
+        <figure><img id="cover" onclick="document.getElementById('id_cover').click();" src="{% thumbnail user.profile.cover 1900x200 crop %}" width="600px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro" onclick="document.getElementById('id_cover').click();"></i></span></figure>
       </div>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
-      {% bootstrap_form_errors u_form layout='inline' %}
-      {% bootstrap_form_errors p_form layout='inline' %}
-      {% bootstrap_form u_form layout='inline' %}
-      {% bootstrap_field p_form.bio layout='inline' field_class='bio' %}
-      <button class="btn btn-outline-info float-right" type="submit">Güncelle</button>
+      <div class="avatar-pic mt-4 mb-4">
+        <figure><img id="avatar" onclick="document.getElementById('id_avatar').click();" src="{% thumbnail user.profile.avatar 140x160 crop %}" width="300px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro" onclick="document.getElementById('id_avatar').click();"></i></span></figure>
+      </div>
+      <div class="name-mail-bio col-lg-6 col-md-8 col-sm-12">
+        {% if messages %}
+        {% for msg in messages %}
+        {% if forloop.last %}
+        <div class="alert alert-success alert-dismissable" style="">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{msg.message}}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% bootstrap_form_errors u_form layout='inline' %}
+        {% bootstrap_form_errors p_form layout='inline' %}
+        {% bootstrap_form u_form layout='inline' %}
+        {% bootstrap_field p_form.bio layout='inline' field_class='bio' %}
+        <button class="btn btn-outline-info float-right" type="submit">Güncelle</button>
       </div>
     </fieldset>
   </form>
 </div>
 <style>
-@media only screen and (max-width: 320px){
+@media only screen and (max-width: 320px) {
   #cover {
-    top: 91px !important;;
+    top: 91px !important;
+    ;
   }
 
   #avatar {
@@ -62,7 +67,7 @@
   }
 }
 
-@media only screen and  (min-width: 376px) and (max-width: 425px) {
+@media only screen and (min-width: 376px) and (max-width: 425px) {
   #cover {
     top: 91px !important;
   }
@@ -76,7 +81,7 @@
   }
 }
 
-@media only screen and  (min-width: 426px) and (max-width: 768px) {
+@media only screen and (min-width: 426px) and (max-width: 768px) {
   #cover {
     top: 91px !important;
   }
@@ -90,13 +95,13 @@
   }
 }
 
-@media only screen and  (min-width: 769px) and (max-width: 1024px) {
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
   #avatar {
     top: 15.4rem !important;
   }
 }
 
-@media only screen and  (min-width: 1025px) and (max-width: 1440px) {
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
   #avatar {
     top: 15.7rem !important;
   }
@@ -147,14 +152,14 @@
 
 .avatar-pic figure img {
   filter: brightness(1);
-  box-shadow: inset 0 0 0 0px rgba(0,0,0,.2);
+  box-shadow: inset 0 0 0 0px rgba(0, 0, 0, .2);
   transition: .3s ease-in-out;
   -webkit-transition: .3s ease-in-out;
 }
 
 .avatar-pic figure:hover img {
   filter: brightness(.8);
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .2);
 }
 
 .avatar-pic .upload-icon {

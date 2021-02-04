@@ -26,6 +26,7 @@ class Article(models.Model):
   message = HTMLField(blank=False, null=False)
   slug = models.SlugField(max_length=140, allow_unicode=True, default='', blank=False)
   tags = TaggableManager(blank=True)
+  # tags_store = models.TextField(blank=True)
   likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="article_likes", blank=True)
   created_date = models.DateTimeField(default=timezone.now)
   # published_date = models.DateTimeField()

@@ -78,13 +78,30 @@
         }
 
         // add '#' as first char
-        if (item.charAt(0) !== '#' && item.length >= 1) {
+        if (item.charAt(0) !== '#' || item.charAt(0) !== '-' && item.length >= 1) {
           item = '#' + item;
         } 
 
         // remove '-' at the beginning
         if (item.charAt(0) === '-') {
-          item.replace(item.charAt(0), '');
+          item = item.replace(item.charAt(0), '');
+        }
+
+        if (item.charAt(1) === '-') {
+          item = item.replace(item.charAt(1), '');
+        }
+
+        if (item.charAt(0) === '#') {
+          item = item.replace(item.charAt(0), '');
+        }
+
+        if (item.charAt(1) === '#') {
+          item = item.replace(item.charAt(1), '');
+        }
+
+        if (item.includes('#') && item.length <= 1 ) {
+          const index = itemsArray.indexOf(item);
+          itemsArray.splice(index, 1);
         }
 
         // Ignore falsey values, except false

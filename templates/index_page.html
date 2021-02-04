@@ -17,9 +17,9 @@
       </div>
       <div class="message">
         {% if article.title|length <= 28 %}
-        <a id="msg_long" href="{{article.get_absolute_url}}"><pre id="bottom-pre-{{article.pk}}" style="overflow: hidden; white-space: normal; line-height: 1.2;">{{article.message|safe|truncatechars:122}}</pre></a>
+        <a id="msg_long" href="{{article.get_absolute_url}}"><pre id="bottom-pre-{{article.pk}}" style="overflow: hidden; white-space: normal; line-height: 1.2; padding-top: 5px;">{{article.message|safe|truncatechars:122}}</pre></a>
         {% else %}
-        <a id="msg_short" href="{{article.get_absolute_url}}"><pre id="bottom-pre-{{article.pk}}" style="overflow: hidden; white-space: normal; line-height: 1.2;">{{article.message|safe|truncatechars:75}}</a></pre>
+        <a id="msg_short" href="{{article.get_absolute_url}}"><pre id="bottom-pre-{{article.pk}}" style="overflow: hidden; white-space: normal; line-height: 1.2; padding-top: 5px;">{{article.message|safe|truncatechars:75}}</a></pre>
         {% endif %}
       </div>
       <div class="user-and-date" id="user-and-date">
@@ -41,7 +41,6 @@
 {% for article in articlelist %}
 var msgInner = document.getElementById("bottom-pre-{{article.pk}}").innerHTML;
 document.getElementById("bottom-pre-{{article.pk}}").innerHTML = jQuery('<div>').html(msgInner).text().replace(/(?:\r\n|\r|\n)/g, ' ').trim();
-console.log(msgInner);
 {% endfor %}
 </script>
 

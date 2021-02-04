@@ -1,8 +1,8 @@
-# db
-mylocal_db/*
+# local db
+mylocal_db/
 
-# allstatic
-allstatic/*
+# allstatic local files
+allstatic/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

@@ -17,7 +17,8 @@
 <meta property="og:image" content="{{article.image.url}}">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:domain" content="yaziyo.co">
+<meta name="twitter:domain" content="https://yaziyo.co">
+<meta name="twitter:site" content="@yaziyoco">
 <meta name="twitter:url" content="https://yaziyo.co{{article.get_absolute_url}}">
 <meta name="twitter:title" content="{{article.title}}">
 <meta name="twitter:description" content=" ">
@@ -39,7 +40,7 @@
               <a href="{% url 'accounts:profile' username=article.user.username %}"><img src="{% thumbnail article.user.profile.avatar 50x50 crop %}" class="rounded-circle mr-1" width="50" height="50" alt="">@{{article.user.username}}</a>
             </span>
             <span class="float-right mt-3">
-              <i class="fas fa-stopwatch"></i> {{article.message|readtime}}&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i> {{article.created_date|date:"d.m.Y"}}
+              <i class="fas fa-stopwatch"></i> {{article.message|readtime}}&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i> {{article.created_date|date:"d F Y"}}
             </span>
           </div>
           <div class="upper-article">

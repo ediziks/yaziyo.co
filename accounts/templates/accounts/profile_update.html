@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
+{% load widget_tweaks %}
 {% load thumbnail %}
+{% load socialaccount %}
 {% block head %}
 <title>@{{user.username}} Profil Güncelle - yaziyo.co</title>
 <meta name="title" content="@{{user.username}} Profil Güncelle">
@@ -34,14 +36,30 @@
         {% bootstrap_field p_form.bio layout='inline' field_class='bio' %}
         <button class="btn btn-outline-info float-right" type="submit">Güncelle</button>
       </div>
+      <div class="form-hidden" style="display:none;">
+        {% render_field p_form.cover %}
+        {% render_field p_form.avatar %}
+      </div>
     </fieldset>
   </form>
+  <div>
+    <!--{% get_social_accounts user as accounts %}
+    {% if not accounts.twitter.0 %}
+    {{accounts.twitter.0.extra_data.screen_name}}
+    <a href="{% provider_login_url "twitter" process="connect" next="/accounts/{{user.username}}/update/" %}">Twitter hesabını bağla</a>
+    {% endif %}
+    <br>
+    {{accounts.github.0.extra_data.login}}
+    <a href="{% provider_login_url "github" process="disconnect" next="/accounts/{{user.username}}/update/" %}">Github hesabını bağla</a>
+    
+    <br>
+    <br>-->
+  </div>
 </div>
 <style>
 @media only screen and (max-width: 320px) {
   #cover {
     top: 91px !important;
-    ;
   }
 
   #avatar {

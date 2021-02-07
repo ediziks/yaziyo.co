@@ -87,18 +87,21 @@
           item = item.replace(item.charAt(0), '');
         }
 
+        // del if 1 is -
         if (item.charAt(1) === '-') {
           item = item.replace(item.charAt(1), '');
         }
 
-        if (item.charAt(0) === '#') {
-          item = item.replace(item.charAt(0), '');
-        }
+        // if (item.charAt(0) === '#') {
+        //   item = item.replace(item.charAt(0), '');
+        // }
 
+        // del if 1 #
         if (item.charAt(1) === '#') {
           item = item.replace(item.charAt(1), '');
         }
 
+        // del # if alone
         if (item.includes('#') && item.length <= 1 ) {
           const index = itemsArray.indexOf(item);
           itemsArray.splice(index, 1);

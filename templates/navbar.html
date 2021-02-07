@@ -51,7 +51,6 @@
             <p>✏️&nbsp;Yeni Yazı</p>
           </a>
         </li>
-          
         {% if request.user.is_authenticated %}
         <li class="nav-item small align-self-center my-2">
           <a href="{% url 'accounts:profile' request.user.username %}">👤 Profil</a>
@@ -63,7 +62,6 @@
           <a href="{% url 'accounts:logout' %}">👋 Çıkış</a>
         </li>
         {% endif %}
-
         {% if request.user.is_authenticated %}
         <li class="nav-item avatar dropdown wide">
           <a class="nav-link dropdown" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,7 +78,6 @@
         {% else %}
         <li class="nav-item mt-3 wide" id="login"><a class="nav-link" href="{% url 'accounts:login' %}">Giriş</a></li>
         <li class="nav-item mt-3 wide" id="register"><a class="nav-link" href="{% url 'accounts:signup' %}">Kaydol</a></li>
-        
         <li class="nav-item small align-self-center my-2">
           <a href="{% url 'accounts:login' %}">🙌&nbsp;&nbsp;Giriş</a>
         </li>
@@ -113,7 +110,7 @@
 @media only screen and (min-width: 426px) {
   #smallBadge {
     display: none;
-  } 
+  }
 }
 
 .fa-heart {
@@ -167,7 +164,8 @@
   background-color: #f2f2f2 !important;
 }
 
-#login, #register {
+#login,
+#register {
   font-weight: 500;
 }
 

@@ -2,6 +2,7 @@
 {% load bootstrap4 %}
 {% load static %}
 {% load readtime %}
+{% load socialaccount %}
 {% block head %}
   <title>@{{user.username}} Profil - yaziyo.co</title>
   <meta name="title" content="@{{user.username}} Profil">
@@ -10,8 +11,8 @@
 {% block content %}
 {% load thumbnail %}
 <div class="top-images">
-  <img id="cover-img" src="{% thumbnail user.profile.cover 1920x250 crop %}" name="aboutme">
-  <img id="account-img" src="{% thumbnail user.profile.avatar 175x200 crop %}" name="aboutme">
+  <a href="{% thumbnail user.profile.cover 1920x250 crop %}"><img id="cover-img" src="{% thumbnail user.profile.cover 1920x250 crop %}" name="aboutme"></a>
+  <a href="{% thumbnail user.profile.avatar 175x200 crop %}"><img id="account-img" src="{% thumbnail user.profile.avatar 175x200 crop %}" name="aboutme"></a>
 </div>
 <div class="container-fluid col-xl-6 col-lg-10 col-md-10">
 
@@ -39,7 +40,7 @@
       </form>
       {% endif %}
       {% if user == request.user %}
-      <a href="{% url 'accounts:bookmarks' username=request.user.username %}">bookmarks</a>
+      <a href="{% url 'accounts:bookmarks' username=request.user.username %}">Kaydedilenler</a>
       {% endif %}
       {% if user in request.user.profile.followers.all %}
       <p>Seni takip ediyor</p>
@@ -49,9 +50,12 @@
       </div>
     </div>
   </div>
-
-
-
+  <!--
+  {% get_social_accounts user as accounts %}
+  {{accounts.twitter.0.extra_data.screen_name}}
+  
+  {{accounts.github.0.extra_data.login}}
+  -->
 
 
   <!--<div class="span3 well jumbotron">

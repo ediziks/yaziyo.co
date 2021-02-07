@@ -1,12 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.views import generic
 from django.views.generic.edit import FormMixin
 from django.contrib import messages
-from django.urls import reverse
 from django.shortcuts import redirect, get_object_or_404
 from braces.views import SelectRelatedMixin
 from django.contrib.auth import get_user_model
@@ -131,7 +130,7 @@ def delete_comment(request, pk):
   return redirect('articles:single', username=article_username, slug=article_slug)
 
 
-class ArticleLikeRedirect(generic.RedirectView):
+class ArticleLikeRedirect(generic.RedirectView, LoginRequiredMixin):
   def get_redirect_url(self, *args, **kwargs):
     username = self.kwargs.get('user__username')
     slug = self.kwargs.get('slug')
@@ -146,7 +145,9 @@ class ArticleLikeRedirect(generic.RedirectView):
         obj.likes.add(user)
         if user != obj.user:
           notify.send(user, recipient=obj.user, action_object=act_obj, verb='like')
-    return url_
+      return url_
+    else:
+      return reverse('accounts:login')
 
 
 class TagsListView(generic.ListView):

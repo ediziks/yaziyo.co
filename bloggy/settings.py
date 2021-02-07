@@ -75,7 +75,7 @@ INSTALLED_APPS = [
     'storages',
     'tinymce',
     'easy_thumbnails',
-    ### Consider Using Tagulous
+    # Consider Using Tagulous
     # 'tagulous',
 ]
 
@@ -148,7 +148,7 @@ else:
     MEDIA_URL = '/media/'
 
 
-### for tagulous
+# for tagulous
 # SERIALIZATION_MODULES = {
 #     'xml': 'tagulous.serializers.xml_serializer',
 #     'json': 'tagulous.serializers.json',
@@ -166,7 +166,7 @@ else:
 # TAGULOUS_AUTOCOMPLETE_CSS = {
 #     'all': ['{{STATIC_URL}}tagulous/lib/select2-3/select2.css']
 # }
-### for tagulous
+# for tagulous
 
 
 # allauth signup infos

@@ -8,7 +8,10 @@ from bloggy.sitemaps import StaticViewSiteMap, YaziyoSiteMap
 import notifications.urls
 
 
-sitemaps = {'static': StaticViewSiteMap, 'yaziyo': YaziyoSiteMap}
+sitemaps = {
+    'static': StaticViewSiteMap,
+    'yaziyo': YaziyoSiteMap
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),

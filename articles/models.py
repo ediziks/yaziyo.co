@@ -70,6 +70,7 @@ class Article(models.Model):
     except Exception:
       # Bare 'except' because we could get a variety
       # of HTTP-related exceptions.
+      print('GOOGLE NOT PINGED')
       pass
 
   def all_comments(self):

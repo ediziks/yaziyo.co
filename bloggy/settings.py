@@ -109,24 +109,6 @@ if os.environ['USER'] != 'zx':
     MEDIA_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
     DEFAULT_FILE_STORAGE = 'bloggy.custom_storage.MediaStorage'
     THUMBNAIL_DEFAULT_STORAGE = 'bloggy.custom_storage.ThumbnailStorage'
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'handlers': {
-            'file': {
-                'level': 'DEBUG',
-                'class': 'logging.FileHandler',
-                'filename': '/var/log/app-logs/django.log',
-            },
-        },
-        'loggers': {
-            'django': {
-                'handlers': ['file'],
-                'level': 'DEBUG',
-                'propagate': True,
-            },
-        },
-    }
     # LOGGING = {
     #     'version': 1,
     #     'disable_existing_loggers': False,

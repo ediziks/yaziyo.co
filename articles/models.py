@@ -13,6 +13,7 @@ from PIL import Image
 from django.core.files.storage import default_storage
 from io import BytesIO
 from unidecode import unidecode
+from django.contrib.sitemaps import ping_google
 import os
 
 
@@ -61,6 +62,15 @@ class Article(models.Model):
         default_storage.save(self.image.name, memfile)
         memfile.close()
         img.close()
+
+    # to call googlebot to crawl when new article saved
+    try:
+      ping_google()
+      print('GOOGLE PINGED')
+    except Exception:
+      # Bare 'except' because we could get a variety
+      # of HTTP-related exceptions.
+      pass
 
   def all_comments(self):
     return self.comments.all().order_by('created_date')

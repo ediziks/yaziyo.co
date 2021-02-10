@@ -5,15 +5,12 @@ Disallow: /search/
 Disallow: /admin/
 Disallow: /inbox/
 Disallow: /tinymce/
-Disallow: 
-
-Disallow: /articles/bookmark/
-Disallow: /articles/bookmark/
 
 Allow: /accounts/user/
 Disallow: /accounts/
 
 Disallow: /articles/new/
+Disallow: /articles/comment/
 Disallow: /articles/bookmark/
 Disallow: /articles/*/*/like/
 Disallow: /articles/*/*/update/

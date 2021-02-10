@@ -37,6 +37,16 @@
 {% endfor %}
 {% show_more 'daha fazla...' %}
 
+{% block bottom %}
+  
+<script>
+{% for article in articlelist %}
+var msgInner = document.getElementById("bottom-pre-{{article.pk}}").innerHTML;
+document.getElementById("bottom-pre-{{article.pk}}").innerHTML = jQuery('<div>').html(msgInner).text().replace(/(?:\r\n|\r|\n)/g, ' ').trim();
+{% endfor %}
+</script>
+{% endblock bottom %}
+
 <style>
 @media only screen and (max-width: 768px) {
   .articles-container {

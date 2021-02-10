@@ -112,13 +112,6 @@ var topPre = document.getElementById('top-pre-{{article.pk}}');
 topPre.innerHTML = topPrePlainMsg;
 {% endfor %}
 </script>
-
-<script>
-{% for article in articlelist %}
-var msgInner = document.getElementById("bottom-pre-{{article.pk}}").innerHTML;
-document.getElementById("bottom-pre-{{article.pk}}").innerHTML = jQuery('<div>').html(msgInner).text().replace(/(?:\r\n|\r|\n)/g, ' ').trim();
-{% endfor %}
-</script>
 {% endblock bottom %}
 
 <style>

@@ -34,6 +34,19 @@
         {% bootstrap_form_errors p_form layout='inline' %}
         {% bootstrap_form u_form layout='inline' %}
         {% bootstrap_field p_form.bio layout='inline' field_class='bio' %}
+        <!--<div class="form-group">
+          {% get_social_accounts user as accounts %}
+          {% if not accounts.twitter.0 %}
+          <a class="btn btn-outline-prımary" href="{% provider_login_url "twitter" process="connect" next="/accounts/user/{{user.username}}/update/" %}"><span class="fab fa-twitter"></span> Twitter Hesabını Bağla</a>
+          {% else %}
+          <a href="https://twitter.com/{{accounts.twitter.0.extra_data.screen_name}}">{{accounts.twitter.0.extra_data.screen_name}}</a>
+          {% endif %}
+          {% if not accounts.github.0 %}
+          <a class="btn btn-outline-info" href="{% provider_login_url "github" process="connect" next="/accounts/user/{{user.username}}/update/" %}">Github Hesabı Bağla</a>
+          {% else %}
+          <a href="https://github.com/{{accounts.github.0.extra_data.login}}">{{accounts.github.0.extra_data.login}}</a>
+          {% endif %}
+        </div>-->
         <button class="btn btn-outline-info float-right" type="submit">Güncelle</button>
       </div>
       <div class="form-hidden" style="display:none;">
@@ -43,17 +56,6 @@
     </fieldset>
   </form>
   <div>
-    <!--{% get_social_accounts user as accounts %}
-    {% if not accounts.twitter.0 %}
-    {{accounts.twitter.0.extra_data.screen_name}}
-    <a href="{% provider_login_url "twitter" process="connect" next="{% url 'accounts:profile' request.user.username %}" %}">Twitter hesabını bağla</a>
-    {% endif %}
-    <br>
-    {{accounts.github.0.extra_data.login}}
-    <a href="{% provider_login_url "github" process="disconnect" next="{% url 'accounts:profile' request.user.username %}" %}">Github hesabını bağla</a>
-    
-    <br>
-    <br>-->
   </div>
 </div>
 <style>

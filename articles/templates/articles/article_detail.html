@@ -40,7 +40,7 @@
               <a href="{% url 'accounts:profile' username=article.user.username %}"><img src="{% thumbnail article.user.profile.avatar 50x50 crop %}" class="rounded-circle mr-1" width="50" height="50" alt="">@{{article.user.username}}</a>
             </span>
             <span class="float-right mt-3">
-              <i class="fas fa-stopwatch"></i> {{article.message|readtime}}&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i> {{article.created_date|date:"d F Y"}}
+              <i class="fas fa-stopwatch"></i> {{article.message|readtime}} dk okuma&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i> {{article.created_date|date:"d F Y"}}
             </span>
           </div>
           <div class="upper-article">

@@ -26,7 +26,7 @@
       </div>
       <div class="user-and-date">
         <div class="user-image">
-          <a href="accounts/{{article.user.username}}"><img class="rounded-circle" src="{{article.user.profile.avatar.url}}" alt="" height="25px" width="25px">{{article.user.username}}</a>
+          <a href="{% url 'accounts:profile' article.user.username %}"><img class="rounded-circle" src="{{article.user.profile.avatar.url}}" alt="" height="25px" width="25px">{{article.user.username}}</a>
         </div>
         <div class="date">
           <p>{{article.created_date|date:"d-M-Y" }}</p>

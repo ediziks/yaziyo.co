@@ -46,11 +46,11 @@
     <!--{% get_social_accounts user as accounts %}
     {% if not accounts.twitter.0 %}
     {{accounts.twitter.0.extra_data.screen_name}}
-    <a href="{% provider_login_url "twitter" process="connect" next="/accounts/{{user.username}}/update/" %}">Twitter hesabını bağla</a>
+    <a href="{% provider_login_url "twitter" process="connect" next="{% url 'accounts:profile' request.user.username %}" %}">Twitter hesabını bağla</a>
     {% endif %}
     <br>
     {{accounts.github.0.extra_data.login}}
-    <a href="{% provider_login_url "github" process="disconnect" next="/accounts/{{user.username}}/update/" %}">Github hesabını bağla</a>
+    <a href="{% provider_login_url "github" process="disconnect" next="{% url 'accounts:profile' request.user.username %}" %}">Github hesabını bağla</a>
     
     <br>
     <br>-->

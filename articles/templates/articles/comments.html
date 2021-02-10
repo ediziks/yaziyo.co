@@ -7,11 +7,12 @@
 {% for comment in article.all_comments %}
 <div class="panel panel-default comment-container">
   <div class="panel panel-head">
-    <img class="comment-author-img" src="{% thumbnail comment.author.profile.avatar 50x50 crop %}" height="50" width="50" alt="">
-    <span class="comment-author-name">
-      <a href="/accounts/{{comment.author.username}}">@{{comment.author}}</a>
-    </span>
-    <span class="comment-date"> {{comment.created_date|timesince}} önce</span>
+    <a href="{% url 'accounts:profile' comment.author.username %}">
+      <img class="comment-author-img" src="{% thumbnail comment.author.profile.avatar 50x50 crop %}" height="50" width="50" alt="">
+      <span class="comment-author-name">
+        @{{comment.author}}
+      </span></a>
+      <span class="comment-date"> {{comment.created_date|timesince}} önce</span>
     {% if user.is_authenticated and comment.author == request.user or article.user == request.user %}
       <a type="button" class="comment-delete btn btn-sm btn-outline-danger float-right" href="{% url 'articles:delete-comment' pk=comment.pk %}"><i class="fas fa-trash"></i></a>
     {% endif %}
@@ -77,14 +78,14 @@
   color: dimgray;
 }
 
-.comment-author-name a {
+.panel-head a {
   color: #1f1f1f;
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 300;
 }
 
-.comment-author-name a:hover {
+.panel-head a:hover {
   color: #2cc4bb;
 }
 

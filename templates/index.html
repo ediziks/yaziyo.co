@@ -28,7 +28,7 @@
           </div>
           <div class="data">
             <div class="content">
-              <span class="author"><a href="accounts/{{article.user.username}}"><img class="rounded-circle z-depth-0" src="{{article.user.profile.avatar.url}}" alt="" height=25px width=25px>{{article.user.username}}</a></span>
+              <span class="author"><a href="{% url 'accounts:profile' article.user.username %}"><img class="rounded-circle z-depth-0" src="{{article.user.profile.avatar.url}}" alt="" height=25px width=25px>{{article.user.username}}</a></span>
               <div class="float-right">
                 <span class="far fa-heart"> {{article.likes.count}}</span>
                 <span class="far fa-comment"> {{article.comments.count}}</span>
@@ -53,7 +53,7 @@
   <a class="beta-large" href="mailto:info@yaziyo.co"><img src="{% static 'beta_asama2.png' %}" alt=""></a>
   <a class="beta-small" href="mailto:info@yaziyo.co"><img src="{% static 'beta_asama_small_light.jpg' %}" alt=""></a>
 </div>
-<div class="container mt-5">
+<div class="bottom-articles container mt-5">
   <div class="top-explore">
     <h2>&nbsp;&nbsp;keşfet</h2>
   </div>
@@ -104,6 +104,7 @@ $.endlessPaginate({
 </script>
 {% endblock js %}
 
+{% block bottom %}
 <script>
 {% for article in editorpicks %}
 var topPrePlainMsg = jQuery('<div>').html(`{{article.message|safe|truncatechars:120}}`).text().replace(/(?:\r\n|\r|\n)/g, ' ').trim();
@@ -111,6 +112,14 @@ var topPre = document.getElementById('top-pre-{{article.pk}}');
 topPre.innerHTML = topPrePlainMsg;
 {% endfor %}
 </script>
+
+<script>
+{% for article in articlelist %}
+var msgInner = document.getElementById("bottom-pre-{{article.pk}}").innerHTML;
+document.getElementById("bottom-pre-{{article.pk}}").innerHTML = jQuery('<div>').html(msgInner).text().replace(/(?:\r\n|\r|\n)/g, ' ').trim();
+{% endfor %}
+</script>
+{% endblock bottom %}
 
 <style>
 @media only screen and (max-width: 767px) {
@@ -148,6 +157,12 @@ topPre.innerHTML = topPrePlainMsg;
   .social-box {
     position: relative !important;
     top: 0 !important;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .bottom-articles {
+    max-width: 100% !important
   }
 }
 

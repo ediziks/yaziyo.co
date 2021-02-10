@@ -1,0 +1,23 @@
+User-Agent: *
+Disallow: /static/
+Disallow: /media/
+Disallow: /search/
+Disallow: /admin/
+Disallow: /inbox/
+Disallow: /tinymce/
+Disallow: 
+
+Disallow: /articles/bookmark/
+Disallow: /articles/bookmark/
+
+Allow: /accounts/user/
+Disallow: /accounts/
+
+Disallow: /articles/new/
+Disallow: /articles/bookmark/
+Disallow: /articles/*/*/like/
+Disallow: /articles/*/*/update/
+Disallow: /articles/*/*/delete/
+Allow: /articles/
+
+Sitemap: https://yaziyo.co/sitemap.xml

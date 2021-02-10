@@ -1312,3 +1312,30 @@
 2021-02-09 00:36:54.907 +03 [32137] LOG:  invalid record length at 0/51B0180: wanted 24, got 0
 2021-02-09 00:36:54.907 +03 [32137] LOG:  redo done at 0/51B0148
 2021-02-09 00:36:54.954 +03 [32135] LOG:  database system is ready to accept connections
+2021-02-09 15:36:32.440 +03 [16420] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-02-09 15:36:32.441 +03 [16420] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-09 15:36:32.453 +03 [16420] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-09 15:36:32.502 +03 [16422] LOG:  database system was interrupted; last known up at 2021-02-09 04:32:00 +03
+2021-02-09 15:36:32.600 +03 [16422] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-09 15:36:32.607 +03 [16422] LOG:  redo starts at 0/51BC4F0
+2021-02-09 15:36:32.607 +03 [16422] LOG:  invalid record length at 0/51BC5D8: wanted 24, got 0
+2021-02-09 15:36:32.607 +03 [16422] LOG:  redo done at 0/51BC5A0
+2021-02-09 15:36:32.655 +03 [16420] LOG:  database system is ready to accept connections
+2021-02-09 16:57:42.174 +03 [10005] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-02-09 16:57:42.175 +03 [10005] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-09 16:57:42.187 +03 [10005] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-09 16:57:42.233 +03 [10007] LOG:  database system was interrupted; last known up at 2021-02-09 15:36:32 +03
+2021-02-09 16:57:42.314 +03 [10007] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-09 16:57:42.322 +03 [10007] LOG:  redo starts at 0/51BC650
+2021-02-09 16:57:42.322 +03 [10007] LOG:  invalid record length at 0/51BC688: wanted 24, got 0
+2021-02-09 16:57:42.322 +03 [10007] LOG:  redo done at 0/51BC650
+2021-02-09 16:57:42.369 +03 [10005] LOG:  database system is ready to accept connections
+2021-02-09 22:13:46.363 +03 [30455] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-02-09 22:13:46.364 +03 [30455] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-09 22:13:46.375 +03 [30455] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-09 22:13:46.405 +03 [30461] LOG:  database system was interrupted; last known up at 2021-02-09 16:57:42 +03
+2021-02-09 22:13:46.485 +03 [30461] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-09 22:13:46.492 +03 [30461] LOG:  redo starts at 0/51BC700
+2021-02-09 22:13:46.492 +03 [30461] LOG:  invalid record length at 0/51BC738: wanted 24, got 0
+2021-02-09 22:13:46.492 +03 [30461] LOG:  redo done at 0/51BC700
+2021-02-09 22:13:46.564 +03 [30455] LOG:  database system is ready to accept connections

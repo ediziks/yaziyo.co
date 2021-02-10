@@ -29,9 +29,11 @@ tinyMCE.init({
       {title: 'default', value: 'nofollow noopener noreferrer'}
   ],
   link_assume_external_targets: true,
-  content_style: "body {font-family:'Inter', sans-serif; font-size:14pt; line-height: normal !important; } img {max-width: 100%; height: auto;}",
+  content_style: "body {font-family:'Inter', sans-serif; font-size:14pt; line-height: normal !important; } img {max-width: 100%; height: auto;} p {margin-block-start: 0 !important; margin-block-end: 0 !important;}",
   fontsize_formats: "14pt 20pt",
-  // nonbreaking_force_tab: true,
+  nonbreaking_force_tab: true,
+  paste_as_text: true,
+  paste_tab_spaces: 8,
   image_title: true,
   /* enable automatic uploads of images represented by blob or data URIs*/
   // automatic_uploads: true,

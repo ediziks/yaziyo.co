@@ -9,7 +9,7 @@
 {% endblock head %}
 {% block content %}
 <div class="container result-tag mt-5" style="text-align: center; font-size: 2em;">
-  <h1><strong>#{{tag|cut:'#'}}</strong><span style="color:dimgray;"> için bulunan </span><strong>{{tags_list.count}}</strong><span style="color:dimgray;"> yazı</span></h1>
+  <h1><strong>#{{tag|cut:'#'}}</strong><span style="color:dimgray;"> için bulunan </span><strong>{{tags_list.count}}</strong><span style="color:dimgray;"> yazı:</span></h1>
 </div>
 <div class="container articles-tags">
 {% for article in tags_list %}
@@ -20,9 +20,7 @@
     </div>
     <div class="article-info">
       <div class="title">
-        <a href="{{article.get_absolute_url}}">
-          <h1>{{article.title|truncatechars:80}}</h1>
-        </a>
+        <h1><a href="{{article.get_absolute_url}}">{{article.title|truncatechars:80}}</a></h1> 
       </div>
       <div class="message">
         {% if article.title|length >= 28 %}
@@ -158,14 +156,14 @@ hr {
   padding: 0.5em 0 0.2em 0.5em;
 }
 
-.article-info .title a h1 {
+.article-info .title h1 a {
   font-size: 1.2rem;
   font-family: 'Roboto-Slab-500';
   color: #000000;
   text-transform: capitalize;
 }
 
-.article-info .title a h1:hover {
+.article-info .title h1 a:hover {
   color: gray;
 }
 

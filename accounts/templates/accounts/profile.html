@@ -11,8 +11,8 @@
 {% block content %}
 {% load thumbnail %}
 <div class="top-images">
-  <a href="{% thumbnail user.profile.cover 1920x250 crop %}"><img id="cover-img" src="{% thumbnail user.profile.cover 1920x250 crop %}" name="aboutme"></a>
-  <a href="{% thumbnail user.profile.avatar 175x200 crop %}"><img id="account-img" src="{% thumbnail user.profile.avatar 175x200 crop %}" name="aboutme"></a>
+  <a href="{% thumbnail user.profile.cover 1920x250 crop %}" target="_blank"><img id="cover-img" src="{% thumbnail user.profile.cover 1920x250 crop %}" name="aboutme"></a>
+  <a href="{% thumbnail user.profile.avatar 175x200 crop %}" target="_blank"><img id="account-img" src="{% thumbnail user.profile.avatar 175x200 crop %}" name="aboutme"></a>
 </div>
 <div class="container-fluid col-xl-6 col-lg-10 col-md-10">
 

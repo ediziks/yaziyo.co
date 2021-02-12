@@ -13,7 +13,7 @@
         @{{comment.author}}
       </span></a>
       <span class="comment-date"> {{comment.created_date|timesince}} önce</span>
-    {% if user.is_authenticated and comment.author == request.user or article.user == request.user %}
+    {% if user.is_authenticated and comment.author == request.user %}
       <a type="button" class="comment-delete btn btn-sm btn-outline-danger float-right" href="{% url 'articles:delete-comment' pk=comment.pk %}"><i class="fas fa-trash"></i></a>
     {% endif %}
   </div>

@@ -34,7 +34,7 @@
                 <span class="far fa-comment"> {{article.comments.count}}</span>
               </div>
               <div class="title">
-                <h1 class="title"><a href="{{article.get_absolute_url}}">{{article.title|truncatechars:53}}</a></h1>
+                <h1 class="title"><a href="{{article.get_absolute_url}}">{{article.title|truncatechars:75}}</a></h1>
               </div>
               <div class="truncated-message">
                 <a href="{{article.get_absolute_url}}" id="art-message-a">
@@ -331,7 +331,7 @@ topPre.innerHTML = topPrePlainMsg;
 
 .card .data {
   position: absolute;
-  min-height: 194px;
+  min-height: 197px;
   bottom: 0;
   width: 100%;
   /* -webkit-transform: translateY(calc(85px + 1em));
@@ -349,7 +349,7 @@ topPre.innerHTML = topPrePlainMsg;
   position: relative;
   z-index: 1;
   min-height: inherit;
-  max-height: 194px;
+  max-height: 195px;
 }
 
 .card .data .content .float-right {
@@ -362,8 +362,8 @@ topPre.innerHTML = topPrePlainMsg;
 }
 
 .card .title {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 0;
+  margin-bottom: 30px;
   min-height: 2.3em;
 }
 

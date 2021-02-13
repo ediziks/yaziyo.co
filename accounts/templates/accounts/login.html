@@ -20,16 +20,18 @@
       {% bootstrap_field form.password layout='inline' field_class='email-input' %}
       {% bootstrap_field form.captcha layout='inline' field_class='captcha-checkbox' %}
       {% bootstrap_form_errors form layout='inline' %}
+      <div class="login-sign-btn mt-4">
       <input class="btn btn-success" type="submit" value="Giriş">
       <button class="btn btn-primary ml-1"><a style="color:white" href="{% url 'accounts:signup' %}">Kaydol</a></button>
+      </div>
     </form>
     <br>
     <span>-- veya --</span>
     <br>
     <br>
-    <a id="github" href="/accounts/github/login" class="btn btn-outline-info"><span class="fab fa-github"></span> Github</a>
-    <a id="twitter_login" href="/accounts/twitter/login" class="btn btn-outline-primary"><span class="fab fa-twitter"></span> Twitter</a>
-    <a id="google_login" href="/accounts/google/login" class="btn btn-outline-danger"><span class="fab fa-google"></span> Google</a>
+    <a id="github" href="/accounts/github/login" class="btn btn-sm btn-outline-info"><span class="fab fa-github"></span> Github</a>
+    <a id="twitter_login" href="/accounts/twitter/login" class="btn btn-sm btn-outline-primary"><span class="fab fa-twitter"></span> Twitter</a>
+    <a id="google_login" href="/accounts/google/login" class="btn btn-sm btn-outline-danger"><span class="fab fa-google"></span> Google</a>
     <br>
     <br>
     <span>ile giriş yap</span>

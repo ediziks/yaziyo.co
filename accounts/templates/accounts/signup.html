@@ -32,20 +32,20 @@
       {% for fld in form.visible_fields %}
         <span class="help-block">{{ fld.error }}</span>
       {% endfor %}
-      <input class="btn btn-success mb-2" type="submit" value="Kaydol">
+      <input class="btn btn-success mb-2 mt-3" type="submit" value="Kaydol">
       <br>
       <span>-- veya --</span>
       <br>
       <br>
-      <a class="btn btn-outline-info" href="{% provider_login_url 'github' %}">
+      <a class="btn btn-sm btn-outline-info" href="{% provider_login_url 'github' %}">
         <span class="fab fa-github"></span>
         Github
       </a>
-      <a class="btn btn-outline-primary" href="{% provider_login_url 'twitter' %}">
+      <a class="btn btn-sm btn-outline-primary" href="{% provider_login_url 'twitter' %}">
         <span class="fab fa-twitter"></span>
         Twitter
       </a>
-      <a class="btn btn-outline-danger google-button" href="{% provider_login_url 'google' %}">
+      <a class="btn btn-sm btn-outline-danger google-button" href="{% provider_login_url 'google' %}">
         <span class="fab fa-google"></span>
         Google
       </a>

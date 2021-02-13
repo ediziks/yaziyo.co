@@ -66,11 +66,9 @@ class Article(models.Model):
     # to call googlebot to crawl when new article saved
     try:
       ping_google()
-      print('GOOGLE PINGED')
     except Exception:
       # Bare 'except' because we could get a variety
       # of HTTP-related exceptions.
-      print('GOOGLE NOT PINGED')
       pass
 
   def all_comments(self):

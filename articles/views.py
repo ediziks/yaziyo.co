@@ -16,6 +16,8 @@ from notifications.signals import notify
 from django.db import IntegrityError
 from django.utils.text import slugify
 from unidecode import unidecode
+from bloggy.utils import send_html_mail
+from django.template.loader import render_to_string
 
 
 class CreateArticle(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
@@ -111,6 +113,10 @@ class ArticleDetail(SelectRelatedMixin, FormMixin, generic.DetailView):
     if form.is_valid():
       if request.user != self.object.user:
         notify.send(request.user, recipient=self.object.user, action_object=self.object, verb='yorum')
+        ### SEND MAIL
+        context = ({'sender_name': request.user.username, 'obj': self.object})
+        html_content = render_to_string('articles/mail_temps/comment_mail.html', context)
+        send_html_mail('Bildirim yaziyo', html_content, [self.object.user.email, ], 'yaziyo.co <info@yaziyo.co>')
       return self.form_valid(form)
     else:
       return self.form_invalid(form)
@@ -145,6 +151,10 @@ class ArticleLikeRedirect(generic.RedirectView, LoginRequiredMixin):
         obj.likes.add(user)
         if user != obj.user:
           notify.send(user, recipient=obj.user, action_object=act_obj, verb='like')
+          ### SEND MAIL
+          context = ({'sender_name': user.username, 'obj': act_obj})
+          html_content = render_to_string('articles/mail_temps/like_mail.html', context)
+          send_html_mail('Bildirim yaziyo', html_content, [obj.user.email, ], 'yaziyo.co <info@yaziyo.co>')
       return url_
     else:
       return reverse('accounts:login')

@@ -25,6 +25,9 @@ from django.views.generic.edit import FormMixin
 from django.conf import settings
 import requests
 from django.core.exceptions import ObjectDoesNotExist
+from bloggy.utils import send_html_mail
+from django.template.loader import render_to_string
+
 
 user = get_user_model()
 
@@ -96,6 +99,10 @@ class ProfileFollowToggle(LoginRequiredMixin, View):
     else:
       profile_.followers.add(user)
       notify.send(user, recipient=profile_.user, verb='takip')
+      # SEND MAIL
+      context = ({'sender_name': user.username, 'obj': profile_})
+      html_content = render_to_string('accounts/mail_temps/follow_mail.html', context)
+      send_html_mail('Bildirim yaziyo', html_content, [profile_.user.email, ], 'yaziyo.co <info@yaziyo.co>')
     return redirect('accounts:profile', username=user_to_toggle)
 
 

@@ -1348,3 +1348,21 @@
 2021-02-11 14:34:45.218 +03 [123871] LOG:  invalid record length at 0/51F1B80: wanted 24, got 0
 2021-02-11 14:34:45.218 +03 [123871] LOG:  redo done at 0/51F1B48
 2021-02-11 14:34:45.281 +03 [123869] LOG:  database system is ready to accept connections
+2021-02-14 16:46:34.184 +03 [75996] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-02-14 16:46:34.185 +03 [75996] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-14 16:46:34.197 +03 [75996] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-14 16:46:34.247 +03 [75998] LOG:  database system was interrupted; last known up at 2021-02-14 03:51:00 +03
+2021-02-14 16:46:34.377 +03 [75998] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-14 16:46:34.391 +03 [75998] LOG:  redo starts at 0/5504370
+2021-02-14 16:46:34.391 +03 [75998] LOG:  invalid record length at 0/5504458: wanted 24, got 0
+2021-02-14 16:46:34.391 +03 [75998] LOG:  redo done at 0/5504420
+2021-02-14 16:46:34.453 +03 [75996] LOG:  database system is ready to accept connections
+2021-02-14 18:02:34.725 +03 [25126] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-02-14 18:02:34.726 +03 [25126] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-14 18:02:34.737 +03 [25126] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-14 18:02:34.780 +03 [25128] LOG:  database system was interrupted; last known up at 2021-02-14 16:46:34 +03
+2021-02-14 18:02:34.852 +03 [25128] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-14 18:02:34.860 +03 [25128] LOG:  redo starts at 0/55044D0
+2021-02-14 18:02:34.860 +03 [25128] LOG:  invalid record length at 0/5504508: wanted 24, got 0
+2021-02-14 18:02:34.860 +03 [25128] LOG:  redo done at 0/55044D0
+2021-02-14 18:02:34.901 +03 [25126] LOG:  database system is ready to accept connections

@@ -1,8 +1,6 @@
 import threading
 from django.core.mail import EmailMessage
 from email.mime.image import MIMEImage
-from django.contrib.staticfiles import finders
-from functools import lru_cache
 
 
 class EmailThread(threading.Thread):

@@ -31,20 +31,20 @@
 </div>
 {% endif %}
 <div class="col-md-12">
-  <div class="container">
+  <div class="container-outer">
     <div class="article media">
       <div class="media-body">
-        <div class="media-heading">
-          <div class="user-info col-xl-7 col-lg-8 col-md-10 col-sm-12">
-            <span class="username">
-              <a href="{% url 'accounts:profile' username=article.user.username %}"><img src="{% thumbnail article.user.profile.avatar 50x50 crop %}" class="rounded-circle mr-1" width="50" height="50" alt="">@{{article.user.username}}</a>
-            </span>
-            <span class="float-right mt-3">
-              <i class="fas fa-stopwatch"></i> {{article.message|readtime}} dk okuma&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i> {{article.created_date|date:"d F Y"}}
-            </span>
-          </div>
+        <div class="user-info col-xl-6 col-lg-8 col-md-10 col-sm-12">
+          <span class="username">
+            <a href="{% url 'accounts:profile' username=article.user.username %}"><img src="{% thumbnail article.user.profile.avatar 50x50 crop %}" class="rounded-circle mr-1" width="50" height="50" alt="">@{{article.user.username}}</a>
+          </span>
+          <span class="float-right mt-3">
+            <i class="fas fa-stopwatch"></i> {{article.message|readtime}} dk okuma&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i> {{article.created_date|date:"d F Y"}}
+          </span>
+        </div>
+        <div class="title-message-tags col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
           <div class="upper-article">
-            <div class="time align-text-center">
+            <div class="time">
               <h1>{{article.title}}</h1>
             </div>
           </div>
@@ -58,7 +58,7 @@
             <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.name|cut:'#' }}</a>
             {% endfor %}
           </div>
-        </div>
+        
         <div class="modal-footer">
           {% if user.is_authenticated and article.user == request.user %}
           <a class="edit-button" title="düzenle" href="{% url 'articles:update' request.user.username article.slug %}"><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></a>
@@ -78,18 +78,41 @@
             {% post_to_twitter "Yeni yazımı buradan inceleyebilirsiniz!" object_or_url '<span class="btn btn-outline-info btn-lg fab fa-twitter">' %}
           </div>
         </div>
+        <div class="comments-from-article-detail">
+  {% include "articles/comments.html" %}
+</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="comments-from-article-detail">
-  {% include "articles/comments.html" %}
-</div>
 
 <style>
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 425px) {
   .user-info {
     padding: 2.6em 1.5em !important;
+    font-size: 70%;
+  }
+
+  .user-info .float-right {
+    margin-top: 1.2rem !important;
+  }
+
+  .upper-article .time h1 {
+    font-size: 200% !important;
+  }
+
+  .artmessage pre * {
+    font-size: 102% !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .artmessage * {
+    font-size: 105% !important;
+    line-height: 32px;
+    line-break: auto;
+    white-space: normal !important;
   }
 }
 
@@ -104,6 +127,10 @@ html {
   height: 100%;
 }
 
+.title-message-tags {
+  margin: 0 auto;
+}
+
 .artmessage img {
   max-width: 100%;
   height: auto;
@@ -111,7 +138,7 @@ html {
 
 .tags {
   display: flex;
-  margin: 2em 0;
+  margin: 2em auto;
   flex-wrap: wrap;
 }
 
@@ -149,7 +176,8 @@ h1 {
   padding-top: 0.6em !important;
 }
 
-.edit-button, .delete-button {
+.edit-button,
+.delete-button {
   display: content;
 }
 
@@ -159,15 +187,15 @@ h1 {
 }
 
 .artmessage {
-  width: 100%
+  width: 100%;
+  margin: 0 auto;
 }
 
 .artmessage * {
-  font-size: 105%;
-  line-height: 1.5;
+  font-size: 105% !important;
+  line-height: 32px;
   line-break: auto;
   white-space: normal !important;
-
 }
 
 pre {
@@ -201,13 +229,12 @@ pre {
 {% endblock content %}
 {% block bottom %}
 {# code syntax highlight #}
-
 <!-- message description in plaintext -->
 <script>
-  var plainMsg = jQuery('<div>').html(`{{article.message|safe|truncatechars:170}}`).text().replace(/(?:\r\n|\r|\n)/g, ' ');
-  console.log(plainMsg);
-  document.querySelector('meta[name="description"]').setAttribute("content", plainMsg);
-  document.querySelector('meta[property="og:description"]').setAttribute("content", plainMsg);
-  document.querySelector('meta[name="twitter:description"]').setAttribute("content", plainMsg);
+var plainMsg = jQuery('<div>').html(`{{article.message|safe|truncatechars:170}}`).text().replace(/(?:\r\n|\r|\n)/g, ' ');
+console.log(plainMsg);
+document.querySelector('meta[name="description"]').setAttribute("content", plainMsg);
+document.querySelector('meta[property="og:description"]').setAttribute("content", plainMsg);
+document.querySelector('meta[name="twitter:description"]').setAttribute("content", plainMsg);
 </script>
 {% endblock bottom %}

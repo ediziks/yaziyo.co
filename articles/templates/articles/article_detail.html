@@ -31,58 +31,51 @@
 </div>
 {% endif %}
 <div class="col-md-12">
-  <div class="container-outer">
-    <div class="article media">
-      <div class="media-body">
-        <div class="user-info col-xl-6 col-lg-8 col-md-10 col-sm-12">
-          <span class="username">
-            <a href="{% url 'accounts:profile' username=article.user.username %}"><img src="{% thumbnail article.user.profile.avatar 50x50 crop %}" class="rounded-circle mr-1" width="50" height="50" alt="">@{{article.user.username}}</a>
-          </span>
-          <span class="float-right mt-3">
-            <i class="fas fa-stopwatch"></i> {{article.message|readtime}} dk okuma&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i> {{article.created_date|date:"d F Y"}}
-          </span>
-        </div>
-        <div class="title-message-tags col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
-          <div class="upper-article">
-            <div class="time">
-              <h1>{{article.title}}</h1>
-            </div>
-          </div>
-          <div class="mt-3 artmessage">
-            <pre>
+  <div class="user-info col-xl-6 col-lg-8 col-md-10 col-sm-12">
+    <span class="username">
+      <a href="{% url 'accounts:profile' username=article.user.username %}"><img src="{% thumbnail article.user.profile.avatar 50x50 crop %}" class="rounded-circle mr-1" width="50" height="50" alt="">@{{article.user.username}}</a>
+    </span>
+    <span class="float-right mt-3">
+      <i class="fas fa-stopwatch"></i> {{article.message|readtime}} dk okuma&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i> {{article.created_date|date:"d F Y"}}
+    </span>
+  </div>
+  <div class="title-message-tags col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
+    <div class="upper-article">
+      <div class="time">
+        <h1>{{article.title}}</h1>
+      </div>
+    </div>
+    <div class="mt-3 artmessage">
+      <pre>
             {{article.message|safe}}
             </pre>
-          </div>
-          <div class="tags">
-            {% for tag in article.tags.all %}
-            <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.name|cut:'#' }}</a>
-            {% endfor %}
-          </div>
-        
-        <div class="modal-footer">
-          {% if user.is_authenticated and article.user == request.user %}
-          <a class="edit-button" title="düzenle" href="{% url 'articles:update' request.user.username article.slug %}"><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></a>
-          <a class="delete-button" title="sil" href="{% url 'articles:delete' username=request.user.username slug=article.slug %}"><button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button></a>
-          {% endif %}
-          {% if article in request.user.profile.bookmarks.all %}
-          <a title="kaydedilenlerden çıkar" href="{% url 'articles:delete_bookmark' bookmark_slug=article.slug %}"><button type="button" class="btn btn-outline-primary"><i class="fa fa-bookmark"></i>&nbsp;<i class="fas fa-check"></i></button></a>
-          {% else %}
-          <a title="kaydet" href="{% url 'articles:add_bookmark' bookmark_slug=article.slug %}"><button type="button" class="btn btn-outline-primary"><i class="far fa-bookmark"></i></button></a>
-          {% endif %}
-          {% if request.user in article.likes.all %}
-          <a title="beğeniyi geri çek" href="{{article.get_like_url}}"><button type="button" class="btn btn-outline-danger"><i class="fa fa-heart"></i> <strong>{{article.likes.count}}</strong></button></a>
-          {% else %}
-          <a title="beğen" href="{{article.get_like_url}}"><button type="button" class="btn btn-outline-danger"><i class="far fa-heart"></i> <strong>{{article.likes.count}}</strong></button></a>
-          {% endif %}
-          <div class="tw-share">
-            {% post_to_twitter "Yeni yazımı buradan inceleyebilirsiniz!" object_or_url '<span class="btn btn-outline-info btn-lg fab fa-twitter">' %}
-          </div>
-        </div>
-        <div class="comments-from-article-detail">
-  {% include "articles/comments.html" %}
-</div>
-        </div>
+    </div>
+    <div class="tags">
+      {% for tag in article.tags.all %}
+      <a class="mr-1 badge badge-info" href="{% url 'articles:tags' tag=tag.slug %}">#{{ tag.name|cut:'#' }}</a>
+      {% endfor %}
+    </div>
+    <div class="modal-footer">
+      {% if user.is_authenticated and article.user == request.user %}
+      <a class="edit-button" title="düzenle" href="{% url 'articles:update' request.user.username article.slug %}"><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></a>
+      <a class="delete-button" title="sil" href="{% url 'articles:delete' username=request.user.username slug=article.slug %}"><button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button></a>
+      {% endif %}
+      {% if article in request.user.profile.bookmarks.all %}
+      <a title="kaydedilenlerden çıkar" href="{% url 'articles:delete_bookmark' bookmark_slug=article.slug %}"><button type="button" class="btn btn-outline-primary"><i class="fa fa-bookmark"></i>&nbsp;<i class="fas fa-check"></i></button></a>
+      {% else %}
+      <a title="kaydet" href="{% url 'articles:add_bookmark' bookmark_slug=article.slug %}"><button type="button" class="btn btn-outline-primary"><i class="far fa-bookmark"></i></button></a>
+      {% endif %}
+      {% if request.user in article.likes.all %}
+      <a title="beğeniyi geri çek" href="{{article.get_like_url}}"><button type="button" class="btn btn-outline-danger"><i class="fa fa-heart"></i> <strong>{{article.likes.count}}</strong></button></a>
+      {% else %}
+      <a title="beğen" href="{{article.get_like_url}}"><button type="button" class="btn btn-outline-danger"><i class="far fa-heart"></i> <strong>{{article.likes.count}}</strong></button></a>
+      {% endif %}
+      <div class="tw-share">
+        {% post_to_twitter "Yeni yazımı buradan inceleyebilirsiniz!" object_or_url '<span class="btn btn-outline-info btn-lg fab fa-twitter">' %}
       </div>
+    </div>
+    <div class="comments-from-article-detail">
+      {% include "articles/comments.html" %}
     </div>
   </div>
 </div>

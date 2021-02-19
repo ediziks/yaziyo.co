@@ -1366,3 +1366,15 @@
 2021-02-14 18:02:34.860 +03 [25128] LOG:  invalid record length at 0/5504508: wanted 24, got 0
 2021-02-14 18:02:34.860 +03 [25128] LOG:  redo done at 0/55044D0
 2021-02-14 18:02:34.901 +03 [25126] LOG:  database system is ready to accept connections
+2021-02-19 17:51:10.871 +03 [762425] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by x86_64-conda_cos6-linux-gnu-cc (crosstool-NG 1.23.0.450-d54ae) 7.3.0, 64-bit
+2021-02-19 17:51:10.872 +03 [762425] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-02-19 17:51:10.893 +03 [762425] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-02-19 17:51:10.951 +03 [762427] LOG:  database system was interrupted; last known up at 2021-02-14 21:37:48 +03
+2021-02-19 17:51:11.079 +03 [762427] LOG:  database system was not properly shut down; automatic recovery in progress
+2021-02-19 17:51:11.117 +03 [762427] LOG:  redo starts at 0/5529DA8
+2021-02-19 17:51:11.117 +03 [762427] LOG:  invalid record length at 0/5529E90: wanted 24, got 0
+2021-02-19 17:51:11.117 +03 [762427] LOG:  redo done at 0/5529E58
+2021-02-19 17:51:11.264 +03 [762425] LOG:  database system is ready to accept connections
+2021-02-19 17:52:11.942 +03 [763526] ERROR:  duplicate key value violates unique constraint "articles_article_user_id_slug_0cf21727_uniq"
+2021-02-19 17:52:11.942 +03 [763526] DETAIL:  Key (user_id, slug)=(52, yeni-yazi-mail-test) already exists.
+2021-02-19 17:52:11.942 +03 [763526] STATEMENT:  INSERT INTO "articles_article" ("user_id", "title", "message", "slug", "created_date", "image", "search_vector") VALUES (52, 'YENI YAZI MAIL TEST', '<p>YENI YAZI MAIL TEST</p>', 'yeni-yazi-mail-test', '2021-02-19T14:52:11.936211+00:00'::timestamptz, 'default_article_image.jpg', NULL) RETURNING "articles_article"."id"

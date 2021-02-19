@@ -32,6 +32,9 @@ class CreateArticle(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
         self.object.save()
         # the next line is for tags
         form.save_m2m()
+        # SEND MAIL for new articles
+        html_content = '<p>YENI YAZI VARRRR KANKSS!!!</p>'
+        send_html_mail('Bildirim yaziyo', html_content, ['eemektas@gmail.com', 'yamanberna44@gmail.com'], 'yaziyo.co <info@yaziyo.co>')
         return super().form_valid(form)
       except (IntegrityError, ValueError):
         messages.error(self.request, "Aynı başlığa sahip başka bir yazınız bulunmakta. Farklı bir başlık seçebilir veya başlığa ekleme/çıkarma yapabilirsiniz.")
@@ -113,7 +116,7 @@ class ArticleDetail(SelectRelatedMixin, FormMixin, generic.DetailView):
     if form.is_valid():
       if request.user != self.object.user:
         notify.send(request.user, recipient=self.object.user, action_object=self.object, verb='yorum')
-        ### SEND MAIL
+        # SEND MAIL
         context = ({'sender_name': request.user.username, 'obj': self.object})
         html_content = render_to_string('articles/mail_temps/comment_mail.html', context)
         send_html_mail('Bildirim yaziyo', html_content, [self.object.user.email, ], 'yaziyo.co <info@yaziyo.co>')
@@ -151,7 +154,7 @@ class ArticleLikeRedirect(generic.RedirectView, LoginRequiredMixin):
         obj.likes.add(user)
         if user != obj.user:
           notify.send(user, recipient=obj.user, action_object=act_obj, verb='like')
-          ### SEND MAIL
+          # SEND MAIL
           context = ({'sender_name': user.username, 'obj': act_obj})
           html_content = render_to_string('articles/mail_temps/like_mail.html', context)
           send_html_mail('Bildirim yaziyo', html_content, [obj.user.email, ], 'yaziyo.co <info@yaziyo.co>')

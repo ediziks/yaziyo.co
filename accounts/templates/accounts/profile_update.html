@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load widget_tweaks %}
+{% load thumbnail %}
+{% load socialaccount %}
+{% block head %}
+<title>@{{user.username}} Profil Güncelle - yaziyo.co</title>
+<meta name="title" content="@{{user.username}} Profil Güncelle">
+<meta name="description" content="Profil Güncelleme Sayfası">
+{% endblock head %}
+{% block content %}
+<div class="form-div">
+  <form method="POST" enctype="multipart/form-data" class="p-2">
+    {% csrf_token %}
+    <fieldset class="form-group mt-4">
+      <div class="cover-pic">
+        <figure><img id="cover" onclick="document.getElementById('id_cover').click();" src="{% thumbnail user.profile.cover 1900x200 crop %}" width="600px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro" onclick="document.getElementById('id_cover').click();"></i></span></figure>
+      </div>
+      <div class="avatar-pic mt-4 mb-4">
+        <figure><img id="avatar" onclick="document.getElementById('id_avatar').click();" src="{% thumbnail user.profile.avatar 140x160 crop %}" width="300px" alt=""><span class="upload-icon"><i class="fas fa-camera-retro" onclick="document.getElementById('id_avatar').click();"></i></span></figure>
+      </div>
+      <div class="name-mail-bio col-lg-6 col-md-8 col-sm-12">
+        {% if messages %}
+        {% for msg in messages %}
+        {% if forloop.last %}
+        <div class="alert alert-success alert-dismissable" style="">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{msg.message}}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% bootstrap_form_errors u_form layout='inline' %}
+        {% bootstrap_form_errors p_form layout='inline' %}
+        {% bootstrap_form u_form layout='inline' %}
+        {% bootstrap_field p_form.bio layout='inline' field_class='bio' %}
+        <!--<div class="form-group">
+          {% get_social_accounts user as accounts %}
+          {% if not accounts.twitter.0 %}
+          <a class="btn btn-outline-prımary" href="{% provider_login_url "twitter" process="connect" next="/accounts/user/{{user.username}}/update/" %}"><span class="fab fa-twitter"></span> Twitter Hesabını Bağla</a>
+          {% else %}
+          <a href="https://twitter.com/{{accounts.twitter.0.extra_data.screen_name}}">{{accounts.twitter.0.extra_data.screen_name}}</a>
+          {% endif %}
+          {% if not accounts.github.0 %}
+          <a class="btn btn-outline-info" href="{% provider_login_url "github" process="connect" next="/accounts/user/{{user.username}}/update/" %}">Github Hesabı Bağla</a>
+          {% else %}
+          <a href="https://github.com/{{accounts.github.0.extra_data.login}}">{{accounts.github.0.extra_data.login}}</a>
+          {% endif %}
+        </div>-->
+        <button class="btn btn-outline-info float-right" type="submit">Güncelle</button>
+      </div>
+      <div class="form-hidden" style="display:none;">
+        {% render_field p_form.cover %}
+        {% render_field p_form.avatar %}
+      </div>
+    </fieldset>
+  </form>
+  <div>
+  </div>
+</div>
+<style>
+@media only screen and (max-width: 320px) {
+  #cover {
+    top: 91px !important;
+  }
+
+  #avatar {
+    top: 13rem !important;
+  }
+
+  .avatar-pic .upload-icon {
+    top: 5.6em !important;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+  #cover {
+    top: 91px !important;
+  }
+
+  #avatar {
+    top: 13.4rem !important;
+  }
+
+  .avatar-pic .upload-icon {
+    top: 6em !important;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+  #cover {
+    top: 91px !important;
+  }
+
+  #avatar {
+    top: 13.7rem !important;
+  }
+
+  .avatar-pic .upload-icon {
+    top: 6.3em !important;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+  #cover {
+    top: 91px !important;
+  }
+
+  #avatar {
+    top: 14.6rem !important;
+  }
+
+  .avatar-pic .upload-icon {
+    top: 6.7em !important;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  #avatar {
+    top: 15.4rem !important;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  #avatar {
+    top: 15.7rem !important;
+  }
+}
+
+
+#cover {
+  width: 100%;
+  height: 200px;
+  left: 0;
+  top: 101px;
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  object-fit: cover;
+  clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -webkit-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -o-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -moz-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+  -ms-clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 50%, 0 0);
+}
+
+#avatar {
+  width: 140px;
+  height: 160px;
+  top: 15.9rem;
+  cursor: pointer;
+  object-fit: cover;
+  left: calc(50% - 70px);
+  display: inline-block;
+  position: absolute;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  o-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -moz-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -ms-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.cover-pic figure img {
+  filter: brightness(1);
+  transition: .3s ease-in-out;
+  -webkit-transition: .3s ease-in-out;
+}
+
+.cover-pic figure:hover img {
+  filter: brightness(.8);
+}
+
+.avatar-pic figure img {
+  filter: brightness(1);
+  box-shadow: inset 0 0 0 0px rgba(0, 0, 0, .2);
+  transition: .3s ease-in-out;
+  -webkit-transition: .3s ease-in-out;
+}
+
+.avatar-pic figure:hover img {
+  filter: brightness(.8);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .2);
+}
+
+.avatar-pic .upload-icon {
+  top: 7.7em;
+}
+
+.upload-icon {
+  z-index: 1;
+  position: relative;
+  color: white;
+  top: 2em;
+  display: block;
+  text-align: center;
+  text-align: -webkit-center;
+  cursor: pointer;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.fa-camera-retro {
+  opacity: 1;
+}
+
+.upload-icon .fa-camera-retro {
+  font-size: 2em;
+}
+
+.btn-outline-info.float-right {
+  margin: .5em 0 14em 0;
+}
+
+.name-mail-bio {
+  margin: 15em auto 0;
+}
+
+.bio textarea {
+  resize: none;
+}
+
+.pform {
+  display: none;
+}
+
+.form-div {
+  width: 80%;
+  margin: 0 auto;
+}
+</style>
+{% endblock content %}
+{% block bottom %}
+<script>
+(function() {
+  var avatar = document.getElementById("id_avatar");
+  var cover = document.getElementById("id_cover");
+  avatar.onchange = function() {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      // get loaded data and render thumbnail.
+      document.getElementById("avatar").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+  };
+  cover.onchange = function() {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      // get loaded data and render thumbnail.
+      document.getElementById("cover").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+  };
+})();
+</script>
+{% endblock bottom %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}
+  <title>Yazı Arama '{{query}}' - yaziyo.co</title>
+  <meta name="title" content="Yazı Arama '{{query}}'">
+  <meta name="description" content="Yazı Arama Sayfası">
+{% endblock head %}
+{% block content %}
+<div class="flex-column">
+  <div class="col-12 mx-auto mb-5 py-5">
+    <div class="result-text mb-5" style="text-align: center; font-size: 2rem;">
+      <h1><strong>{{query}}</strong><span style="color:dimgray;"> araması ile ilgili </span><strong>{{object_list.count}}</strong><span style="color:dimgray;"> yazı bulundu</span></h1>
+    </div>
+    {% include page_template %}
+  </div>
+</div>
+{% block js %}
+{{ block.super }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/static/el-pagination/js/el-pagination.js"></script>
+<script>$.endlessPaginate({
+        paginateOnScroll: true, 
+        paginateOnScrollMargin: 200});
+</script>
+{% endblock js %}
+{% endblock content %}

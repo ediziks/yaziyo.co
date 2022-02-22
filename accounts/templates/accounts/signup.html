@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load socialaccount %}
+{% block head %}
+  <title>Kaydol - yaziyo.co</title>
+  <meta name="title" content="Kaydol">
+  <meta name="description" content="Kayıt ol">
+{% endblock head %}
+{% block content %}
+<div class="container">
+{% if messages %}
+  {% for msg in messages %}
+      {% if forloop.last %}
+      <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{msg.message}}
+      </div>
+      {% endif %}
+  {% endfor %}
+{% endif %}
+</div>
+<div class="container">
+  <div class="jumbotron" style="text-align: center;">
+    <form method="POST">
+      {% csrf_token %}
+      {% bootstrap_form_errors form layout='inline' %}
+      {% bootstrap_field form.username layout='inline' field_class='input-username' %}
+      {% bootstrap_field form.email layout='inline' field_class='input-email' %}
+      {% bootstrap_field form.password1 layout='inline' field_class='input-pass1' %}
+      {% bootstrap_field form.password2 layout='inline' field_class='input-pass2' %}
+      {% bootstrap_field form.captcha layout='inline' field_class='captcha-checkbox' %}
+      {% for fld in form.visible_fields %}
+        <span class="help-block">{{ fld.error }}</span>
+      {% endfor %}
+      <input class="btn btn-success mb-2 mt-3" type="submit" value="Kaydol">
+      <br>
+      <span>-- veya --</span>
+      <br>
+      <br>
+      <a class="btn btn-sm btn-outline-info" href="{% provider_login_url 'github' %}">
+        <span class="fab fa-github"></span>
+        Github
+      </a>
+      <a class="btn btn-sm btn-outline-primary" href="{% provider_login_url 'twitter' %}">
+        <span class="fab fa-twitter"></span>
+        Twitter
+      </a>
+      <a class="btn btn-sm btn-outline-danger google-button" href="{% provider_login_url 'google' %}">
+        <span class="fab fa-google"></span>
+        Google
+      </a>
+      <br>
+      <br>
+      <span>ile kaydol</span>
+    </form>
+  </div>
+</div>
+
+<style>
+@media only screen and (max-width: 320px) {
+  .captcha-checkbox {
+    transform: scale(0.82);
+    -webkit-transform: scale(0.82);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+  }
+
+  .google-button {
+    margin-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .jumbotron form {
+    max-width: 96% !important;
+  }
+
+  .google-button {
+    margin-top: 5px;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+  .jumbotron form {
+    max-width: 83% !important;
+  }
+
+  .google-button {
+    margin-top: 5px;
+  }
+}
+
+.jumbotron {
+  margin: 0 auto;
+}
+
+.jumbotron form {
+  margin: 0 auto;
+  max-width: 60%;
+}
+</style>
+{% endblock content %}

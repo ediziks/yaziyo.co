@@ -1,0 +1,63 @@
+{% if request.user.is_authenticated %}
+<li class="nav-item mt-3 mr-1 wide">
+  <div class="notifications-dropdown" title="Bildirimler">
+    {% if request.user.notifications.unread and not request.user.notifications.unread == 0 %}
+    <span class="badge badge-pill badge-danger" id="wideBadge">{{request.user.notifications.unread.count}}</span>
+    {% endif %}
+    <a class="notifications-button" href="#" role="button" id="noti-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #a0a0a0;"><i class="far fa-bell"></i></a>
+    <div class="dropdown-menu" id="noti-drop-menu" aria-labelledby="dropdownMenuLink">
+      {% for noti in request.user.notifications.all|slice:":10" %}
+      {% if noti.verb == 'like' and noti.actor and noti.action_object %}
+      <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>,
+        <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> başlıklı yazını beğendi <i class="fas fa-heart"></i> {{noti.timesince}}</p>
+      {% elif noti.verb == 'takip' and noti.actor %}
+      <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a> seni takip etmeye başladı ✨ {{noti.timesince}}</p>
+      {% elif noti.verb == 'yorum' and noti.actor and noti.action_object %}
+      <p class="dropdown-item"><a href="{% url 'accounts:profile' username=noti.actor %}"><strong>{{noti.actor}}</strong></a>, başlığı <a href="{{noti.action_object.get_absolute_url}}"><strong>{{noti.action_object.title}}</strong></a> olan yazına bir yorum bıraktı <i class="fas fa-comment" style="color:#28a745;"></i> {{noti.timesince}}</p>
+      {% endif %}
+      {% endfor %}
+      {% if not request.user.notifications.count %}
+      <p class="dropdown-item">Henüz bir bildiriminiz yok.</p>
+      {% else %}
+      <a class="nav-link" id="show_all" style="text-align: center;" href="{% url 'accounts:notifications' request.user.username %}">- <strong>Tümünü Gör</strong> -</a>
+      {% endif %}
+    </div>
+  </div>
+</li>
+<li class="nav-item small align-self-center my-2">
+  {% if request.user.notifications.unread and not request.user.notifications.unread == 0 %}
+  <a href="{% url 'accounts:notifications' request.user.username %}" style="color:red;">🔔 Bildirimler</a>
+  {% else %}
+  <a href="{% url 'accounts:notifications' request.user.username %}">🔔 Bildirimler</a>
+  {% endif %}
+</li>
+{% endif %}
+
+<style type="text/css">
+.badge-pill {
+  position: relative;
+  float:right;
+  margin-left:-1.1em;
+  margin-top:-0.7em;
+  opacity: 0.8;
+}
+
+#noti-drop-menu * {
+  white-space: normal;
+}
+
+#noti-drop-menu {
+  left: auto;
+  right: 5.4% !important;
+  top: 82%;
+  max-width: 500px;
+}
+
+#noti-drop-menu p a {
+  color: inherit;
+}
+
+#noti-drop-menu p a:hover {
+  color: #2cc4bb;
+}
+</style>

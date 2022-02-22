@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Bildirimler - yaziyo.co</title>
+<meta name="title" content="Bildirimler">
+<meta name="description" content="Bildirimleri Görüntüle">
+{% endblock head %}
+{% block content %}
+<div class="container">
+  <div class="usernoti container mt-5">
+    <table class="table table-striped">
+      <tbody>
+        {% for noti in notifications %}
+        {% if noti.verb == 'like' and noti.actor and noti.action_object %}
+        <tr>
+          <td scope="col">
+            <p><a href="{% url 'accounts:profile' username=noti.actor %}">{{noti.actor}}, </a> <a href="{{noti.action_object.get_absolute_url}}">{{noti.action_object.title}}</a> başlıklı yazını beğendi ❤️ {{noti.timesince}} önce</p>
+          </td>
+        </tr>
+        {% elif noti.verb == 'takip' and noti.actor %}
+        <tr>
+          <td scope="row">
+            <p><a href="{% url 'accounts:profile' username=noti.actor %}">{{noti.actor}}</a> seni takip etmeye başladı ✨ {{noti.timesince}} önce</p>
+          </td>
+        </tr>
+        {% elif noti.verb == 'yorum' and noti.actor and noti.action_object %}
+        <tr>
+          <td scope="col-12">
+            <p><a href="{% url 'accounts:profile' username=noti.actor %}">{{noti.actor}}</a>, başlığı <a href="{{noti.action_object.get_absolute_url}}">{{noti.action_object.title}}</a> olan yazına bir yorum bıraktı 💬 {{noti.timesince}} önce</p>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}

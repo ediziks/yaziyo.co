@@ -1,0 +1,60 @@
+{% extends "articles/article_base.html" %}
+{% load social_share %}
+{% block head %}
+  <title>Yazı Silme Onay | {{article.title}} | @{{article.user}} | yaziyo.co</title>
+  <meta name="title" content="Yazı Silme Onay '{{article.title}}'">
+  <meta name="description" content="Yazı Silme Onay Sayfası">
+{% endblock head %}
+{% block content %}
+<div class="jumbotron">
+  <div class="delete-confirm">
+  <h1>Bu yazıyı silmek istediğinize emin misiniz?</h1>
+  </div>
+  <div class="articles">
+    <div class="container">
+      <div class="article media">
+        <div class="media-body p-3">
+          <div class="media-heading">
+            <span class="username">
+              <a href="{% url 'accounts:profile' username=article.user.username %}"><img src="{{article.user.profile.avatar.url}}" class="rounded-circle" width="50" height="50" alt=""> @{{article.user.username}}</a>
+            </span>
+            <time class="time">
+              <a href="{% url 'articles:single' username=article.user.username slug=article.slug  %}">{{article.title}} {{article.created_date|date:"d F Y"}}</a>
+            </time>
+            <div class="row col-md-12 mt-5">
+              {{article.message|safe}}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <p><a href="{{article.get_like_url}}">Like: {{article.likes.count}}</a></p>
+            <div class="tw-share">
+              {% post_to_twitter "Yeni yazımı buradan inceleyebilirsiniz!" object_or_url '<span class="btn btn-outline-info btn-lg fab fa-twitter">' %}
+            </div>
+          </div>
+          <form method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Sil" class="btn btn-danger btn-lg">
+            <a class="btn btn-info btn-lg" href="{% url 'articles:single' username=user.username slug=object.slug %}">Geri</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.delete-btn {
+  display: none;
+}
+
+.delete-confirm {
+  background-color: blue;
+}
+
+.delete-confirm h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 0.8em;
+}
+</style>
+{% endblock content %}

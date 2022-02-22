@@ -1,0 +1,179 @@
+{% load widget_tweaks %}
+{% load thumbnail %}
+<div class="yorum-header container">
+  <h2><span>yorumlar</span></h2>
+</div>
+<div class="container all-comments">
+{% for comment in article.all_comments %}
+<div class="panel panel-default comment-container">
+  <div class="panel panel-head">
+    <a href="{% url 'accounts:profile' comment.author.username %}">
+      <img class="comment-author-img" src="{% thumbnail comment.author.profile.avatar 50x50 crop %}" height="50" width="50" alt="">
+      <span class="comment-author-name">
+        @{{comment.author}}
+      </span></a>
+      <span class="comment-date"> {{comment.created_date|timesince}} önce</span>
+    {% if user.is_authenticated and comment.author == request.user %}
+      <a type="button" class="comment-delete btn btn-sm btn-outline-danger float-right" href="{% url 'articles:delete-comment' pk=comment.pk %}"><i class="fas fa-trash"></i></a>
+    {% endif %}
+  </div>
+  <div class="panel-body comment-content">
+    <pre>
+      <p>
+        {% render_field comment.content %}
+      </p>
+    </pre>
+  </div>
+</div>
+<br>
+{% empty %}
+<div class="comment-container">
+  <p>Henüz yorum yapılmamış, ilk yorumu sen yapabilirsin!</p>
+</div>
+{% endfor %}
+{% if user.is_authenticated %}
+<div class="comment-form-container">
+  <form method="POST" action="" class="comment-form">
+    {% csrf_token %}
+    {% render_field form.content class="comment-textarea" placeholder="Yorum buradan başlar..." %}
+    {{form.article}}
+    {{form.author}}
+    <div class="button mt-3">
+      <button type="submit" class="btn btn-primary">Gönder</button>
+    </div>
+  </form>
+  {% else %} 
+  <div class="comment-form-container sign-alert">
+    {% render_field form.content class="comment-textarea" placeholder="Yorum buradan başlar..." %}
+    <br>
+    <p><span>Yorum yapabilmek için öncelikle <a href="{% url 'accounts:login' %}"><strong>giriş yap</strong></a>manız veya <a href="{% url 'accounts:signup' %}"><strong>kayıt ol</strong></a>manız gerekir.</span></p>
+  </div>
+</div>
+</div>
+{% endif %}
+<br>
+<br>
+<br>
+
+<style type="text/css">
+.sign-alert {
+  margin: 1em 0;
+}
+
+.sign-alert textarea {
+  margin: 1em auto;
+  max-width: 80%;
+}
+
+.sign-alert p {
+  color: dimgray;
+  margin-left: 4px;
+  line-height: normal;
+}
+
+.comment-date {
+  margin-left: 0.5em;
+  padding-left: 0.7em;
+  border-left: 1px solid black;
+  color: dimgray;
+}
+
+.panel-head a {
+  color: #1f1f1f;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.panel-head a:hover {
+  color: #2cc4bb;
+}
+
+.comment-author-img {
+  border-radius: 50%;
+}
+
+.comment-content {
+  padding: 0.2em 1em;
+}
+
+.comment-content pre p {
+  white-space: pre-line;
+  line-height: 23px;
+}
+
+.comment-form {
+  max-width: 100%;
+}
+
+.comment-container:first-child {
+  margin-top: 0;
+}
+
+.comment-container {
+  min-height: 3.5em;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  min-width: 6em;
+  max-width: 100%;
+  margin-top: 1.2em;
+  margin-right: auto;
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
+  background: lightgray;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.comment-delete {
+  margin-left: 1em;
+}
+
+
+.comment-delete {
+  color: gray;
+}
+
+.comment-textarea {
+  resize: none;
+  width: 100%;
+  overflow: auto;
+  border-radius: 10px;
+  padding: 1em;
+  margin-top: 2em;
+  line-height: 23px;
+}
+
+.tags .badge-info {
+  background-color: #2cc4bb;
+}
+
+.button .btn-primary {
+  margin-bottom: 2em;
+  margin-left: calc(100% - 82px) !important;
+}
+
+.yorum-header {
+  margin-bottom: 3em;
+}
+
+.yorum-header h2 {
+  font-family: 'Raleway-Ital';
+  font-size: 1.8em;
+  text-align: center;
+  width: 100%; 
+  border-bottom: 1px solid #000 !important; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+}
+
+.yorum-header h2 span { 
+  background: #F2F2F2; 
+  padding:0 5%; 
+  font-family: 'Raleway-Ital';
+  font-size: 2rem;
+  position: relative;
+  font-weight: 600;
+}
+</style>

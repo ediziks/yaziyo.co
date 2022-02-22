@@ -80,7 +80,7 @@ s3transfer==0.3.3
 semantic-version==2.5.0
 six==1.14.0
 soupsieve==2.1
-sqlparse==0.4.1
+sqlparse==0.4.2
 swapper==1.1.2.post1
 termcolor==1.1.0
 texttable==1.6.3
